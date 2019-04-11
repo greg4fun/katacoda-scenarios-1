@@ -1,11 +1,16 @@
 {
-  "title": "Hello World Scenario",
-  "description": "Your First Scenario",
+  "title": "Katacoda Course Creation",
+  "description": "Builds Environment for writing Katacoda Courses",
   "difficulty": "beginner",
   "time": "2 minutes",
   "details": {
+    "assets": {
+        "host01": [
+            {"file": "setup.sh", "target": "/home/scrapbook/tutorial", "chmod": "+x"}
+        ]
+    },
     "steps": [{
-      "title": "Step 1 - Run Command",
+      "title": "Step 1",
       "text": "step1.md"
     }],
     "intro": {
