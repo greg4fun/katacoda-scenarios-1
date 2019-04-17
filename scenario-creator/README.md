@@ -1,6 +1,5 @@
-# Katacoda Hello World
-This is an example repository. Starting building your own scenario by editing the files in this directory. Create additional scenarios by adding additional directories to the top level folder.
-
+# Test Scenarion
+This scenario is used to testing/building Katacoda scenarios.
 
 ## index.json
 The file _index.json_ contains all the information about the scenario. It has the title, description and a heading for each step.
@@ -18,8 +17,4 @@ The file also contains an imageid. This refers to the Katacoda environment. Here
 | Java             | java8         |
 | Bash             | bash          |
 
-## Pro Author Accounts
-Interested in metrics, private repositories and environments for classroom teaching? Update to become a Pro Author at https://katacoda.com/teach
-
-## Interactive Developer Portals
-Want to take your scenarios to the next level? Visit https://katacoda.com/embed
+setup.sh ensures that the katacoda-scenarios repo has been cloned.

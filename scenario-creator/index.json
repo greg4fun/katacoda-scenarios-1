@@ -1,6 +1,7 @@
 {
   "title": "Katacoda Course Creation",
   "description": "Builds Environment for writing Katacoda Courses",
+  "private": true
   "difficulty": "beginner",
   "time": "2 minutes",
   "details": {
