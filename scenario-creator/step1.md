@@ -14,8 +14,6 @@ This is an _example_ of creating a scenario and running a **command**
 
 `echo "Send Ctrl+C before running Terminal"`{{execute interrupt}}
 
-`echo "Send <kbd>Ctrl</kbd>+<kbd>C</kbd> before running Terminal"`{{execute interrupt}}
-
 <kbd>Ctrl</kbd>+<kbd>C</kbd>
 
 `echo "Run in Terminal Host 1"`{{execute HOST1}} 
