@@ -5,12 +5,13 @@ This is your first step.
 This is an _example_ of creating a scenario and running a **command**
 
 `git config --global user.email 'babel17@babel17.org'`{{execute}}  
-`echo "git config --global user.name 'babel17'"`{{execute}}
-`echo "git clone https://github.com/Babel17/katacoda-scenarios.git"`{{execute}}
+`git config --global user.name 'babel17'`{{execute}}
+`git clone https://github.com/Babel17/katacoda-scenarios.git`{{execute}}
 
 `echo "Copy to Clipboard"`{{copy}}
 
 `echo "Run in Terminal"`{{execute}}
+
 `echo "Send Ctrl+C before running Terminal"`{{execute interrupt}}
 
 <kbd>Ctrl</kbd>+<kbd>C</kbd>
