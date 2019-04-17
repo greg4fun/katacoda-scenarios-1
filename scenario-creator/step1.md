@@ -4,7 +4,7 @@ This is your first step.
 
 This is an _example_ of creating a scenario and running a **command**
 
-`echo "git config --global user.email 'babel17@babel17.org'"`{{execute}}  
+`git config --global user.email 'babel17@babel17.org'`{{execute}}  
 `echo "git config --global user.name 'babel17'"`{{execute}}
 `echo "git clone https://github.com/Babel17/katacoda-scenarios.git"`{{execute}}
 
