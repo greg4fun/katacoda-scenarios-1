@@ -12,17 +12,17 @@
     "intro": {
       "text": "intro.md",
       "code": "setup.sh",
-      "credits": ""
+      "credits": "Babel17"
     },
     "finish": {
       "text": "finish.md"
     }
   },
   "environment": {
-    "uilayout": "terminal",
-    "uimessage1": "\u001b[32mYour Interactive Bash Terminal.\r\nStart Kubernetes using `launch.sh`\u001b[m\r\n"
+    "uilayout": "editor-terminal"
+    "uimessage1": "\u001b[32mWelcome\r\nView images with docker images\u001b[m\r\n"
   },
   "backend": {
-    "imageid": "ubuntu1804"
+    "imageid": "ubuntu"
   }
 }
