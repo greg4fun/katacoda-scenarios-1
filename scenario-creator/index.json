@@ -22,6 +22,6 @@
     "uilayout": "editor-terminal"
   },
   "backend": {
-    "imageid": "ubuntu"
+    "imageid": "ubuntu1804"
   }
 }
