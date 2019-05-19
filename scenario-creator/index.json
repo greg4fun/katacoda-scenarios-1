@@ -23,6 +23,6 @@
     "uimessage1": "\u001b[32mWelcome\r\nView images with docker images\u001b[m\r\n"
   },
   "backend": {
-    "imageid": "ubuntu"
+    "imageid": "bash"
   }
 }
