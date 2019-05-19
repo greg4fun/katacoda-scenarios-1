@@ -1,6 +1,7 @@
 {
   "title": "Docker Scenario",
   "description": "Learn the basic Docker commands",
+  "private": true ,
   "difficulty": "beginner",
   "time": "10 minutes",
   "details": {
