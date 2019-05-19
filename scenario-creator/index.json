@@ -22,6 +22,6 @@
     "uilayout": "editor-terminal"
   },
   "backend": {
-    "imageid": "ubuntu:19.04"
+    "imageid": "ubuntu"
   }
 }
