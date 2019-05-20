@@ -24,7 +24,7 @@ Let's run another container up...
 
 `docker run -d --name resplendent_redis redis`{{execute}}
 
-But this time it fails - why is this?
+But this time it **fails** - why is this?
 
 Let's rerun the docker ps command but this time an an extra argument _-a_
 
@@ -54,12 +54,33 @@ Now remove it:
 
 `docker rm resplendent_redis`{{execute}}
 
+`docker ps -a`{{execute}}
+
+This time the container really has gone.
+
 Incidentally, you may wish to create a container with out starting it; a use case for this is data containers which we will learn about later.
 
 To **create** a container:
 
 `docker create -d --name resplendent_redis redis`{{execute}}
 
+`docker ps -a`{{execute}}
+
 Note that this is basically the same command as **run** but using the **create** keyword instead.
+
+You can start and stop this with the commands you have just learnt.
+
+When you have finished playing stop and remove the config.
+
+I don't know about you, but it's a bit of a pain to have to keep remembering to remove the container after it has exited.
+
+Fortunately there is an option for docker run to help **--rm**. This option tells docker to remove the config when the container exits.
+
+Let's test it...
+
+`docker run --rm -d --name resplendent_redis redis`{{execute}}
+
+
+
 
 
