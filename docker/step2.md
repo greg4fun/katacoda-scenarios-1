@@ -28,7 +28,7 @@ You have 2 choices here, you can either use the CONTAINER ID or the CONTAINER NA
 
 Your commands will be similar to the following: 
 
-"docker inspect distracted_nightingale"{{copy}}
+`docker inspect distracted_nightingale`{{copy}}
 
 "docker inspect 642736e3e640"{{copy}}
 
