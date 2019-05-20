@@ -8,7 +8,7 @@ That's not something to be concerned about, we just need a small reliable image.
 
 Let's run our first container:
 
-`docker run redis` {{execute}}
+`docker run redis`{{execute}} 
 
 The _run_ argument creates a container configuration on the filesystem under _/var/lib/docker_ on the Docker Master and then starts the container.
 
