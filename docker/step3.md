@@ -38,4 +38,28 @@ This means we can actually restart "resplendent_redis" using the "docker start" 
 
 `docker start resplendent_redis`{{execute}}
 
+`docker ps -a`{{execute}}
+
+Now we know it's there let's learn how to remove the container config.
+
+First stop the container:
+
+`docker stop resplendent_redis`{{execute}}
+
+Check it has stopped:
+
+`docker ps -a`{{execute}}
+
+Now remove it:
+
+`docker rm resplendent_redis`{{execute}}
+
+Incidentally, you may wish to create a container with out starting it; a use case for this is data containers which we will learn about later.
+
+To **create** a container:
+
+`docker create -d --name resplendent_redis redis`{{execute}}
+
+Note that this is basically the same command as **run** but using the **create** keyword instead.
+
 
