@@ -14,11 +14,11 @@ The _run_ argument creates a container configuration on the filesystem under _/v
 
 As you can see, a container has been started but we have lost our command line. The container is attached to our terminal and so we see the output.
 
-`Send Ctrl+C` {{execute interrupt}}
+`Send Ctrl+C`{{execute interrupt}}
 
 Let's run another:
 
-`docker run -d redis` {{execute}}
+`docker run -d redis`{{execute}}
 
 This time we are adding the _-d_ option. This starts the container in detached mode. This time there is no output on our screen.
 
