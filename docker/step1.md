@@ -10,9 +10,11 @@ Let's run our first container:
 
 `docker run redis`{{execute}} 
 
-The _run_ argument creates a container configuration on the filesystem under _/var/lib/docker_ on the Docker Master and then starts the container.
+The **run** option creates a container configuration on the filesystem under **/var/lib/docker** on the Docker Master and then starts the container.
 
 As you can see, a container has been started but we have lost our command line. The container is attached to our terminal and so we see the output.
+
+We can escape from this container by pressing _Ctrl+C_ or click the command.
 
 `echo "Send Ctrl+C"`{{execute interrupt}}
 
@@ -20,6 +22,8 @@ Let's run another:
 
 `docker run -d redis`{{execute}}
 
-This time we are adding the _-d_ option. This starts the container in detached mode. This time there is no output on our screen.
+This time we are adding the **-d** argument so the container will run in detached mode.
+
+The **hash string** returned is the unique identifying ID for the container you have just started.
 
 This is typically the most common way of running a container.
