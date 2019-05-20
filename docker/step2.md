@@ -1,4 +1,4 @@
-## Task Two Inspecting the Container
+## Task Two Inspecting a Running Container
 
 Now that we have been returned to the command line we can use docker ps to list running containers. Try this:
 
@@ -19,3 +19,16 @@ Docker ps is based on a well known Unix/Linux command called 'ps', which stands 
 **PORTS** describes the available ports or port range.
 
 **NAMES** the name of the container as provided or randomly set by docker.
+
+Let's _inspect_ our container.
+
+You have 2 choices here, you can either use the CONTAINER ID or the CONTAINER NAME.
+
+Your commands will be similar to the following: 
+
+"docker inspect pensive_perlman"{{copy}}
+
+"docker inspect 642736e3e640"{{copy}}
+
+Note - make sure you replace the CONTAINER ID or NAME with the details from _your_ container!
+
