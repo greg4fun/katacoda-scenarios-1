@@ -30,7 +30,7 @@ Your commands will be similar to the following:
 
 `docker inspect distracted_nightingale`{{copy}}
 
-"docker inspect 642736e3e640"{{copy}}
+`docker inspect 642736e3e640`{{copy}}
 
 Note - make sure you replace the CONTAINER ID or NAME with the details from _your_ container!
 
@@ -44,7 +44,7 @@ Let's look at the _logs_
 
 As before you can use either the CONTAINER ID or NAME.
 
-"docker logs distracted_nightingale"{{copy}}
+`docker logs distracted_nightingale`{{copy}}
 
 Remember the output we saw on the screen when the container was started without the -d option?
 
