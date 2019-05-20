@@ -7,7 +7,7 @@
   "details": {
     "steps": [{
       "title": "Step 1 - Run Command",
-      "text": "step1.md"
+      "text": "step1.md",
       "title": "Step 2 - Inspecting Containers",
       "text": "step2.md"
     }],
