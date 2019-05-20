@@ -16,7 +16,7 @@ As you can see, a container has been started but we have lost our command line. 
 
 We can escape from this container by pressing _Ctrl+C_ or click the command.
 
-`"Send Ctrl+C"`{{interrupt}}
+`Send Ctrl+C`{{copy interrupt}}
 
 Let's run another:
 
