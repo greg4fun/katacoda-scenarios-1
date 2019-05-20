@@ -62,11 +62,9 @@ Incidentally, you may wish to create a container with out starting it; a use cas
 
 To **create** a container:
 
-`docker create -d --name resplendent_redis redis`{{execute}}
+`docker create --name resplendent_redis redis`{{execute}}
 
 `docker ps -a`{{execute}}
-
-Note that this is basically the same command as **run** but using the **create** keyword instead.
 
 You can start and stop this with the commands you have just learnt.
 
