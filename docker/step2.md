@@ -20,7 +20,7 @@ Docker ps is based on a well known Unix/Linux command called 'ps', which stands 
 
 **NAMES** the name of the container as provided or randomly set by docker.
 
-# Inspect
+### Inspect
 
 Let's _inspect_ our container.
 
@@ -32,13 +32,13 @@ Your commands will be similar to the following:
 
 `docker inspect 642736e3e640`{{copy}}
 
-Note - make sure you replace the CONTAINER ID or NAME with the details from _your_ container!
+**Note** - make sure you replace the CONTAINER ID or NAME with the details from _your_ container!
 
 The inspect command returns a very detailed description of your container, including:
 
 Id, State, Image info, Volume info, Resource allocation, Mounts and Network settings.
 
-# Logs
+### Logs
 
 Let's look at the _logs_
 

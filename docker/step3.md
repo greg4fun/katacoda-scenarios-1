@@ -6,4 +6,4 @@ Fortunately Docker allows us to name containers ourselves.
 
 By using the **--name** option we can
 
-`docker run -d --name Resplendent_Redis redis`{{execute}}
+`docker run -d --name resplendent_redis redis`{{execute}}
