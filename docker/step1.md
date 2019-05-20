@@ -14,7 +14,7 @@ The _run_ argument creates a container configuration on the filesystem under _/v
 
 As you can see, a container has been started but we have lost our command line. The container is attached to our terminal and so we see the output.
 
-`Send Ctrl+C`{{execute interrupt}}
+<kbd>Ctrl</kbd>+<kbd>C</kbd>{{execute interrupt}}
 
 Let's run another:
 
