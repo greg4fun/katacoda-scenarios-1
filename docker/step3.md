@@ -34,4 +34,8 @@ The _-a_ argument will report on **all** containers, those that are running AND 
 
 When a container completes its task and stops it does not automatically have its config cleared from the filesystem.
 
-This means we can actually restart it using the "docker start" command.
+This means we can actually restart "resplendent_redis" using the "docker start" command.
+
+`docker start resplendent_redis`{{execute}}
+
+
