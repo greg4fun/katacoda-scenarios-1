@@ -2,7 +2,7 @@
 
 Let's run our first container:
 
-`docker run -d --name resplendent_redis redis`{{execute}} 
+`docker run -d -p 6379:6379 --name resplendent_redis redis`{{execute}} 
 
 The **run** option creates a container configuration on the filesystem under **/var/lib/docker** on the Docker Master and then starts the container.
 
@@ -52,7 +52,7 @@ Id, State, Image info, Volume info, Resource allocation, Mounts and Network sett
 
 ### Top
 
-`docker top`{{execute}}
+`docker top resplendent_redis`{{execute}}
 
 ### Logs
 
