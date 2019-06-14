@@ -8,6 +8,8 @@ The **run** option creates a container configuration on the filesystem under **/
 
 The **-d** option ensures the container runs in **detached** mode. This means the container runs without capturing the prompt.
 
+The **-p** option maps the docker hosts port to the containers port.
+
 The **--name resplendent_redis** option allows me to a predictable name to the container. This is optional but useful.
 
 The last option **redis** is the name of the image.
@@ -48,6 +50,8 @@ Id, State, Image info, Volume info, Resource allocation, Mounts and Network sett
 
 ### Stats
 
+The current performance stats per container can be viewed:
+
 `docker stats`{{execute}}
 
 ### Executing Commands in a Running Container
@@ -58,9 +62,15 @@ I want to run the **whoami** command in that container so I can see what userid 
 
 `docker exec resplendent_redis whoami`{{execute}}
 
+So we can see in the output that we are running as root.
+
 ### Top
 
 `docker top resplendent_redis`{{execute}}
+
+Despite the whoami command stating that we are running as root, here the PID is owned by user 999.
+
+This is a security feature that means that should the user somehow execute commands outside the container they will not have root privileges.
 
 ### Logs
 

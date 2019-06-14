@@ -1,26 +1,24 @@
 ### Testing Our Container
 
+Lets run a quick test against our container.
+
+Here we are starting a new container called **my-redis-cli**.
+
+We will use this container to run some test commands against **resplendent_redis**
+
 `docker run -it --name my-redis-cli goodsmileduck/redis-cli sh`{{execute T2}}
 
 ## Stopping Containers
 
+The **stop** command will attempt to gracefully shutdown the container. 
+
+If you dont care about shutting down gracefully you can use the **kill** option instead.
+
 `docker stop resplendent_redis`{{execute}}
-
-`docker ps`{{execute}}
-
-Gone!
-
-Let's run another container up...
-
-`docker run -d --name resplendent_redis redis`{{execute}}
-
-But this time it **fails** - why is this?
-
-Let's rerun the docker ps command but this time an an extra argument _-a_
 
 `docker ps -a`{{execute}}
 
-The _-a_ argument will report on **all** containers, those that are running AND those that have exited.
+Stopped but not gone...
 
 When a container completes its task and stops it does not automatically have its config cleared from the filesystem.
 
