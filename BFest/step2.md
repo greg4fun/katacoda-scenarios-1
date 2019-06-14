@@ -48,20 +48,14 @@ Id, State, Image info, Volume info, Resource allocation, Mounts and Network sett
 
 ### Stats
 
-`docker stats`
+`docker stats`{{execute}}
 
 ### Top
 
-`docker top`
+`docker top`{{execute}}
 
 ### Logs
 
 Let's look at the _logs_
 
-As before you can use either the CONTAINER ID or NAME.
-
-`docker logs distracted_nightingale`{{copy}}
-
-Remember the output we saw on the screen when the container was started without the -d option?
-
-Now we are running in detached mode this output has gone into the container's log.
+`docker logs resplendent_redis`{{execute}}

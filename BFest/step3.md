@@ -1,51 +1,88 @@
-## Task Two Inspecting a Running Container
+### Testing Our Container
 
-Now that we have been returned to the command line we can use docker ps to list running containers. Try this:
+`docker run -it --name my-redis-cli goodsmileduck/redis-cli sh`{{execute}}
 
-`docker ps`{{execute}} 
+## Stopping Containers
 
-Docker ps is based on a well known Unix/Linux command called 'ps', which stands for Process Status.
+The automatically generated names and container Ids are all well and good but what if you want to be able to refer to a container in a more predictable manner?
 
-**CONTAINER ID** Only the first 12 digits of the hash are shown in this column. This is sufficient to ensure a unique ID.
+Fortunately Docker allows us to name containers ourselves.
 
-**IMAGE** is the name of the image used to instantiate the container.
+By using the **--name** option we can
 
-**COMMAND** is the command being run by the container.
+`docker run -d -p 6379:6379 --name resplendent_redis redis`{{execute}}
 
-**CREATED** is when the container configuration on disk was created.
+Now when we user the "docker ps" command we can see there are 2 containers running. One of which is named, as expected **resplendent_redis**.
 
-**STATUS** is the current status of the container.
+`docker ps`{{execute}}
 
-**PORTS** describes the available ports or port range.
+We can now interact with the container using a predictable name.
 
-**NAMES** the name of the container as provided or randomly set by docker.
+`docker stop resplendent_redis`{{execute}}
 
-### Inspect
+`docker ps`{{execute}}
 
-Let's _inspect_ our container.
+Gone!
 
-You have 2 choices here, you can either use the CONTAINER ID or the CONTAINER NAME.
+Let's run another container up...
 
-Your commands will be similar to the following: 
+`docker run -d --name resplendent_redis redis`{{execute}}
 
-`docker inspect distracted_nightingale`{{copy}}
+But this time it **fails** - why is this?
 
-`docker inspect 642736e3e640`{{copy}}
+Let's rerun the docker ps command but this time an an extra argument _-a_
 
-**Note** - make sure you replace the CONTAINER ID or NAME with the details from _your_ container!
+`docker ps -a`{{execute}}
 
-The inspect command returns a very detailed description of your container, including:
+The _-a_ argument will report on **all** containers, those that are running AND those that have exited.
 
-Id, State, Image info, Volume info, Resource allocation, Mounts and Network settings.
+When a container completes its task and stops it does not automatically have its config cleared from the filesystem.
 
-### Logs
+This means we can actually restart "resplendent_redis" using the "docker start" command.
 
-Let's look at the _logs_
+`docker start resplendent_redis`{{execute}}
 
-As before you can use either the CONTAINER ID or NAME.
+`docker ps -a`{{execute}}
 
-`docker logs distracted_nightingale`{{copy}}
+Now we know it's there let's learn how to remove the container config.
 
-Remember the output we saw on the screen when the container was started without the -d option?
+First stop the container:
 
-Now we are running in detached mode this output has gone into the container's log.
+`docker stop resplendent_redis`{{execute}}
+
+Check it has stopped:
+
+`docker ps -a`{{execute}}
+
+Now remove it:
+
+`docker rm resplendent_redis`{{execute}}
+
+`docker ps -a`{{execute}}
+
+This time the container really has gone.
+
+Incidentally, you may wish to create a container with out starting it; a use case for this is data containers which we will learn about later.
+
+To **create** a container:
+
+`docker create --name resplendent_redis redis`{{execute}}
+
+`docker ps -a`{{execute}}
+
+You can start and stop this with the commands you have just learnt.
+
+When you have finished playing stop and remove the config.
+
+I don't know about you, but it's a bit of a pain to have to keep remembering to remove the container after it has exited.
+
+Fortunately there is an option for docker run to help **--rm**. This option tells docker to remove the config when the container exits.
+
+Let's test it...
+
+`docker run --rm -d --name resplendent_redis redis`{{execute}}
+
+
+
+
+
