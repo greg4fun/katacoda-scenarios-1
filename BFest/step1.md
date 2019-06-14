@@ -16,10 +16,10 @@ By default this pulls the latest image version.
 
 You can pull specific images by specifiying a tag after the image:
 
-`docker pull redis:5`{{execute}}
+`docker pull redis:4`{{execute}}
 
 This will pull the redis image associated with tag **5** usually this is a version number.
 
 We can view our local images:
 
-`docker list images`{{execute}}
+`docker images`{{execute}}
