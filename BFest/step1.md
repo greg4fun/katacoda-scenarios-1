@@ -18,7 +18,7 @@ You can pull specific images by specifiying a tag after the image:
 
 `docker pull redis:4`{{execute}}
 
-This will pull the redis image associated with tag **5** usually this is a version number.
+This will pull the redis image associated with tag **4** usually this is a version number.
 
 We can view our local images:
 
