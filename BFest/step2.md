@@ -77,3 +77,11 @@ This is a security feature that means that should the user somehow execute comma
 Let's look at the _logs_
 
 `docker logs resplendent_redis`{{execute}}
+
+### Inspect Formatting
+
+Docker supports formatting of output on the GO template formate.
+
+Let's grab the container's IPAddress, we'll need that for the next section.
+
+`docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' resplendent_redis`{{execute}}

@@ -2,7 +2,7 @@
 
 Lets run a quick test against our container.
 
-Here we are starting a new container called **my-redis-cli**.
+Here we start a new container called **my-redis-cli**.
 
 We will use this container to run some test commands against **resplendent_redis**
 
