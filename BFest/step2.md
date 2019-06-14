@@ -50,6 +50,14 @@ Id, State, Image info, Volume info, Resource allocation, Mounts and Network sett
 
 `docker stats`{{execute}}
 
+### Executing Commands in a Running Container
+
+In this use case we are have our running container _resplendent_redis_.
+
+I want to run the **whoami** command in that container so I can see what userid is active.
+
+`docker exec resplendent_redis whoami`{{execute}}
+
 ### Top
 
 `docker top resplendent_redis`{{execute}}

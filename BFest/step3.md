@@ -1,22 +1,8 @@
 ### Testing Our Container
 
-`docker run -it --name my-redis-cli goodsmileduck/redis-cli sh`{{execute}}
+`docker run -it --name my-redis-cli goodsmileduck/redis-cli sh`{{execute T2}}
 
 ## Stopping Containers
-
-The automatically generated names and container Ids are all well and good but what if you want to be able to refer to a container in a more predictable manner?
-
-Fortunately Docker allows us to name containers ourselves.
-
-By using the **--name** option we can
-
-`docker run -d -p 6379:6379 --name resplendent_redis redis`{{execute}}
-
-Now when we user the "docker ps" command we can see there are 2 containers running. One of which is named, as expected **resplendent_redis**.
-
-`docker ps`{{execute}}
-
-We can now interact with the container using a predictable name.
 
 `docker stop resplendent_redis`{{execute}}
 
@@ -62,27 +48,5 @@ Now remove it:
 
 This time the container really has gone.
 
-Incidentally, you may wish to create a container with out starting it; a use case for this is data containers which we will learn about later.
-
-To **create** a container:
-
-`docker create --name resplendent_redis redis`{{execute}}
-
-`docker ps -a`{{execute}}
-
-You can start and stop this with the commands you have just learnt.
-
-When you have finished playing stop and remove the config.
-
-I don't know about you, but it's a bit of a pain to have to keep remembering to remove the container after it has exited.
-
-Fortunately there is an option for docker run to help **--rm**. This option tells docker to remove the config when the container exits.
-
-Let's test it...
-
 `docker run --rm -d --name resplendent_redis redis`{{execute}}
-
-
-
-
 
