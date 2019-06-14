@@ -23,3 +23,7 @@ This will pull the redis image associated with tag **5** usually this is a versi
 We can view our local images:
 
 `docker images`{{execute}}
+
+For more info about an image:
+
+`docker inspect redis`{{execute}}
