@@ -52,5 +52,5 @@ Now remove it:
 
 This time the container really has gone.
 
-`docker run --rm -d --name resplendent_redis redis`{{execute}}
+`docker run --rm -d -p 6379:6379 --name resplendent_redis redis`{{execute}}
 
