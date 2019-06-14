@@ -8,13 +8,19 @@ We will use this container to run some test commands against **resplendent_redis
 
 `docker run -it --name my-redis-cli goodsmileduck/redis-cli sh`{{execute T2}}
 
+`redis-cli -h 172.18.0.2 -p 6379`{{execute}}
+
+`set BFEST ROCKS!`{{execute}}
+
+`get BFEST`{{execute}}
+
 ## Stopping Containers
 
 The **stop** command will attempt to gracefully shutdown the container. 
 
 If you dont care about shutting down gracefully you can use the **kill** option instead.
 
-`docker stop resplendent_redis`{{execute}}
+`docker stop resplendent_redis`{{execute T1}}
 
 `docker ps -a`{{execute}}
 
