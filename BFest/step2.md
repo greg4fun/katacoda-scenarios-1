@@ -2,7 +2,7 @@
 
 Let's run our first container:
 
-`docker run -d --name resplendent_redis`{{execute}} 
+`docker run -d --name resplendent_redis redis`{{execute}} 
 
 The **run** option creates a container configuration on the filesystem under **/var/lib/docker** on the Docker Master and then starts the container.
 
