@@ -52,7 +52,7 @@ Id, State, Image info, Volume info, Resource allocation, Mounts and Network sett
 
 ### Executing Commands in a Running Container
 
-In this use case we are have our running container _resplendent_redis_.
+In this use case we are have our running container **resplendent_redis**.
 
 I want to run the **whoami** command in that container so I can see what userid is active.
 
