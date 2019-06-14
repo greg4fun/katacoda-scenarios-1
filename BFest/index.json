@@ -6,11 +6,11 @@
   "time": "10 minutes",
   "details": {
     "steps": [{
-      "title": "Step 1",
+      "title": "Registries and Images",
       "text": "step1.md"
       },
       {
-      "title": "Step 2",
+      "title": "Running Containers",
       "text": "step2.md"
       },
       {

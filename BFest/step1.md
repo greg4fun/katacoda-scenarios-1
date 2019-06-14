@@ -10,13 +10,16 @@ In this example we are searching for the **redis** image.
 
 Let's retrieve the image from the remote registy:
 
-`docker pull redis`
+`docker pull redis`{{execute}}
 
 By default this pulls the latest image version.
 
 You can pull specific images by specifiying a tag after the image:
 
-`docker pull redis:5`
+`docker pull redis:5`{{execute}}
 
 This will pull the redis image associated with tag **5** usually this is a version number.
 
+We can view our local images:
+
+`docker list images`{{execute}}
