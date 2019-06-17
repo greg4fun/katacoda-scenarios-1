@@ -52,5 +52,15 @@ Now remove it:
 
 This time the container really has gone.
 
+Rather than having to remember to tidy up you can add the **--rm** option which will automatically remove the container config when the process finishes.
+
 `docker run --rm -d -p 6379:6379 --name resplendent_redis redis`{{execute}}
+
+`docker ps -a`{{execute}}
+
+`docker stop resplendent_redis`{{execute}}
+
+`docker ps -a`{{execute}}
+
+As you can see, the container no longer exists.
 
