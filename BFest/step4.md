@@ -73,22 +73,23 @@ Dockerfiles are used to describe how an image is built.
 A simple example of a Dockerfile is:
 
 `**FROM** lrh7:latest`
-`**LABEL** maintainer Paul Robinson`
-`**ENV** HUGO_VERSION 1.55.6`
-`**RUN** yum install -y httpd; \`
-chmod 0770 /run/httpd; \
-yum clean all -y; \
-chown -R apache:apache /var/www/html/*; \
-chown apache:apache /etc/httpd/logs
-**COPY** ./hugo.conf /etc/httpd/conf.d/hugo.conf
-**USER** apache
-**EXPOSE** 1313
-**WORKDIR** /var/www/html/hugo
-**ENTRYPOINT** \["./entrypoint.bash"\]
+
+`**LABEL** maintainer Paul Robinson` 
+`**ENV** HUGO_VERSION 1.55.6`  
+`**RUN** yum install -y httpd; \`  
+chmod 0770 /run/httpd; \  
+yum clean all -y; \  
+chown -R apache:apache /var/www/html/*; \  
+chown apache:apache /etc/httpd/logs  
+**COPY** ./hugo.conf /etc/httpd/conf.d/hugo.conf  
+**USER** apache  
+**EXPOSE** 1313  
+**WORKDIR** /var/www/html/hugo  
+**ENTRYPOINT** \["./entrypoint.bash"\]  
 
 To build the image from the Dockerfile we use the **docker build** option.
 
-docker build -t hugo:latest .
+`docker build -t hugo:latest .`
 
 Note that the last '.' is important! This tells the docker command to look in the current directory for the Dockerfile.
 
