@@ -80,7 +80,7 @@ Let's look at the _logs_
 
 ### Inspect Formatting
 
-Docker supports formatting of output on the GO template formate.
+Docker supports formatting of output on the GO template format.
 
 Let's grab the container's IPAddress, we'll need that for the next section.
 
