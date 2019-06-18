@@ -1,7 +1,7 @@
 {
   "title": "BFest Docker Scenario",
   "description": "Demo Basic Docker commands and Image Creation",
-  "private": true ,
+  "private": false ,
   "difficulty": "beginner",
   "time": "10 minutes",
   "details": {
