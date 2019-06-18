@@ -72,10 +72,10 @@ Dockerfiles are used to describe how an image is built.
 
 A simple example of a Dockerfile is:
 
-**FROM** lrh7:latest
-**LABEL** maintainer Paul Robinson
-**ENV** HUGO_VERSION 1.55.6
-**RUN** yum install -y httpd; \
+`**FROM** lrh7:latest`
+`**LABEL** maintainer Paul Robinson`
+`**ENV** HUGO_VERSION 1.55.6`
+`**RUN** yum install -y httpd; \`
 chmod 0770 /run/httpd; \
 yum clean all -y; \
 chown -R apache:apache /var/www/html/*; \
