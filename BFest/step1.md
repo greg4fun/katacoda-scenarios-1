@@ -1,4 +1,4 @@
-Welcome to this BFest Docker Demo.
+#Welcome to this BFest Docker Demo.
 
 Images are stored in Registries. By default Katacoda uses DockerHub however internally we currently use Quay.
 
