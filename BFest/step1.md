@@ -2,11 +2,11 @@ Welcome to this BFest Docker Demo.
 
 Images are stored in Registries. By default Katacoda uses DockerHub however internally we currently use Quay.
 
-How to search for an image on the Registry:
+We can search for an image in the regist useing the _docker search_ command.
+
+In this example we are searching for images that mention **redis**:
 
 `docker search redis`{{execute}} 
-
-In this example we are searching for the **redis** image.
 
 Let's retrieve the image from the remote registy:
 

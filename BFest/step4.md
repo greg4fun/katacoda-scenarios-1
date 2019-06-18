@@ -66,4 +66,6 @@ And remove the old image **nginx:alpine**
 
 ### The Dockerfile
 
+An alternative method is to use a Dockerfile.
 
+Dockerfiles are used to describe how an image is built.
