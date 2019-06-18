@@ -92,4 +92,4 @@ To build the image from the Dockerfile we use the **docker build** option.
 
 Note that the last '.' is important! This tells the docker command to look in the current directory for the Dockerfile.
 
-Any files or directories that you do not want to appear in the final image should be added to the .dockerignore file.
+Any files or directories that you do not want to appear in the final image should be added to the **.dockerignore** file.
