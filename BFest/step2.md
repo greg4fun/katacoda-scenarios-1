@@ -8,7 +8,7 @@ The **run** option creates a container configuration on the filesystem under **/
 
 The **-d** option ensures the container runs in **detached** mode. This means the container runs without capturing the prompt.
 
-The **-p** option maps the docker hosts port to the containers port.
+The **-p** option maps the docker host's port to the container's port.
 
 The **--name resplendent_redis** option allows me to a predictable name to the container. This is optional but useful.
 
