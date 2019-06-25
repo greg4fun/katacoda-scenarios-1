@@ -12,7 +12,7 @@ Let's work through an example.
 
 Start a container with the nginx image and ensure ports have been opened -p 80:80 dockerhost_port:container_port
 
-`docker run -d --name noble_nginx -p 80:80 nginx:alpine`{{execute}}
+`docker run -d --rm --name noble_nginx -p 80:80 nginx:alpine`{{execute}}
 
 The docker ps shows that the container is running and the ports are mapped.
 
