@@ -6,7 +6,7 @@ Here we start a new container called **my-redis-cli**.
 
 We will use this container to run some test commands against **resplendent_redis**
 
-`docker run -it --name my-redis-cli goodsmileduck/redis-cli sh`{{execute T2}}
+`docker run -it --rm --name my-redis-cli goodsmileduck/redis-cli sh`{{execute T2}}
 
 `redis-cli -h 172.18.0.2 -p 6379`{{execute}}
 
