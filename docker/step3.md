@@ -1,51 +1,31 @@
-## Task Two Inspecting a Running Container
+In this scenario we are going to use _Redis_ as the base image. 
 
-Now that we have been returned to the command line we can use docker ps to list running containers. Try this:
+Just for your info; Redis is an open-source, distributed, in-memory key-value datastore.
 
-`docker ps`{{execute}} 
+That's not something to be concerned about, we just need a small reliable image.
 
-Docker ps is based on a well known Unix/Linux command called 'ps', which stands for Process Status.
+## Task One: Running a Docker Container
 
-**CONTAINER ID** Only the first 12 digits of the hash are shown in this column. This is sufficient to ensure a unique ID.
+Let's run our first container:
 
-**IMAGE** is the name of the image used to instantiate the container.
+`docker run redis`{{execute}} 
 
-**COMMAND** is the command being run by the container.
+The **run** option creates a container configuration on the filesystem under **/var/lib/docker** on the Docker Master and then starts the container.
 
-**CREATED** is when the container configuration on disk was created.
+The last option **redis** is the name of the image.
 
-**STATUS** is the current status of the container.
+As you can see, a container has been started but we have lost our command line. The container is attached to our terminal and so we see the output displayed on our screen.
 
-**PORTS** describes the available ports or port range.
+We can escape from this container by pressing _Ctrl+C_ or click the command.
 
-**NAMES** the name of the container as provided or randomly set by docker.
+`echo "Sending Ctrl+C"`{{execute interrupt}}
 
-### Inspect
+Let's run another:
 
-Let's _inspect_ our container.
+`docker run -d redis`{{execute}}
 
-You have 2 choices here, you can either use the CONTAINER ID or the CONTAINER NAME.
+This time we are adding the **-d** argument so the container will run in detached mode.
 
-Your commands will be similar to the following: 
+The **hash string** returned is the unique identifying ID for the container you have just started.
 
-`docker inspect distracted_nightingale`{{copy}}
-
-`docker inspect 642736e3e640`{{copy}}
-
-**Note** - make sure you replace the CONTAINER ID or NAME with the details from _your_ container!
-
-The inspect command returns a very detailed description of your container, including:
-
-Id, State, Image info, Volume info, Resource allocation, Mounts and Network settings.
-
-### Logs
-
-Let's look at the _logs_
-
-As before you can use either the CONTAINER ID or NAME.
-
-`docker logs distracted_nightingale`{{copy}}
-
-Remember the output we saw on the screen when the container was started without the -d option?
-
-Now we are running in detached mode this output has gone into the container's log.
+This is typically the most common way of running a container.

@@ -1,31 +1,35 @@
-In this scenario we are going to use _Redis_ as the base image. 
+## Welcome to this Kubernetes Dojo for Docker Presentation.
 
-Just for your info; Redis is an open-source, distributed, in-memory key-value datastore.
+### The Docker Environment
 
-That's not something to be concerned about, we just need a small reliable image.
 
-## Task One: Running a Docker Container
 
-Let's run our first container:
+### Images
 
-`docker run redis`{{execute}} 
+Images are stored in Registries. By default Katacoda uses DockerHub however internally we currently use Quay.
 
-The **run** option creates a container configuration on the filesystem under **/var/lib/docker** on the Docker Master and then starts the container.
+We can search for an image in the registry using the _docker search_ command.
 
-The last option **redis** is the name of the image.
+In this example we are searching for images that mention **redis**:
 
-As you can see, a container has been started but we have lost our command line. The container is attached to our terminal and so we see the output displayed on our screen.
+`docker search redis`{{execute}} 
 
-We can escape from this container by pressing _Ctrl+C_ or click the command.
+Let's retrieve the image from the remote registy:
 
-`echo "Sending Ctrl+C"`{{execute interrupt}}
+`docker pull redis`{{execute}}
 
-Let's run another:
+By default this pulls the latest image version.
 
-`docker run -d redis`{{execute}}
+You can pull specific images by specifiying a tag after the image:
 
-This time we are adding the **-d** argument so the container will run in detached mode.
+`docker pull redis:4`{{execute}}
 
-The **hash string** returned is the unique identifying ID for the container you have just started.
+This will pull the redis image associated with tag **4** usually this is a version number.
 
-This is typically the most common way of running a container.
+We can view our local images:
+
+`docker images`{{execute}}
+
+For more info about an image:
+
+`docker inspect redis`{{execute}}

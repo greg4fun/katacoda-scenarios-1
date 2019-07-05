@@ -1,8 +1,4 @@
-## Welcome to this Kubernetes Dojo for Docker Presentation.
-
-### The Docker Environment
-
-
+## Welcome to this BFest Docker Demo.
 
 ### Images
 
