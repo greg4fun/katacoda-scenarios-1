@@ -1,8 +1,15 @@
-## Welcome to this BFest Docker Demo.
+## Welcome to this Kubernetes Community Dojo for Docker Presentation
+
+### Docker Environment
+
+It is useful to understand the docker environment we are using.
+
+`docker version`{{execute}}
+`docker info`{{execute}}
 
 ### Images
 
-Images are stored in Registries. By default Katacoda uses DockerHub however internally we currently use Quay.
+Images are stored in Registries. By default Katacoda uses DockerHub however internally we currently use Quay (go/Quay).
 
 We can search for an image in the registry using the _docker search_ command.
 
