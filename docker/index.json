@@ -1,5 +1,5 @@
 {
-  "title": "Docker Scenario",
+  "title": "Kubernetes Dojo Docker Scenario - Presentation",
   "description": "Learn the basic Docker commands",
   "private": false ,
   "difficulty": "beginner",
@@ -16,6 +16,10 @@
       {
       "title": "Step 3",
       "text": "step3.md"
+      },
+      {
+      "title": "Step 4",
+      "text": "step4.md"
     }],
     "intro": {
       "text": "intro.md",
