@@ -1,9 +1,3 @@
-## Welcome to this Kubernetes Dojo for Docker Presentation.
-
-### The Docker Environment
-
-
-
 ### Images
 
 Images are stored in Registries. By default Katacoda uses DockerHub however internally we currently use Quay.
