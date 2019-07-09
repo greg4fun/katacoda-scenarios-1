@@ -5,9 +5,11 @@
 It is useful to understand the docker environment we are using.
 
 The _docker version_ command provides version info for both the client (CLI) and the Server (Engine).
+
 `docker version`{{execute}}
 
 The _docker info_ command provides quite detailed information about the docker host.
+
 `docker info`{{execute}}
 
 ### Images
