@@ -1,51 +1,66 @@
-## Task Two Inspecting a Running Container
+### Testing Our Container
 
-Now that we have been returned to the command line we can use docker ps to list running containers. Try this:
+Lets run a quick test against our container.
 
-`docker ps`{{execute}} 
+Here we start a new container called **my-redis-cli**.
 
-Docker ps is based on a well known Unix/Linux command called 'ps', which stands for Process Status.
+We will use this container to run some test commands against **resplendent_redis**
 
-**CONTAINER ID** Only the first 12 digits of the hash are shown in this column. This is sufficient to ensure a unique ID.
+`docker run -it --rm --name my-redis-cli goodsmileduck/redis-cli sh`{{execute T2}}
 
-**IMAGE** is the name of the image used to instantiate the container.
+`redis-cli -h 172.18.0.2 -p 6379`{{execute}}
 
-**COMMAND** is the command being run by the container.
+`set BFEST ROCKS!`{{execute}}
 
-**CREATED** is when the container configuration on disk was created.
+`get BFEST`{{execute}}
 
-**STATUS** is the current status of the container.
+## Stopping Containers
 
-**PORTS** describes the available ports or port range.
+The **stop** command will attempt to gracefully shutdown the container. 
 
-**NAMES** the name of the container as provided or randomly set by docker.
+If you dont care about shutting down gracefully you can use the **kill** option instead.
 
-### Inspect
+`docker stop resplendent_redis`{{execute T1}}
 
-Let's _inspect_ our container.
+`docker ps -a`{{execute}}
 
-You have 2 choices here, you can either use the CONTAINER ID or the CONTAINER NAME.
+Stopped but not gone...
 
-Your commands will be similar to the following: 
+When a container completes its task and stops it does not automatically have its config cleared from the filesystem.
 
-`docker inspect distracted_nightingale`{{copy}}
+This means we can actually restart "resplendent_redis" using the "docker start" command.
 
-`docker inspect 642736e3e640`{{copy}}
+`docker start resplendent_redis`{{execute}}
 
-**Note** - make sure you replace the CONTAINER ID or NAME with the details from _your_ container!
+`docker ps -a`{{execute}}
 
-The inspect command returns a very detailed description of your container, including:
+Now we know it's there let's learn how to remove the container config.
 
-Id, State, Image info, Volume info, Resource allocation, Mounts and Network settings.
+First stop the container:
 
-### Logs
+`docker stop resplendent_redis`{{execute}}
 
-Let's look at the _logs_
+Check it has stopped:
 
-As before you can use either the CONTAINER ID or NAME.
+`docker ps -a`{{execute}}
 
-`docker logs distracted_nightingale`{{copy}}
+Now remove it:
 
-Remember the output we saw on the screen when the container was started without the -d option?
+`docker rm resplendent_redis`{{execute}}
 
-Now we are running in detached mode this output has gone into the container's log.
+`docker ps -a`{{execute}}
+
+This time the container really has gone.
+
+Rather than having to remember to tidy up you can add the **--rm** option which will automatically remove the container config when the process finishes.
+
+`docker run --rm -d -p 6379:6379 --name resplendent_redis redis`{{execute}}
+
+`docker ps -a`{{execute}}
+
+`docker stop resplendent_redis`{{execute}}
+
+`docker ps -a`{{execute}}
+
+As you can see, the container no longer exists.
+
