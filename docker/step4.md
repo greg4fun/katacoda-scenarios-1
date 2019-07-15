@@ -26,9 +26,13 @@ Connect to the container using the **exec** command.
 
 `docker exec -it noble_nginx sh`{{execute}}
 
-Open up the index.html file and modify it to demonstrate a change in the container.
+Open up the index.html file and modify the Welcome line:
 
-`vim /usr/share/nginx/html/index.html`{{execute}}
+<h1>Welcome to nginx!</h1>
+
+it to demonstrate a change in the container.
+
+`vi /usr/share/nginx/html/index.html`{{execute}}
 
 Exit from the container
 
