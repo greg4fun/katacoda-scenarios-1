@@ -1,51 +1,95 @@
-## Task Two Inspecting a Running Container
+### Building Images
 
-Now that we have been returned to the command line we can use docker ps to list running containers. Try this:
+There is a good reason why you may not want to delete your container config.
 
-`docker ps`{{execute}} 
+One way of building an **Image** is to convert an existing container into an image.
 
-Docker ps is based on a well known Unix/Linux command called 'ps', which stands for Process Status.
+This enables you to take a base image, tweak it and save that new image.
 
-**CONTAINER ID** Only the first 12 digits of the hash are shown in this column. This is sufficient to ensure a unique ID.
+Let's work through an example.
 
-**IMAGE** is the name of the image used to instantiate the container.
+### Docker Commit
 
-**COMMAND** is the command being run by the container.
+Start a container with the nginx image and ensure ports have been opened -p 80:80 dockerhost_port:container_port
 
-**CREATED** is when the container configuration on disk was created.
+`docker run -d --name noble_nginx -p 80:80 nginx:alpine`{{execute}}
 
-**STATUS** is the current status of the container.
+The docker ps shows that the container is running and the ports are mapped.
 
-**PORTS** describes the available ports or port range.
+`docker ps -a`{{execute}}
 
-**NAMES** the name of the container as provided or randomly set by docker.
+Test nginx is working by connecting to host1:80.
 
-### Inspect
+Connect to the container using the **exec** command.
 
-Let's _inspect_ our container.
+`docker exec -it noble_nginx sh`{{execute}}
 
-You have 2 choices here, you can either use the CONTAINER ID or the CONTAINER NAME.
+Open up the index.html file and modify it to demonstrate a change in the container.
 
-Your commands will be similar to the following: 
+`vi /usr/share/nginx/html/index.html`{{execute}}
 
-`docker inspect distracted_nightingale`{{copy}}
+Exit from the container
 
-`docker inspect 642736e3e640`{{copy}}
+`exit`{{execute}}
 
-**Note** - make sure you replace the CONTAINER ID or NAME with the details from _your_ container!
+Test the change by reconnecting to host1:80.
 
-The inspect command returns a very detailed description of your container, including:
+If nothing changes refresh the Chrome cache with ctrl and click reload or ctrl-f5.
 
-Id, State, Image info, Volume info, Resource allocation, Mounts and Network settings.
+Now stop the container, but do not delete it.
 
-### Logs
+`docker stop noble_nginx`{{execute}}
 
-Let's look at the _logs_
+Commit the container to a new image. The new image is called **bfest_nginx** and has been tagged as version **1.0**
 
-As before you can use either the CONTAINER ID or NAME.
+`docker commit noble_nginx bfest_nginx:1.0`{{execute}}
 
-`docker logs distracted_nightingale`{{copy}}
+The new image can be seen in the local registry.
 
-Remember the output we saw on the screen when the container was started without the -d option?
+`docker images`{{execute}}
 
-Now we are running in detached mode this output has gone into the container's log.
+Lets start a container using the new image.
+
+`docker run -d --name bfest_nginx -p 80:80 bfest_nginx:1.0`{{execute}}
+
+Test by connecting to host1:80
+
+We can now safely remove the old container, noble_nginx.
+
+`docker rm noble_nginx`{{execute}}
+
+And remove the old image **nginx:alpine**
+
+`docker rmi nginx:alpine`{{execute}}
+
+`docker images`{{execute}}
+
+### The Dockerfile
+
+An alternative method is to use a Dockerfile.
+
+Dockerfiles are used to describe how an image is built.
+
+A simple example of a Dockerfile is:
+
+`FROM lrh7:latest`  
+`LABEL maintainer Paul Robinson`  
+`ENV HUGO_VERSION 1.55.6`  
+`RUN yum install -y httpd; \`  
+`chmod 0770 /run/httpd; \`  
+`yum clean all -y; \`  
+`chown -R apache:apache /var/www/html/*; \` 
+`chown apache:apache /etc/httpd/logs`  
+`COPY ./hugo.conf /etc/httpd/conf.d/hugo.conf`  
+`USER apache`  
+`EXPOSE 1313`  
+`WORKDIR /var/www/html/hugo`  
+`ENTRYPOINT \["./entrypoint.bash"\]`
+
+To build the image from the Dockerfile we use the **docker build** option.
+
+`docker build -t hugo:latest .`
+
+Note that the last '.' is important! This tells the docker command to look in the current directory for the Dockerfile.
+
+Any files or directories that you do not want to appear in the final image should be added to the **.dockerignore** file.
