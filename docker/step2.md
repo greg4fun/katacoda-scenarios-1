@@ -64,7 +64,17 @@ I want to run the **whoami** command in that container so I can see what userid 
 
 So we can see in the output that we are running as root.
 
-### Top
+### Attaching a terminal to a running container
+
+Use docker _attach_ to attach your terminal's standard input, output, and error to a running container using the container's ID.
+
+`docker attach resplendent_redis`{{execute}}
+
+Exit by pressing _Ctrl+C_ or click the command:
+
+`echo "Sending Ctrl+C"`{{execute interrupt}}
+
+### Top - Display Container Processes
 
 `docker top resplendent_redis`{{execute}}
 

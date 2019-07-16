@@ -10,9 +10,9 @@ We will use this container to run some test commands against **resplendent_redis
 
 `redis-cli -h 172.18.0.2 -p 6379`{{execute}}
 
-`set BFEST ROCKS!`{{execute}}
+`set KUBEDOJO ROCKS!`{{execute}}
 
-`get BFEST`{{execute}}
+`get KUBEDOJO`{{execute}}
 
 ## Stopping Containers
 
