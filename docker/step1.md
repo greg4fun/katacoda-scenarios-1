@@ -23,11 +23,17 @@ In this example we are searching for images that mention **redis**:
 
 `docker search redis`{{execute}} 
 
+We can also view our local images, if we have any:
+
+`docker images`{{execute}}
+
+These local images may be old so let's pull a newer image from the registry.
+
 Let's retrieve the image from the remote registy:
 
 `docker pull redis`{{execute}}
 
-By default this pulls the latest image version.
+By default this pulls the _latest_ mage version. The default tag is "latest". 
 
 You can pull specific images by specifiying a tag after the image:
 
@@ -35,10 +41,10 @@ You can pull specific images by specifiying a tag after the image:
 
 This will pull the redis image associated with tag **4** usually this is a version number.
 
-We can view our local images:
+View our local images again to see any changes:
 
 `docker images`{{execute}}
 
-For more info about an image:
+For much more detailed info about an image:
 
 `docker inspect redis`{{execute}}
