@@ -1,6 +1,6 @@
-Kubernetes Community Dojo for Docker Presentation
-====== 
-
+### Kubernetes Community Dojo for Docker Presentation
+  
+ 
 ### The Docker Environment
 
 It is useful to understand the docker environment we are using.
