@@ -40,7 +40,7 @@ The **-a** option will show _all_ containers both running and exited.
 
 **NAMES** the name of the container as provided or randomly set by docker.
 
-Let's _inspect_ our container.
+Last time we ran docker _inspect_ we inspected an image. Now let's _inspect_ our container:
 
 `docker inspect resplendent_redis`{{execute}}
 
