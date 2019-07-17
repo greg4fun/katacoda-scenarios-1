@@ -1,5 +1,5 @@
-### Kubernetes Community Dojo for Docker Presentation
-### 
+Kubernetes Community Dojo for Docker Presentation
+====== 
 
 ### The Docker Environment
 
