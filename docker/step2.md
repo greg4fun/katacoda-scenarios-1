@@ -54,9 +54,13 @@ The current performance stats per container can be viewed:
 
 `docker stats`{{execute}}
 
+Exit by pressing _Ctrl+C_ or click the command:
+
+`echo "Sending Ctrl+C"`{{execute interrupt}}
+
 ### Executing Commands in a Running Container
 
-In this use case we are have our running container **resplendent_redis**.
+In this use case we are have a running container called **resplendent_redis**.
 
 I want to run the **whoami** command in that container so I can see what userid is active.
 
