@@ -28,7 +28,7 @@ Connect to the container using the **exec** command.
 
 Open up the index.html file and modify the Welcome line:
 
-<h1>Welcome to nginx!</h1>
+\<h1\>Welcome to nginx!\</h1\>
 
 it to demonstrate a change in the container.
 
