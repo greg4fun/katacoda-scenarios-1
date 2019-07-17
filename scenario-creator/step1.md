@@ -10,6 +10,8 @@ This is an _example_ of creating a scenario and running a **command**
 
 `echo "Copy to Clipboard"`{{copy}}
 
+\`echo "Copy to Clipboard"\`\{\{copy\}\}
+
 `echo "Run in Terminal"`{{execute}}
 
 `echo "Send Ctrl+C before running Terminal"`{{execute interrupt}}
