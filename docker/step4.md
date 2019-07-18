@@ -5,6 +5,8 @@ We can view the available docker networks with the following command:
 
 `docker network list`{{execute}}
 
+* Discuss network types
+
 Creating a docker network called "backend-network":
 `docker network create backend-network`{{execute}}
 
