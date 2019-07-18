@@ -13,7 +13,7 @@ Creating a docker network called "backend-network":
 Rerunning the network list shows our new network:
 `docker network list`{{execute}}
 
-You can access a network when starting a container with the run command...
+You can access a network when starting a container with the run command and the --net option:
 `docker run -d --rm --name=redis --net=backend-network redis`{{execute}}
 
 * Q Should I try and show the network form inside a container bearing in mind ip does not exist...?
