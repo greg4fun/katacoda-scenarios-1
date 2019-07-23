@@ -14,7 +14,7 @@ Here we can see the current networks bridge, host and none.
 Others Network Types:
 
 * Overlay - Connects multiple Docker daemons together. You can also use overlay networks to enable communication between standalone containers on different Docker daemons.
-* 
+* Macvlan - Allows you to assign a MAC address to a container to make it appear as a physical device on the network. The Docker daemon routes traffic to containers by their MAC addresses. Using the macvlan driver is sometimes the best choice when dealing with legacy applications that expect to be directly connected to the physical network. 
 
 Creating a docker network called "backend-network":
 `docker network create backend-network`{{execute}}
