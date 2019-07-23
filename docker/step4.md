@@ -5,7 +5,16 @@ We can view the available docker networks with the following command:
 
 `docker network list`{{execute}}
 
-* Discuss network types
+Here we can see the current networks bridge, host and none.
+
+* Bridge - The default. Enable containers on the same Docker host to communicate with each other.
+* Host -  Removes network isolation between the container and the Docker host and uses the host’s networking directly.
+* None - No networking
+
+Others Network Types:
+
+* Overlay - Connects multiple Docker daemons together. You can also use overlay networks to enable communication between standalone containers on different Docker daemons.
+* 
 
 Creating a docker network called "backend-network":
 `docker network create backend-network`{{execute}}
