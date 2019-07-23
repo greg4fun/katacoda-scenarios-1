@@ -40,7 +40,7 @@ You can access a network when starting a container with the run command and the 
 To examine the network in detail:
 docker network inspect <network name>
 
-`docker network inspect backen-network`{{execute}}
+`docker network inspect backend-network`{{execute}}
 
 # Network Aliases
 
