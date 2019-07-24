@@ -1,6 +1,9 @@
 ### Networks 
 https://docs.docker.com/network/
 
+By running "ip a" (short for ip show addr) we can see the current network devices configured on the Docker host:
+`ip a`{{execute}}
+
 We can view the available docker networks with the following command:
 
 `docker network list`{{execute}}
@@ -24,15 +27,44 @@ Rerunning the network list shows our new network:
 
 `docker network list`{{execute}}
 
+And by rerunning "ip a" we can see that new network devices have appeared:
+`ip a`{{execute}}
+
+Inspecting the new network:
+
+`docker inspect backend-network`
+
 You can access a network when starting a container with the run command and the --net option:
 
 `docker run -d --rm --name=redis --net=backend-network redis`{{execute}}
 
 * Q Should I try and show the network form inside a container bearing in mind ip does not exist...?
 
+`docker run -it --rm --name=busybox --net=backend-network busybox sh`{{execute}}
+
 * Show how to connect/disconnect containers?
 
+`docker run -it --rm --name=busybox_2 busybox sh`{{execute T2}}
+
+`ip a`{{execute}}
+
+`docker run -d --rm --name=busybox_2 busybox sh -c "sleep 600"`{{execute T2}}
+
+`docker ps -a`{{execute T1}}`
+
+`ip a`{{execute}}
+
+`docker network connect backend-network busybox_2`{{execute}}
+
 * How can I tell if a container is attached to a particular network?
+
+Checking which networks a container is connected to:
+
+`docker inspect redis -f "{{json .NetworkSettings.Networks}}"`{{execute}}
+
+Checking which containers are connected to a network:
+
+`docker inspect backend-network -f "{{json .Container}}"`{{execute}}
 
 `docker network create frontend-network`{{execute}}
 
