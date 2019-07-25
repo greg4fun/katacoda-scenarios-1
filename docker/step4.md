@@ -50,17 +50,21 @@ You can access a network when starting a container with the run command and the 
 
 * Show how to connect/disconnect containers?
 
-`docker run -it --rm --name=busybox_2 busybox sh`{{execute T2}}
+`docker run -it --rm --name=busybox2 busybox sh`{{execute T2}}
 
 `ip a`{{execute}}
 
-`docker run -d --rm --name=busybox_2 busybox sh -c "sleep 600"`{{execute T2}}
+`docker run -d --rm --name=busybox2 busybox sh -c "sleep 600"`{{execute T2}}
 
 `docker ps -a`{{execute T1}}`
 
 `ip a`{{execute}}
 
-`docker network connect my-network busybox_2`{{execute}}
+`docker network connect my-network busybox2`{{execute}}
+
+You can disconnect a container from a network at any time using the docker network disconnect command.
+
+`docker network disconnect my-network busybox2`{{execute}}
 
 * How can I tell if a container is attached to a particular network?
 
