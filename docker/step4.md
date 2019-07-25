@@ -17,24 +17,28 @@ Here we can see the current networks bridge, host and none.
 
 Others Network Types:
 
-* **Overlay** - Connects multiple Docker daemons together. You can also use overlay networks to enable communication between standalone containers on different Docker daemons.
+* **Overlay** - Connects multiple Docker daemons together. You can also use overlay networks to enable communication between standalone containers on different Docker daemons. This is used by Docker Swarm clients.
 * **Macvlan** - Allows you to assign a MAC address to a container to make it appear as a physical device on the network. The Docker daemon routes traffic to containers by their MAC addresses. Using the macvlan driver is sometimes the best choice when dealing with legacy applications that expect to be directly connected to the physical network. 
 
-Creating a docker network called "my-network":
+Let's create our first docker network. We'll call it "my-network":
 
 `docker network create my-network`{{execute}}
 
-Rerunning the network list shows our new network:
+If we now rerun the _network list_ we can see our new network:
 
 `docker network list`{{execute}}
 
-And by rerunning "ip a" we can see that new network devices have appeared:
+Notice that by default docker has created it as a _bridge_ network.
+
+By rerunning "ip a" we can see that a new network device have appeared:
 
 `ip a`{{execute}}
 
+This is a bridge device to link the virtual interface from the container to docker0 on the Docker host.
+
 Inspecting the new network:
 
-`docker inspect my-network`
+`docker inspect my-network`{{execute}}
 
 You can access a network when starting a container with the run command and the --net option:
 
