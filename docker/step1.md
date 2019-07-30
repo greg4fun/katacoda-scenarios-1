@@ -33,13 +33,21 @@ Let's retrieve the image from the remote registy:
 
 `docker pull redis`{{execute}}
 
-By default this pulls the _latest_ mage version. The default tag is "latest". 
+By default this pulls the _latest_ image version. The default tag is "latest". 
 
 You can pull specific images by specifiying a tag after the image:
 
 `docker pull redis:4`{{execute}}
 
 This will pull the redis image associated with tag **4** usually this is a version number.
+
+How did I know this tag existed? This is a bit more awkward. One option is to go to dockerhub:
+
+[https://hub.docker.com/_/redis/?tab=tags](https://hub.docker.com/_/redis/?tab=tags)
+
+and the other is to use the registry API:
+
+`curl 'https://registry.hub.docker.com/v2/repositories/library/redis/tags/'|jq '."results"[]["name"]'`{{execute}}
 
 View our local images again to see any changes:
 
