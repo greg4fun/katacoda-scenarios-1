@@ -40,6 +40,10 @@ Inspecting the new network:
 
 `docker inspect my-network`{{execute}}
 
+By default a container has no network interfaces, except for the loopback (used for internal communications).
+
+`docker run -d --rm --name=busybox busybox sh -c "ip a"`{{execute T2}}
+
 You can access a network when starting a container with the run command and the --net option:
 
 `docker run -d --rm --net=my-network --name=busybox busybox sh -c "sleep 900"`{{execute T2}}
