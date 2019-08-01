@@ -64,7 +64,7 @@ Checking which networks a container is connected to:
 
 Checking which containers are connected to a network:
 
-`docker inspect my-network -f "{{json .Container}}"`{{execute}}
+`docker inspect my-network -f "{{json .Containers}}"`{{execute}}
 
 
 # Network Aliases
