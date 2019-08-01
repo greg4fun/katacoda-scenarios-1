@@ -46,7 +46,7 @@ You can access a network when starting a container with the run command and the 
 
 How does this network appear from inside the container? 
 
-`docker exec busybox "ip a"`{{execute T2}}
+`docker exec busybox ip a`{{execute T2}}
 
 Comparing ip output to the Docker Host's network interfaces:
 
