@@ -66,7 +66,6 @@ Checking which containers are connected to a network:
 
 `docker inspect my-network -f "{{json .Containers}}"`{{execute}}
 
-
 # Network Aliases
 
 `docker network create my-network2`{{execute T1}}
@@ -93,6 +92,8 @@ Assign the db alias to the redis instance on network: my-network3
 
 [Question: How do I identify the network aliases?]
 Answer: docker inspect redis
+
+docker inspect redis -f '{{json .NetworkSettings.Networks}}' | jq
 
                 "my-network3": {
                     "IPAMConfig": {},
