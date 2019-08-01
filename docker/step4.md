@@ -42,43 +42,32 @@ Inspecting the new network:
 
 You can access a network when starting a container with the run command and the --net option:
 
-`docker run -d --rm --name=redis --net=my-network redis`{{execute}}
+`docker run -d --rm --net=my-network --name=busybox busybox sh -c "sleep 900"`{{execute T2}}
 
-* Q Should I try and show the network form inside a container bearing in mind ip does not exist...?
+How does this network appear from inside the container? 
 
-`docker run -it --rm --name=busybox --net=my-network busybox sh`{{execute}}
+`docker exec busybox "ip a"`{{execute T2}}
 
-* Show how to connect/disconnect containers?
+Comparing ip output to the Docker Host's network interfaces:
 
-`docker run -it --rm --name=busybox2 busybox sh`{{execute T2}}
-
-`ip a`{{execute}}
-
-`docker run -d --rm --name=busybox2 busybox sh -c "sleep 600"`{{execute T2}}
-
-`docker ps -a`{{execute T1}}`
-
-`ip a`{{execute}}
-
-`docker network connect my-network busybox2`{{execute}}
-
-You can disconnect a container from a network at any time using the docker network disconnect command.
-
-`docker network disconnect my-network busybox2`{{execute}}
+`ip a`{{execute T1}}
 
 * How can I tell if a container is attached to a particular network?
 
 Checking which networks a container is connected to:
 
-`docker inspect redis -f "{{json .NetworkSettings.Networks}}"`{{execute}}
+`docker inspect busybox -f "{{json .NetworkSettings.Networks}}"`{{execute}}
 
 Checking which containers are connected to a network:
 
 `docker inspect my-network -f "{{json .Container}}"`{{execute}}
 
-`docker network create my-network2`{{execute}}
 
-`docker run --rm --name testing_networks -d -p 3000:3000 --net=my-network2 katacoda/redis-node-docker-example`{{execute}}
+# Network Aliases
+
+`docker network create my-network2`{{execute T1}}
+
+`docker run --rm --name reliable_redis -d -p 3000:3000 --net=my-network2 katacoda/redis-node-docker-example`{{execute}}
 
 `curl docker:3000`{{execute}}
 
@@ -89,8 +78,6 @@ Checking which containers are connected to a network:
 To examine the new network in detail:
 
 `docker network inspect my-network`{{execute}}
-
-# Network Aliases
 
 `docker network create my-network3`{{execute}}
 
