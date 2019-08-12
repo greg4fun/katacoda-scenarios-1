@@ -1,6 +1,6 @@
 {
-  "title": "Kubernetes Dojo Docker Scenario - Presentation",
-  "description": "Learn the basic Docker commands",
+  "title": "Kubernetes Dojo Dockerfile Scenario - Presentation",
+  "description": "Learn the basics of building Dockerfiles",
   "private": false ,
   "difficulty": "beginner",
   "time": "10 minutes",
