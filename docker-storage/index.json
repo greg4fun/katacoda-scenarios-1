@@ -1,0 +1,37 @@
+{
+  "title": "Kubernetes Dojo Docker Scenario - Presentation",
+  "description": "Learn the basic Docker commands",
+  "private": false ,
+  "difficulty": "beginner",
+  "time": "10 minutes",
+  "details": {
+    "steps": [{
+      "text": "step1.md"
+      },
+      {
+      "text": "step2.md"
+      },
+      {
+      "text": "step3.md"
+      },
+      {
+      "text": "step4.md"
+      },
+      {
+      "text": "step5.md"
+    }],
+    "intro": {
+      "text": "intro.md",
+      "credits": ""
+    },
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "environment": {
+    "uilayout": "terminal"
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}
