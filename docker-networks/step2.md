@@ -58,7 +58,7 @@ If we now rerun the _network list_ we can see our new network:
 
 Notice that by default docker has created it as a _bridge_ network.
 
-By rerunning "ip a" we can see that a new network device have appeared:
+By rerunning "ip a" we can see that a new network device has appeared:
 
 `ip a`{{execute}}
 
@@ -102,23 +102,21 @@ Here we can see that bright_busybox is on "my-network", as expected.
 
 Here we can see that my-network only has one container connected and it is bright_busybox.
 
-# Attaching and detaching Containers from a Network
+# Connecting and disconnecting Containers from a Network
 
 We'll need another network:
-
-`docker network create my-network2`{{execute T1}}
 
 `docker network create --subnet 172.20.0.0/16 --ip-range 172.20.240.0/20 multi-host-network`{{execute T1}}
 
 `docker network list`{{execute T1}}
 
-`docker network attach bright_busybox multi-host-network`{{execute T1}}
+`docker network connect bright_busybox multi-host-network`{{execute T1}}
 
 `docker exec bright_busybox ip a`{{execute T2}}
 
 `ip a`{{execute T1}}
 
-`docker network dettach bright_busybox multi-host-network`{{execute T1}}
+`docker network disconnect bright_busybox multi-host-network`{{execute T1}}
 
 `docker exec bright_busybox ip a`{{execute T2}}
 
