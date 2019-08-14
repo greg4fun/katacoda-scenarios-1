@@ -76,31 +76,67 @@ By default a container a loopback interface and an interface to the default brid
 
 You can access a specific network when starting a container with the run command and the --net option, here we connect to the my_network we created earlier:
 
-`docker run -d --rm --net=my-network --name=busybox busybox sh -c "sleep 900"`{{execute T2}}
+`docker run -d --rm --net=my-network --name=bright_busybox busybox sh -c "sleep 900"`{{execute T2}}
 
 How does this network appear from inside the container? 
 
-`docker exec busybox ip a`{{execute T2}}
+We can execute the "ip a" command in the bright_busybox container:
+
+`docker exec bright_busybox ip a`{{execute T2}}
 
 Comparing ip output to the Docker Host's network interfaces:
 
 `ip a`{{execute T1}}
 
-* How can I tell if a container is attached to a particular network?
+THis shows us that the bright_busybox container is connected to our "my-network" network, see that the ip address ranges match.
 
-Checking which networks a container is connected to:
+- Checking which networks a container is connected to:
 
-`docker inspect busybox -f "{{json .NetworkSettings.Networks}}"`{{execute}}
+`docker inspect bright_busybox -f "{{json .NetworkSettings.Networks}}"`{{execute}}
 
-Checking which containers are connected to a network:
+Here we can see that bright_busybox is on "my-network", as expected.
+
+- Checking which containers are connected to a network:
 
 `docker inspect my-network -f "{{json .Containers}}"`{{execute}}
 
-# Network Aliases
+Here we can see that my-network only has one container connected and it is bright_busybox.
+
+# Attaching and detaching Containers from a Network
+
+We'll need another network:
 
 `docker network create my-network2`{{execute T1}}
 
-`docker run --rm --name reliable_redis -d -p 3000:3000 --net=my-network2 katacoda/redis-node-docker-example`{{execute}}
+`docker network create --subnet 172.20.0.0/16 --ip-range 172.20.240.0/20 multi-host-network`{{execute T1}}
+
+`docker network list`{{execute T1}}
+
+`docker network attach bright_busybox multi-host-network`{{execute T1}}
+
+`docker exec bright_busybox ip a`{{execute T2}}
+
+`ip a`{{execute T1}}
+
+`docker network dettach bright_busybox multi-host-network`{{execute T1}}
+
+`docker exec bright_busybox ip a`{{execute T2}}
+
+`ip a`{{execute T1}}
+
+# Attaching and detaching Containers from a Network
+
+How can we dynamically attach and detach containers from a network?
+
+Let's create a new network - we'll call this one **my-network3**.
+
+`docker network create my-network3`{{execute T1}}
+
+OK, so we now have another network, let's see them all:
+
+`docker network list`{{execute T1}}
+
+`docker run --rm --name reliable_redis -d -p 3000:3000 --net=my-network2 katacoda/redis-node-docker-example`{{execute T1}}
 
 `curl docker:3000`{{execute}}
 
@@ -113,6 +149,10 @@ To examine the new network in detail:
 `docker network inspect my-network`{{execute}}
 
 `docker network create my-network3`{{execute}}
+
+# Network Aliases
+
+An alias can be used to resolve the container by another name on a different network.
 
 Assign the db alias to the redis instance on network: my-network3
 
@@ -132,7 +172,3 @@ docker inspect redis -f '{{json .NetworkSettings.Networks}}' | jq
                         "db",
                         "3362045b2d80"
                     ],
-
-### Volumes 
-
-### Data Containers
