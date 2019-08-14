@@ -11,12 +11,15 @@ Topics covered:
 - How can I see which networks my container is connected to?
 - How can I see which containers are connected to a specific network?
 
+### What is a Docker Network?
+In order for containers to communicate with each other and the outside world they require access to a network.
 
+Docker networks abstract and standardise the more complicated details involved in network connectivity and thus greatly simplify the connecting containers together.
 
------
-By running "ip a" (short for ip show addr) we can see the current network devices configured on the Docker host:
+To achieve this, Docker's network subsystem uses pluggable network drivers. By default Docker provides the bridge and overlay drivers.
 
-`ip a`{{execute}}
+# Default Networks
+Out of the box and installation of Docker Engine will provide three default networks.
 
 We can view the available docker networks with the following command:
 
@@ -33,7 +36,13 @@ Others Network Types:
 * **Overlay** - Connects multiple Docker daemons together. You can also use overlay networks to enable communication between standalone containers on different Docker daemons. This is used by Docker Swarm clients.
 * **Macvlan** - Allows you to assign a MAC address to a container to make it appear as a physical device on the network. The Docker daemon routes traffic to containers by their MAC addresses. Using the macvlan driver is sometimes the best choice when dealing with legacy applications that expect to be directly connected to the physical network. 
 
-Let's create our first docker network. We'll call it "my-network":
+The default bridge driver manifests itself as the **docker0** interface.
+
+We can see this by running "ip a" (short for "ip show addr"):
+
+`ip a`{{execute}}
+
+-----
 
 `docker network create my-network`{{execute}}
 
