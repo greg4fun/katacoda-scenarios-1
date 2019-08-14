@@ -110,21 +110,21 @@ We'll need another network:
 
 `docker network list`{{execute T1}}
 
-`docker network connect bright_busybox multi-host-network`{{execute T1}}
+`docker network connect multi-host-network bright_busybox`{{execute T1}}
 
 `docker exec bright_busybox ip a`{{execute T2}}
 
 `ip a`{{execute T1}}
 
-`docker network disconnect bright_busybox multi-host-network`{{execute T1}}
+`docker network disconnect multi-host-network bright_busybox`{{execute T1}}
 
 `docker exec bright_busybox ip a`{{execute T2}}
 
 `ip a`{{execute T1}}
 
-# Attaching and detaching Containers from a Network
+# Connecting and disconnecting Containers from a Network
 
-How can we dynamically attach and detach containers from a network?
+How can we dynamically connect and disconnect containers from a network?
 
 Let's create a new network - we'll call this one **my-network3**.
 
@@ -138,7 +138,7 @@ OK, so we now have another network, let's see them all:
 
 `curl docker:3000`{{execute}}
 
-`docker network connect my-network redis`{{execute}}
+`docker network connect my-network resplendent_redis`{{execute}}
 
 `docker network list`{{execute}}
 
