@@ -44,6 +44,12 @@ We can see this by running "ip a" (short for "ip show addr"):
 
 -----
 
+# Creating our first network
+
+Docker networks are created and managed with the "docker network" command.
+
+In the following example we create a network called "my-network" but we provide no other options:
+
 `docker network create my-network`{{execute}}
 
 If we now rerun the _network list_ we can see our new network:
@@ -56,9 +62,11 @@ By rerunning "ip a" we can see that a new network device have appeared:
 
 `ip a`{{execute}}
 
-This is a bridge device to link the virtual interface from the container to docker0 on the Docker host.
+This is a bridge device to link the virtual interface from the container to the physical network on Docker host.
 
-Inspecting the new network:
+# Inspecting the new network
+
+As with other Docker objects you can use the "docker inspect" command to find out more detailed information.
 
 `docker inspect my-network`{{execute}}
 
