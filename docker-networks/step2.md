@@ -11,6 +11,8 @@ Topics covered:
 - How can I see which networks my container is connected to?
 - How can I see which containers are connected to a specific network?
 
+-----
+
 ### What is a Docker Network?
 In order for containers to communicate with each other and the outside world they require access to a network.
 
@@ -35,6 +37,7 @@ Others Network Types:
 
 * **Overlay** - Connects multiple Docker daemons together. You can also use overlay networks to enable communication between standalone containers on different Docker daemons. This is used by Docker Swarm clients.
 * **Macvlan** - Allows you to assign a MAC address to a container to make it appear as a physical device on the network. The Docker daemon routes traffic to containers by their MAC addresses. Using the macvlan driver is sometimes the best choice when dealing with legacy applications that expect to be directly connected to the physical network. 
+* **Network Plugins** - Uses the Docker Network API to allow a wide range of other network technologies to be used to extend the basic Docker functionality.
 
 The default bridge driver manifests itself as the **docker0** interface.
 
