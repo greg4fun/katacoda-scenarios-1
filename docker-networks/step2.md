@@ -91,7 +91,7 @@ Comparing ip output to the Docker Host's network interfaces:
 
 `ip a`{{execute T1}}
 
-THis shows us that the bright_busybox container is connected to our "my-network" network, see that the ip address ranges match.
+This shows us that the bright_busybox container is connected to our "my-network" network, see that the ip address ranges match.
 
 - Checking which networks a container is connected to:
 
@@ -107,19 +107,19 @@ Here we can see that my-network only has one container connected and it is brigh
 
 # Connecting and disconnecting Containers from a Network
 
-We'll need another network:
+Let's create another Bridge network, but this time add more customisations:
 
-`docker network create --subnet 172.20.0.0/16 --ip-range 172.20.240.0/20 multi-host-network`{{execute T1}}
+`docker network create --subnet 172.20.0.0/16 --ip-range 172.20.240.0/20 custom-bridge-network`{{execute T1}}
 
 `docker network list`{{execute T1}}
 
-`docker network connect multi-host-network bright_busybox`{{execute T1}}
+`docker network connect cutsome-bridge-network bright_busybox`{{execute T1}}
 
 `docker exec bright_busybox ip a`{{execute T2}}
 
 `ip a`{{execute T1}}
 
-`docker network disconnect multi-host-network bright_busybox`{{execute T1}}
+`docker network disconnect custome-bridge-network bright_busybox`{{execute T1}}
 
 `docker exec bright_busybox ip a`{{execute T2}}
 
