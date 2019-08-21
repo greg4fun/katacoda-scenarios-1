@@ -45,6 +45,18 @@ We can see this by running "ip a" (short for "ip show addr"):
 
 `ip a`{{execute}}
 
+Currently there are no containers running on so we only see the default network devices.
+
+Starting a new container:
+
+`docker run -d --rm --name uber_ubuntu ubuntu sh -c "sleep 900"`{{execute}}
+
+And rerunning ip -a:
+
+`ip a`{{execute}}
+
+Notice that a virtual interface belonging to the container has appeared and the docker0 bridge has changed to a state of UP.
+
 -----
 
 # Creating our first network
