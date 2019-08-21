@@ -18,7 +18,7 @@ In order for containers to communicate with each other and the outside world the
 
 Docker networks abstract and standardise the more complicated details involved in network connectivity and thus greatly simplify the connecting containers together.
 
-To achieve this, Docker's network subsystem uses pluggable network drivers. By default Docker provides the **bridge** and **overlay** drivers.
+To achieve this, Docker's network subsystem uses pluggable network drivers. By default Docker provides the **bridge**, **overlay** and **macvlan** drivers.
 
 # Default Networks
 Out of the box and installation of Docker Engine will provide three default networks.
