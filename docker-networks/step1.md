@@ -41,7 +41,7 @@ Others Network Types:
 
 The default bridge driver manifests itself as the **docker0** interface.
 
-We can see this by running "ip a" (short for "ip show addr"):
+We can see this by running "ip a" (short for "ip addr show"):
 
 `ip a`{{execute}}
 
@@ -63,9 +63,9 @@ Notice that a virtual interface belonging to the container has appeared and the 
 
 Docker networks are created and managed with the "docker network" command.
 
-In the following example we create a network called "my-network" but we provide no other options:
+In the following example we create a network called "red-network" but we provide no other options:
 
-`docker network create my-network`{{execute}}
+`docker network create red-network`{{execute}}
 
 If we now rerun the _network list_ we can see our new network:
 
@@ -79,19 +79,21 @@ By rerunning "ip a" we can see that a new network device has appeared:
 
 This is a bridge device to link the virtual interface from the container to the physical network on Docker host.
 
+[DIAGRAM]
+
 # Inspecting the new network
 
 As with other Docker objects you can use the "docker inspect" command to find out more detailed information.
 
-`docker inspect my-network`{{execute}}
+`docker inspect red-network`{{execute}}
 
 By default a container a loopback interface and an interface to the default bridge network.
 
 `docker run --rm busybox sh -c "ip a"`{{execute T2}}
 
-You can access a specific network when starting a container with the run command and the --net option, here we connect to the my_network we created earlier:
+You can access a specific network when starting a container with the run command and the --net option, here we connect to the red-network we created earlier:
 
-`docker run -d --rm --net=my-network --name=bright_busybox busybox sh -c "sleep 900"`{{execute T2}}
+`docker run -d --rm --net=red-network --name=bright_busybox busybox sh -c "sleep 900"`{{execute T2}}
 
 How does this network appear from inside the container? 
 
@@ -103,16 +105,16 @@ Comparing ip output to the Docker Host's network interfaces:
 
 `ip a`{{execute T1}}
 
-This shows us that the bright_busybox container is connected to our "my-network" network, see that the ip address ranges match.
+This shows us that the bright_busybox container is connected to our "red-network" network, see that the ip address ranges match.
 
 - Checking which networks a container is connected to:
 
 `docker inspect bright_busybox -f "{{json .NetworkSettings.Networks}}"`{{execute}}
 
-Here we can see that bright_busybox is on "my-network", as expected.
+Here we can see that bright_busybox is on "red-network", as expected.
 
 - Checking which containers are connected to a network:
 
-`docker inspect my-network -f "{{json .Containers}}"`{{execute}}
+`docker inspect red-network -f "{{json .Containers}}"`{{execute}}
 
-Here we can see that my-network only has one container connected and it is bright_busybox.
+Here we can see that red-network only has one container connected and it is bright_busybox.

@@ -2,17 +2,17 @@
 
 Let's create another Bridge network, but this time add more customisations:
 
-`docker network create --subnet 172.20.0.0/16 --ip-range 172.20.240.0/20 blue-bridge-network`{{execute T1}}
+`docker network create --subnet 172.20.0.0/16 --ip-range 172.20.240.0/20 blue-network`{{execute T1}}
 
 `docker network list`{{execute T1}}
 
-`docker network connect blue-bridge-network bright_busybox`{{execute T1}}
+`docker network connect blue-network bright_busybox`{{execute T1}}
 
 `docker exec bright_busybox ip a`{{execute T2}}
 
 `ip a`{{execute T1}}
 
-`docker network disconnect blue-bridge-network bright_busybox`{{execute T1}}
+`docker network disconnect blue-network bright_busybox`{{execute T1}}
 
 `docker exec bright_busybox ip a`{{execute T2}}
 
@@ -50,21 +50,16 @@ To examine the new network in detail:
 
 An alias can be used to resolve the container by another name on a different network.
 
-Assign the db alias to the redis instance on network: my-network3
+Assign the db alias to the redis instance on network: green-network
 
-`docker network connect --alias db my-network3 redis`{{execute}}
+`docker network connect --alias db green-network redis`{{execute}}
 
-`docker run --net=my-network3 alpine ping -c1 db`{{execute}}
+`docker run --net=green-network alpine ping -c1 db`{{execute}}
 
-[Question: How do I identify the network aliases?]
-Answer: docker inspect redis
+* How do I identify the network aliases?
 
-docker inspect redis -f '{{json .NetworkSettings.Networks}}' | jq
+`docker inspect redis -f '{{json .NetworkSettings.Networks}}' | jq`{{execute}}
 
-                "my-network3": {
-                    "IPAMConfig": {},
-                    "Links": null,
-                    "Aliases": [
-                        "db",
-                        "3362045b2d80"
-                    ],
+----
+
+# DNS
