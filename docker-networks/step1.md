@@ -35,7 +35,7 @@ Here we can see the current networks bridge, host and none.
 
 Others Network Types:
 
-* **Overlay** - Connects multiple Docker daemons together. You can also use overlay networks to enable communication between standalone containers on different Docker daemons. This is used by Docker Swarm clients.
+* **Overlay** - Enables communication between standalone containers on different Docker daemons. This is used by Docker Swarm clients.
 * **Macvlan** - Allows you to assign a MAC address to a container to make it appear as a physical device on the network. The Docker daemon routes traffic to containers by their MAC addresses. Using the macvlan driver is sometimes the best choice when dealing with legacy applications that expect to be directly connected to the physical network. 
 * **Network Plugins** - Uses the Docker Network API to allow a wide range of other network technologies to be used to extend the basic Docker functionality.
 
