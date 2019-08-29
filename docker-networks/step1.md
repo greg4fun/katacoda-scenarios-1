@@ -109,12 +109,12 @@ This shows us that the bright_busybox container is connected to our "red-network
 
 - Checking which networks a container is connected to:
 
-`docker inspect bright_busybox -f "{{json .NetworkSettings.Networks}}"`{{execute}}
+`docker inspect bright_busybox -f "{{json .NetworkSettings.Networks}}"|jq`{{execute}}
 
 Here we can see that bright_busybox is on "red-network", as expected.
 
 - Checking which containers are connected to a network:
 
-`docker inspect red-network -f "{{json .Containers}}"`{{execute}}
+`docker inspect red-network -f "{{json .Containers}}"|jq`{{execute}}
 
 Here we can see that red-network only has one container connected and it is bright_busybox.
