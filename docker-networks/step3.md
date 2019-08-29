@@ -14,6 +14,8 @@ Attempt to connect with:
 
 - This fails - why?
 
+`exit`{{execute T2}}
+
 `cat /etc/resolv.conf`{{execute T2}}
 
 `docker network list`{{execute T1}}
