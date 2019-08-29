@@ -36,7 +36,13 @@ And to prove it we rerun the ip a commands on both container and docker host. No
 
 An alias can be used to resolve the container by another name on a different network.
 
-Assign the alias 'jolly_giant' to the bright_busybox instance on network: green-network:
+First, let's create a new network called __green_network__:
+
+`docker network create --subnet 192.168.0.0/8 green-network`{{execute T1}}
+
+`docker inspect green-network`{{execute T1}}
+
+Assign the alias __jolly_giant__ to the bright_busybox instance on network: green-network:
 
 `docker network connect --alias jolly_giant green-network bright_busybox`{{execute}}
 
