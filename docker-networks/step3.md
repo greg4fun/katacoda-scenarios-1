@@ -2,9 +2,11 @@
 
 - How does DNS work with a Docker Network?
 
-Create a redis container instance:
+Run a redis container instance:
 
 `docker run -d -p 6379:6379 --name resplendent_redis redis`{{execute T1}}
+
+And run another container with the redis-cli:
 
 `docker run -it --rm --name my-redis-cli goodsmileduck/redis-cli sh`{{execute T2}}
 
