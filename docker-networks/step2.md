@@ -38,7 +38,7 @@ An alias can be used to resolve the container by another name on a different net
 
 First, let's create a new network called __green_network__:
 
-`docker network create --subnet 192.168.0.0/8 green-network`{{execute T1}}
+`docker network create --subnet 192.168.0.0/24 green-network`{{execute T1}}
 
 `docker inspect green-network`{{execute T1}}
 
@@ -55,5 +55,3 @@ Now let's run up a container on the green-network to just fire a single ping to 
 `docker inspect bright_busybox -f '{{json .NetworkSettings.Networks}}' | jq`{{execute}}
 
 ----
-
-# DNS
