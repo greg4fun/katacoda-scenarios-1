@@ -1,64 +1,52 @@
 # Connecting and disconnecting Containers from a Network
 
-Let's create another Bridge network, but this time add more customisations:
+Let's create another Bridge network called "blue-network", but this time specifying our choice of subnet and a range of ips:
 
 `docker network create --subnet 172.20.0.0/16 --ip-range 172.20.240.0/20 blue-network`{{execute T1}}
 
+Our new blue-network has now been created - let's check:
+
 `docker network list`{{execute T1}}
+
+Ok, so how do we connect to this new network?
+
+If we want to connect a running container to the new network we used the **docker network connect** command:
 
 `docker network connect blue-network bright_busybox`{{execute T1}}
 
+Let's check the new network from inside the __bright_busybox__ container:
+
 `docker exec bright_busybox ip a`{{execute T2}}
 
+And from the docker host we can see the new interface:
+
 `ip a`{{execute T1}}
+
+We can also disconnect a running container from a network:
 
 `docker network disconnect blue-network bright_busybox`{{execute T1}}
 
+And to prove it we rerun the ip a commands on both container and docker host. Notice the veth has vanished.
+
 `docker exec bright_busybox ip a`{{execute T2}}
 
 `ip a`{{execute T1}}
 
-# Connecting and disconnecting Containers from a Network
-
-How can we dynamically connect and disconnect containers from a network?
-
-Let's create a new network - we'll call this one **my-network3**.
-
-`docker network create my-network3`{{execute T1}}
-
-OK, so we now have another network, let's see them all:
-
-`docker network list`{{execute T1}}
-
-`docker run --rm --name reliable_redis -d -p 3000:3000 --net=my-network2 katacoda/redis-node-docker-example`{{execute T1}}
-
-`docker run --rm -d alpine curl docker:3000`{{execute}}
-
-`curl docker:3000`{{execute}}
-
-`docker network connect my-network resplendent_redis`{{execute}}
-
-`docker network list`{{execute}}
-
-To examine the new network in detail:
-
-`docker network inspect my-network`{{execute}}
-
-`docker network create my-network3`{{execute}}
-
-# Network Aliases
+# Network Alias
 
 An alias can be used to resolve the container by another name on a different network.
 
-Assign the db alias to the redis instance on network: green-network
+Assign the alias 'jolly_giant' to the bright_busybox instance on network: green-network:
 
-`docker network connect --alias db green-network redis`{{execute}}
+`docker network connect --alias jolly_giant green-network bright_busybox`{{execute}}
 
-`docker run --net=green-network alpine ping -c1 db`{{execute}}
+Now let's run up a container on the green-network to just fire a single ping to the alias __jolly_giant__:
+
+`docker run --net=green-network alpine ping -c1 jolly_giant`{{execute}}
 
 * How do I identify the network aliases?
 
-`docker inspect redis -f '{{json .NetworkSettings.Networks}}' | jq`{{execute}}
+`docker inspect bright_busybox -f '{{json .NetworkSettings.Networks}}' | jq`{{execute}}
 
 ----
 
