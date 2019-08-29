@@ -6,11 +6,11 @@ Create a redis container instance:
 
 `docker run -d -p 6379:6379 --name resplendent_redis redis`{{execute T1}}
 
-`docker run -it --rm --name my-redis-cli goodsmileduck/redis-cli sh` {{execute T2}}
+`docker run -it --rm --name my-redis-cli goodsmileduck/redis-cli sh`{{execute T2}}
 
 Attempt to connect with:
 
-`redis-cli -h resplendent_redis -p 6379` {{execute T2}}
+`redis-cli -h resplendent_redis -p 6379`{{execute T2}}
 
 - This fails - why?
 
@@ -26,7 +26,7 @@ Attempt to connect with:
 
 `cat /etc/resolv.conf`{{execute T2}}
 
-`redis-cli -h resplendent_redis -p 6379` {{execute T2}}
+`redis-cli -h resplendent_redis -p 6379`{{execute T2}}
 
 `set KUBE DOJO`{{execute T2}}
 
