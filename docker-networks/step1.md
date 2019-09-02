@@ -93,13 +93,13 @@ By default a container a loopback interface and an interface to the default brid
 
 `docker run --rm busybox sh -c "ip a"`{{execute}}
 
+Contrast this with a container using the host network driver:
+
+`docker run -d --rm --net host busybox ip a`{{execute}}
+
 You can access a specific network when starting a container with the run command and the --net option, here we connect to the red-network we created earlier:
 
 `docker run -d --rm --net red-network --name bright_busybox busybox sh -c "sleep 1500"`{{execute T2}}
-
-Contrast this with a container using the host network driver:
-
-`docker run -d --rm --net host busybox ip a`{{execute T2}}
 
 How does this network appear from inside the container? 
 
