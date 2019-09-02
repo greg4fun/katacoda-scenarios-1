@@ -49,7 +49,7 @@ Currently there are no containers running on so we only see the default network 
 
 Starting a new container:
 
-`docker run -d --rm --name uber_ubuntu ubuntu sh -c "sleep 900"`{{execute}}
+`docker run -d --rm --name uber_ubuntu ubuntu sh -c "sleep 1500"`{{execute}}
 
 And rerunning ip -a:
 
@@ -81,11 +81,13 @@ This is a bridge device to link the virtual interface from the container to the 
 
 [DIAGRAM]
 
+-----
+
 # Inspecting the new network
 
 As with other Docker objects you can use the "docker inspect" command to find out more detailed information.
 
-`docker inspect red-network`{{execute}}
+`docker inspect red-network|jq`{{execute}}
 
 By default a container a loopback interface and an interface to the default bridge network.
 
@@ -93,7 +95,11 @@ By default a container a loopback interface and an interface to the default brid
 
 You can access a specific network when starting a container with the run command and the --net option, here we connect to the red-network we created earlier:
 
-`docker run -d --rm --net=red-network --name=bright_busybox busybox sh -c "sleep 900"`{{execute T2}}
+`docker run -d --rm --net red-network --name bright_busybox busybox sh -c "sleep 900"`{{execute T2}}
+
+Contrast this with a container using the host network driver:
+
+`docker run -d --rm --net host busybox ip a`{{execute T2}}
 
 How does this network appear from inside the container? 
 
