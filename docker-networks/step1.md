@@ -95,7 +95,7 @@ By default a container a loopback interface and an interface to the default brid
 
 Contrast this with a container using the host network driver:
 
-`docker run -d --rm --net host busybox ip a`{{execute}}
+`docker run --rm --net host busybox ip a`{{execute}}
 
 You can access a specific network when starting a container with the run command and the --net option, here we connect to the red-network we created earlier:
 
