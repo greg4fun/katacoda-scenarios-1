@@ -91,11 +91,11 @@ As with other Docker objects you can use the "docker inspect" command to find ou
 
 By default a container a loopback interface and an interface to the default bridge network.
 
-`docker run --rm busybox sh -c "ip a"`{{execute T2}}
+`docker run --rm busybox sh -c "ip a"`{{execute}}
 
 You can access a specific network when starting a container with the run command and the --net option, here we connect to the red-network we created earlier:
 
-`docker run -d --rm --net red-network --name bright_busybox busybox sh -c "sleep 900"`{{execute T2}}
+`docker run -d --rm --net red-network --name bright_busybox busybox sh -c "sleep 1500"`{{execute T2}}
 
 Contrast this with a container using the host network driver:
 
