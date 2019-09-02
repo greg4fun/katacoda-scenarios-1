@@ -45,7 +45,7 @@ We can see this by running "ip a" (short for "ip addr show"):
 
 `ip a`{{execute}}
 
-Currently there are no containers running on so we only see the default network devices.
+Currently there are no containers running so we only see the default network devices.
 
 Starting a new container:
 
