@@ -20,7 +20,7 @@ https://katacoda.com/courses/docker/2
 
 - What Dockerfile instructions (commands) are available?
 
-	- FROM <a base image or scratch>   [discuss “scratch”]
+	- FROM [a base image or "scratch"]
 	- COPY
 	- ADD 
 	- RUN lets you execute commands inside of your Docker image which get executed once at build time and get written into your Docker image as a new layer.
