@@ -14,9 +14,6 @@ We've seen previously that we can commit a running container to an image. While 
  - it's more difficult to automate
  - it's less consistent
 
-- How do I use a Docker file to build an image?
-https://katacoda.com/courses/docker/2
-
 ---------
 - What Dockerfile instructions (commands) are available?
  - FROM [a base image or "scratch"]
@@ -48,6 +45,9 @@ For a full list see: https://docs.docker.com/engine/reference/builder/
 ---------
 - Ok, so how do I use a Docker file to build an image?
 https://katacoda.com/courses/docker/2
+
+Tutorial Point:
+https://www.katacoda.com/courses/docker/create-nginx-static-web-server
 
 ---------
 - What are the best practices I should be following when creating an Image with a Dockerfile?
