@@ -1,4 +1,4 @@
-### Dockerfile Story
+### Dockerfile
 
 - What is a Dockerfile?
 
@@ -17,19 +17,29 @@ We've seen previously that we can commit a running container to an image. While 
 
 https://katacoda.com/courses/docker/2
 
-
 - What Dockerfile instructions (commands) are available?
+ - FROM [a base image or "scratch"]
+   https://docs.docker.com/samples/library/scratch/
 
-	- FROM [a base image or "scratch"]
-	- COPY
-	- ADD 
-	- RUN lets you execute commands inside of your Docker image which get executed once at build time and get written into your Docker image as a new layer.
-	- CMD lets you define a default command to run when your container starts.
-	- ENTRYPOINT
-	- WORKDIR
-	- ONBUILD
-	- USER
-	- EXPOSE
+ - COPY
+
+ - ADD 
+
+ - RUN 
+   Execute commands inside of your image which get executed at build time and get written into the image as a new layer.
+
+ - CMD 
+   Defines a default command to run when your container starts.
+
+ - ENTRYPOINT
+
+ - WORKDIR
+
+ - ONBUILD
+
+ - USER
+
+ - EXPOSE
 
 For a full list see: https://docs.docker.com/engine/reference/builder/
 
