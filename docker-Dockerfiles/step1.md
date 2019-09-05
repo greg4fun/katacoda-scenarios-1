@@ -2,19 +2,18 @@
 
 - What is a Dockerfile?
 
-The Dockerfile defines what goes on in the environment inside your container. Access to resources like networking interfaces and disk drives is virtualized inside this environment, which is isolated from the rest of your system, so you need to map ports to the outside world, and be specific about what files you want to “copy in” to that environment. 
+The Dockerfile defines the contents and configuration of the container image and therefore the behaviour of any containers instantiated from that image. Access to resources like networking interfaces and storage is virtualized inside this environment, which is isolated from the rest of the system, so container ports need to be mapped to the host ports, files need to be copied in, commands need to be run etc. 
  
-You can expect that the build of your app defined in this Dockerfile will behave in the same way wherever it runs.
+By using the Dockerfile to define the image build it ensures consistent build behaviour wherever that build is run.
 
 - If I can use docker commit from a container - why do I need to use a Dockerfile?
 
-We've seen previously that we can commit a running container to an image. While this is useful for testing it can 
+We've seen previously that we can commit a running container to an image. While this is useful for testing it can:
  - bring in unwanted artifacts such as cached data
  - it's more difficult to automate
  - it's less consistent
 
 - How do I use a Docker file to build an image?
-
 https://katacoda.com/courses/docker/2
 
 - What Dockerfile instructions (commands) are available?
@@ -42,6 +41,9 @@ https://katacoda.com/courses/docker/2
  - EXPOSE
 
 For a full list see: https://docs.docker.com/engine/reference/builder/
+
+- Ok, so how do I use a Docker file to build an image?
+https://katacoda.com/courses/docker/2
 
 - What are the best practices I should be following when creating an Image with a Dockerfile?
 https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
