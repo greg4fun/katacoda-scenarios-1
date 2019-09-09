@@ -20,11 +20,17 @@ The docker ps shows that the container is running and the ports are mapped.
 
 Test nginx is working by connecting to host1:80.
 
+https://[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/
+
 Connect to the container using the **exec** command.
 
 `docker exec -it noble_nginx sh`{{execute}}
 
-Open up the index.html file and modify it to demonstrate a change in the container.
+Open up the index.html file and modify the Welcome lines (there's 2of them):
+
+\<h1>Welcome to nginx!\</h1>
+
+it to demonstrate a change in the container.
 
 `vi /usr/share/nginx/html/index.html`{{execute}}
 
@@ -34,7 +40,9 @@ Exit from the container
 
 Test the change by reconnecting to host1:80.
 
-If nothing changes refresh the Chrome cache with ctrl and click reload or ctrl-f5.
+https://[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/
+
+If nothing changes refresh the Chrome cache with ctrl and click reload or ctrl+f5.
 
 Now stop the container, but do not delete it.
 
