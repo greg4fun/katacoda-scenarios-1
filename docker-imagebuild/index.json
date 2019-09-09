@@ -1,6 +1,6 @@
 {
-  "title": "Kubernetes Dojo Dockerfile Scenario - Presentation",
-  "description": "Learn the basics of building Dockerfiles",
+  "title": "Kubernetes Dojo Building Container Images with Docker Scenario - Presentation",
+  "description": "Learn the basics of building container images with docker",
   "private": false ,
   "difficulty": "beginner",
   "time": "10 minutes",
