@@ -67,7 +67,8 @@ Multi-stage builds allow you to drastically reduce the size of your final image,
 
 Because an image is built during the final stage of the build process, you can minimize image layers by leveraging build cache.
 
-https://docs.docker.com/get-started/part2/
+Follow this exercise:
+https://www.katacoda.com/courses/docker/multi-stage-builds
 
 Work this into a tutorial?
 https://github.com/docker/labs/blob/master/beginner/chapters/webapps.md
