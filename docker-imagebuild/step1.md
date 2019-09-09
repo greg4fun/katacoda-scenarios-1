@@ -35,6 +35,10 @@ We've seen previously that we can commit a running container to an image. While 
  - WORKDIR
 
  - ONBUILD
+   Executes commands only when the image is used as a base image.
+   See scenario example, Optimising Dockerfile with ONBUILD:
+   https://www.katacoda.com/courses/docker/4  Optimising Dockerfile with OnBuild
+   Felt this scenario needed to list the images and then inspect the node:7-onbuild image to show what's going on.
 
  - USER
 
