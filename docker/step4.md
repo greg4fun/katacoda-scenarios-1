@@ -103,6 +103,3 @@ docker inspect redis -f '{{json .NetworkSettings.Networks}}' | jq
                         "3362045b2d80"
                     ],
 
-### Volumes 
-
-### Data Containers

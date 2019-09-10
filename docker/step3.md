@@ -64,3 +64,9 @@ Rather than having to remember to tidy up you can add the **--rm** option which 
 
 As you can see, the container no longer exists.
 
+-----
+
+# Exercise: Deploying Your First Docker Container
+
+https://www.katacoda.com/courses/docker/deploying-first-container
+
