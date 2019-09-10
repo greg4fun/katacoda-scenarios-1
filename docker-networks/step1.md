@@ -57,8 +57,7 @@ And rerunning ip -a:
 
 Notice that a virtual interface belonging to the container has appeared and the docker0 bridge has changed to a state of UP.
 
-![Docker Default Bridge]('https://docs.docker.com/v17.09/engine/tutorials/bridge1.png')
-![Default Docker Bridge] (/root/katacoda-scenarios/docker-networks/assets/bridge1.png)
+![Default Docker Bridge] (/katacoda-scenarios/docker-networks/assets/bridge1.png)
 
 -----
 
