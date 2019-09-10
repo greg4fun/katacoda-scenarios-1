@@ -35,6 +35,10 @@ We've seen previously that we can commit a running container to an image. While 
  - WORKDIR
 
  - ONBUILD
+   Executes commands only when the image is used as a base image.
+   See scenario example, Optimising Dockerfile with ONBUILD:
+   https://www.katacoda.com/courses/docker/4  Optimising Dockerfile with OnBuild
+   Felt this scenario needed to list the images and then inspect the node:7-onbuild image to show what's going on.
 
  - USER
 
@@ -67,7 +71,8 @@ Multi-stage builds allow you to drastically reduce the size of your final image,
 
 Because an image is built during the final stage of the build process, you can minimize image layers by leveraging build cache.
 
-https://docs.docker.com/get-started/part2/
+Follow this exercise:
+https://www.katacoda.com/courses/docker/multi-stage-builds
 
 Work this into a tutorial?
 https://github.com/docker/labs/blob/master/beginner/chapters/webapps.md

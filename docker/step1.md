@@ -33,7 +33,7 @@ Let's retrieve the image from the remote registy:
 
 `docker pull redis`{{execute}}
 
-By default this pulls the _latest_ image version. The default tag is "latest". 
+By default this pulls the _latest_ image version. The default tag is **latest**. 
 
 You can pull specific images by specifiying a tag after the image:
 

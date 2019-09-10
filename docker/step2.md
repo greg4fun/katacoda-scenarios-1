@@ -10,9 +10,9 @@ The **-d** option ensures the container runs in **detached** mode. This means th
 
 The **-p** option maps the docker host's port to the container's port.
 
-The **--name resplendent_redis** option allows me to a predictable name to the container. This is optional but useful.
+The **--name resplendent_redis** option allows me to call the containeri a predictable name. This is optional but useful.
 
-The last option **redis** is the name of the image.
+The last option, **redis** is the name of the image.
 
 The **hash string** returned is the unique identifying ID for the container you have just started.
 

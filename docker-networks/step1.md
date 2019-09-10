@@ -57,6 +57,8 @@ And rerunning ip -a:
 
 Notice that a virtual interface belonging to the container has appeared and the docker0 bridge has changed to a state of UP.
 
+![Default Docker Bridge](assets/bridge1.png)
+
 -----
 
 # Creating our first network
