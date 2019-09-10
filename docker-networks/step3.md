@@ -51,3 +51,11 @@ Attempting to connect to the redis service on resplendent_redis from my-redis-cl
 `get KUBE`{{execute T2}}
 
 Success!
+
+-------
+# Exercise: Creating Networks Between Containers using Networks
+
+https://www.katacoda.com/courses/docker/networking-intro
+
+Now it's your turn!
+
