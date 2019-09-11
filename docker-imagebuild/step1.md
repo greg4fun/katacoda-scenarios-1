@@ -1,85 +1,103 @@
-### Dockerfile
+### Building Images
 
-- What is a Dockerfile?
+There is a good reason why you may not want to delete your container config.
 
-A Dockerfile defines the contents and configuration of the container image and therefore the behaviour of any containers instantiated from that image. Access to resources like networking interfaces and storage is virtualized inside this environment, which is isolated from the rest of the system, so container ports need to be mapped to the host ports, files need to be copied in, commands need to be run etc. 
- 
-By using the Dockerfile to define the image build it ensures consistent behaviour wherever that build is run.
+One way of building an **Image** is to convert an existing container into an image.
 
----------
-- If I can use docker commit from a container - why do I need to use a Dockerfile?
+This enables you to take a base image, tweak it and save that new image.
 
-We've seen previously that we can commit a running container to an image. While this is useful for testing it can:
- - bring in unwanted artifacts such as cached data
- - it's more difficult to automate
- - it's less consistent
+Let's work through an example.
 
----------
-- What Dockerfile instructions (commands) are available?
- - FROM [a base image or "scratch"]
-   https://docs.docker.com/samples/library/scratch/
+### Docker Commit
 
- - COPY
+Start a container with the nginx image and ensure ports have been opened -p 80:80 dockerhost_port:container_port
 
- - ADD 
+`docker run -d --name noble_nginx -p 80:80 nginx:alpine`{{execute}}
 
- - RUN 
-   Execute commands inside of your image which get executed at build time and get written into the image as a new layer.
+The docker ps shows that the container is running and the ports are mapped.
 
- - CMD 
-   Defines a default command to run when your container starts.
+`docker ps -a`{{execute}}
 
- - ENTRYPOINT
-   http://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/
+Test nginx is working by connecting to host1:80.
 
- - WORKDIR
+https://[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/
 
- - ONBUILD
-   Executes commands only when the image is used as a base image.
-   See scenario example, Optimising Dockerfile with ONBUILD:
-   https://www.katacoda.com/courses/docker/4  Optimising Dockerfile with OnBuild
-   Felt this scenario needed to list the images and then inspect the node:7-onbuild image to show what's going on.
+Connect to the container using the **exec** command.
 
- - USER
+`docker exec -it noble_nginx sh`{{execute}}
 
- - EXPOSE
+Open up the index.html file and modify the Welcome lines (there's 2of them):
 
-For a full list see: https://docs.docker.com/engine/reference/builder/
+\<h1>Welcome to nginx!\</h1>
 
----------
-- Ok, so how do I use a Docker file to build an image?
-https://katacoda.com/courses/docker/2
+it to demonstrate a change in the container.
 
-Tutorial Point:
-https://www.katacoda.com/courses/docker/create-nginx-static-web-server
+`vi /usr/share/nginx/html/index.html`{{execute}}
 
----------
-- What are the best practices I should be following when creating an Image with a Dockerfile?
-https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
+Exit from the container
 
----------
-- What is a .dockerignore file and how do I use it?
+`exit`{{execute}}
 
-https://docs.docker.com/engine/reference/builder/#dockerignore-file
+Test the change by reconnecting to host1:80.
 
----------
-- What is a multistage build? Why would I want to do one?
+https://[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/
 
-https://docs.docker.com/develop/develop-images/multistage-build
+If nothing changes refresh the Chrome cache with ctrl and click reload or ctrl+f5.
 
-Multi-stage builds allow you to drastically reduce the size of your final image, without struggling to reduce the number of intermediate layers and files.
+Now stop the container, but do not delete it.
 
-Because an image is built during the final stage of the build process, you can minimize image layers by leveraging build cache.
+`docker stop noble_nginx`{{execute}}
 
-Follow this exercise:
-https://www.katacoda.com/courses/docker/multi-stage-builds
+Commit the container to a new image. The new image is called **bfest_nginx** and has been tagged as version **1.0**
 
-Work this into a tutorial?
-https://github.com/docker/labs/blob/master/beginner/chapters/webapps.md
+`docker commit noble_nginx bfest_nginx:1.0`{{execute}}
 
----------
-Reference: 	https://docs.docker.com/engine/reference/builder/
-Samples:	https://docs.docker.com/samples/
-Best practice: 	https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
+The new image can be seen in the local registry.
 
----------
+`docker images`{{execute}}
+
+Lets start a container using the new image.
+
+`docker run -d --name bfest_nginx -p 80:80 bfest_nginx:1.0`{{execute}}
+
+Test by connecting to host1:80
+
+We can now safely remove the old container, noble_nginx.
+
+`docker rm noble_nginx`{{execute}}
+
+And remove the old image **nginx:alpine**
+
+`docker rmi nginx:alpine`{{execute}}
+
+`docker images`{{execute}}
+
+### The Dockerfile
+
+An alternative method is to use a Dockerfile.
+
+Dockerfiles are used to describe how an image is built.
+
+A simple example of a Dockerfile is:
+
+`FROM lrh7:latest`  
+`LABEL maintainer Paul Robinson`  
+`ENV HUGO_VERSION 1.55.6`  
+`RUN yum install -y httpd; \`  
+`chmod 0770 /run/httpd; \`  
+`yum clean all -y; \`  
+`chown -R apache:apache /var/www/html/*; \` 
+`chown apache:apache /etc/httpd/logs`  
+`COPY ./hugo.conf /etc/httpd/conf.d/hugo.conf`  
+`USER apache`  
+`EXPOSE 1313`  
+`WORKDIR /var/www/html/hugo`  
+`ENTRYPOINT \["./entrypoint.bash"\]`
+
+To build the image from the Dockerfile we use the **docker build** option.
+
+`docker build -t hugo:latest .`
+
+Note that the last '.' is important! This tells the docker command to look in the current directory for the Dockerfile.
+
+Any files or directories that you do not want to appear in the final image should be added to the **.dockerignore** file.
