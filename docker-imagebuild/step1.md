@@ -28,9 +28,11 @@ Open up the index.html file and modify the Welcome lines (there's 2 of them):
 
 &lt;h1&gt; Welcome to nginx! &lt;/h1&gt;
 
-it to demonstrate a change in the container.
+Change the welcome text to demonstrate a change in the container.
 
 `vi /usr/share/nginx/html/index.html`{{execute}}
+
+`sed -i 's/Welcome to nginx!/Welcome to the Kube Dojo!/g`{{execute}}
 
 Exit from the container
 
