@@ -42,7 +42,7 @@ Test the change by reconnecting to host1:80.
 
 https://[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/
 
-If nothing changes refresh the Chrome cache with ctrl and click reload or ctrl+f5.
+If nothing changes refresh the Chrome cache with ctrl and click reload or <kbd>Ctrl</kbd>+<kbd>f5</kbd>
 
 Now stop the container, but do not delete it.
 
@@ -61,6 +61,8 @@ Lets start a container using the new image.
 `docker run -d --name bfest_nginx -p 80:80 bfest_nginx:1.0`{{execute}}
 
 Test by connecting to host1:80
+
+https://[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/
 
 We can now safely remove the old container, noble_nginx.
 
