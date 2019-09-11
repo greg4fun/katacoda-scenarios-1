@@ -1,0 +1,27 @@
+{
+    "title": "Kubernetes Dojo - Docker Scenarios",
+    "description": "Let's Learn Docker! Covers basic commands and concepts.",
+    "icon": "fa-katacoda",
+    "courses": [
+      {
+        "course_id": "docker",
+        "title": "Basic docker commands and concepts",
+        "description": ""
+      },
+      {
+        "course_id": "docker-networks",
+        "title": "Basic docker networking and concepts",
+        "description": ""
+      },
+      {
+        "course_id": "docker-storage",
+        "title": "Basic docker storage and concepts",
+        "description": ""
+      },
+      {
+        "course_id": "docker-imagebuild",
+        "title": "Using docker to create images",
+        "description": ""
+      }
+    ]
+  }
