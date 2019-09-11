@@ -1,5 +1,5 @@
 
-# The Dockerfile
+# The Downside to Using Docker Commit
 
 In the previous step we saw that we can commit a running container to an image. While this is useful for testing it can:
 
@@ -8,6 +8,8 @@ In the previous step we saw that we can commit a running container to an image. 
 - it's less consistent
 
 -------
+
+# The Dockerfile
 
 The Dockerfile is a text file that defines what goes on in the environment inside your container. 
 
@@ -18,6 +20,12 @@ Docker builds images automatically by reading the instructions from a Dockerfile
 Refer to the docker reference link for a detailed explanation of each instruction.
 
 https://docs.docker.com/engine/reference/builder/
+
+# The Build Context
+
+The **build context** is the the current working directory and the docker build command will assume the Dockerfile is located here unless you specify an alternative location with the -f option.
+
+# Image Layers
 
 As mentioned on the Container Session in the previous Dojo **a container image consists of read-only layers**.
 
@@ -37,7 +45,7 @@ CMD python /app/app.py
 ```
 
 Each instruction creates one layer:
-
+#
 - FROM creates a layer from the ubuntu:18.04 Docker image.
 - COPY adds files from your Docker client’s current directory.
 - RUN builds your application with make.
@@ -45,4 +53,6 @@ Each instruction creates one layer:
 
 When you run an image and generate a container, you add a new writable layer (the “container layer”) on top of the underlying layers. 
 
-All changes made to the running container, such as writing new files, modifying existing files, and deleting files, are written to this thin writable container layer.
+All changes made to the running container, such as writing new files, modifying existing files and deleting files are written to this thin writable container layer.
+
+NOTE: If you delete a file baked into a layer you will not see the file - but it is still there in a previous layer, adding to the size of the image.
