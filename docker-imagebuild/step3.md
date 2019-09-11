@@ -1,5 +1,17 @@
+
 # The Dockerfile
-The Dockerfile is a text file that defines what goes on in the environment inside your container. Access to resources like networking interfaces and disk drives is virtualised inside this environment, which is isolated from the rest of your system, so you need to map ports to the outside world, and be specific about what files you want to “copy in” to that environment. 
+
+In the previous step we saw that we can commit a running container to an image. While this is useful for testing it can:
+
+- bring in unwanted artifacts such as cached data
+- it's more difficult to automate
+- it's less consistent
+
+-------
+
+The Dockerfile is a text file that defines what goes on in the environment inside your container. 
+
+Access to resources like networking interfaces and disk drives is virtualised inside this environment, which is isolated from the rest of your system, so you need to map ports to the outside world and be specific about what files you want to “copy in” to that environment. 
 
 Docker builds images automatically by reading the instructions from a Dockerfile. 
 
@@ -13,7 +25,9 @@ Each of these layers represents a Dockerfile instruction from either a RUN, COPY
 
 Other instructions create temporary intermediate images, and do not increase the size of the build.
 
-The layers are stacked and each one is a delta of the changes from the previous layer. Consider this Dockerfile:
+The layers are stacked and each one is a delta of the changes from the previous layer. 
+
+Consider this Dockerfile:
 
 ```
 FROM ubuntu:18.04
