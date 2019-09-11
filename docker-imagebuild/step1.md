@@ -32,7 +32,7 @@ Change the welcome text to demonstrate a change in the container.
 
 `vi /usr/share/nginx/html/index.html`{{execute}}
 
-`sed -i 's/Welcome to nginx!/Welcome to the Kube Dojo!/g`{{execute}}
+`sed -i 's/Welcome to nginx!/Welcome to the Kube Dojo!/g' /usr/share/nginx/html/index.html`{{execute}}
 
 Exit from the container
 
