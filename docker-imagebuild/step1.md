@@ -60,9 +60,11 @@ Lets start a container using the new image.
 
 `docker run -d --name bfest_nginx -p 80:80 bfest_nginx:1.0`{{execute}}
 
-Test by connecting to host1:80
+Test by connecting to host1:80 - remember to refresh the cache: <kbd>Ctrl</kbd>+<kbd>f5</kbd>
 
 https://[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/
+
+You should see the same output we had before - proving that we are using the modified image.
 
 We can now safely remove the old container, noble_nginx.
 
