@@ -6,21 +6,25 @@
       {
         "course_id": "docker",
         "title": "Basic docker commands and concepts",
+	"pathway_id": "babel17",
         "description": "Presentation Scenario"
       },
       {
         "course_id": "docker-networks",
         "title": "Basic docker networking and concepts",
+	"pathway_id": "babel17",
         "description": "Presentation Scenario"
       },
       {
         "course_id": "docker-storage",
         "title": "Basic docker storage and concepts",
+	"pathway_id": "babel17",
         "description": "Presentation Scenario"
       },
       {
         "course_id": "docker-imagebuild",
         "title": "Using docker to create images",
+	"pathway_id": "babel17",
         "description": "Presentation Scenario"
       }
     ]
