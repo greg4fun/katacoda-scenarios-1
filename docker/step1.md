@@ -1,5 +1,18 @@
 ### Kubernetes Community Dojo for Docker Presentation
 ---  
+### Getting help
+
+Use the built in docker help functionality:
+
+`docker --help`{{execute}}
+
+For more detail on a particular topic:
+
+`docker run --help`{{execute}}
+
+The online reference documentation for docker is also very good:
+
+https://docs.docker.com/engine/reference/commandline/docker/
  
 ### The Docker Environment
 
