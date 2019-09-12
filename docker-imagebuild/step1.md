@@ -12,9 +12,17 @@ Start a container with the nginx image and ensure ports have been opened -p 80:8
 
 `docker run -d --name noble_nginx -p 80:80 nginx:alpine`{{execute}}
 
-The docker ps shows that the container is running and the ports are mapped.
+The docker ps command shows that the container is running and the ports are mapped.
 
 `docker ps -a`{{execute}}
+
+In fact if you just want port info you can run the docker port command:
+
+`docker port noble_nginx`{{execute}}
+
+On the left is the docker host port and on the right is the container port:
+
+**Host Port -> Container Port**
 
 Test nginx is working by connecting to host1:80.
 
