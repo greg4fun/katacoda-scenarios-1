@@ -14,6 +14,8 @@ We will use this container to run some test commands against **resplendent_redis
 
 `get KUBEDOJO`{{execute}}
 
+---
+
 ## Stopping Containers
 
 The **stop** command will attempt to gracefully shutdown the container. 
@@ -69,4 +71,6 @@ As you can see, the container no longer exists.
 # Exercise: Deploying Your First Docker Container
 
 https://www.katacoda.com/courses/docker/deploying-first-container
+
+---
 
