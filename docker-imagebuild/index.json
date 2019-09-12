@@ -17,6 +17,11 @@
       {
       "text": "step4.md"
     }],
+    "assets": {
+        "host01": [
+            {"file": "app.py", "target": "app.py"}
+        ]
+    },
     "intro": {
       "text": "intro.md",
       "credits": ""
