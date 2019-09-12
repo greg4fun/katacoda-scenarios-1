@@ -24,7 +24,7 @@
         "host01": [
             {"file": "app.py", "target": "/app.py", "chmod":755},
             {"file": "requirements.txt", "target": "/requirements.txt", "chmod":644},
-            {"file": "templates", "target": "/templates", "chmod":644},
+            {"file": "templates/index.html", "target": "/templates/index.html"},
             {"file": "Dockerfile", "target": "/Dockerfile", "chmod":644}
         ]
     },
