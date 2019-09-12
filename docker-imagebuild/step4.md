@@ -9,6 +9,9 @@ A high level overview of some of the more frequently used Dockerfile instruction
   "FROM scratch" in a Dockerfile indicates that the special "scratch" docker image should be used. This image is completely empty!
   This is used when creating __base images__ from the ground up. Base images are used as parent images for further image builds.
 
+  Optionally a name can be given to a new build stage by adding AS name to the FROM instruction.
+  The name can be used in subsequent FROM and COPY --from=&lt;name|index&gt; instructions to refer to the image built in this stage.
+
 - COPY
   
 
