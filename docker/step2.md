@@ -16,6 +16,8 @@ The last option, **redis** is the name of the image.
 
 The **hash string** returned is the unique identifying ID for the container you have just started.
 
+---
+
 ### Listing containers
 
 To view a list of running containers we use the ps option.
@@ -48,6 +50,8 @@ The inspect command returns a very detailed description of your container, inclu
 
 Id, State, Image info, Volume info, Resource allocation, Mounts and Network settings.
 
+----
+
 ### Stats
 
 The current performance stats per container can be viewed:
@@ -58,6 +62,8 @@ Exit by pressing _Ctrl+C_ or click the command:
 
 `echo "Sending Ctrl+C"`{{execute interrupt}}
 
+----
+
 ### Executing Commands in a Running Container
 
 In this use case we are have a running container called **resplendent_redis**.
@@ -67,6 +73,20 @@ I want to run the **whoami** command in that container so I can see what userid 
 `docker exec resplendent_redis whoami`{{execute}}
 
 So we can see in the output that we are running as root.
+
+----
+
+### Accessing an interactive shell
+
+It is also possible to start a container with a shell as a command. This will start an interactive container which can be very useful for debugging.
+
+`docker run -it ubuntu bash`{{execute}}
+
+Note that shell types will vary by image, either due to distribution or author choice.
+
+Bourne shell is most common (sh).
+Bourne Again shell is often provided (bash).
+Alpine uses ash.
 
 ### Top - Display Container Processes
 
