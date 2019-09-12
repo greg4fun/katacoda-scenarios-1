@@ -1,85 +1,58 @@
-### Dockerfile
 
-- What is a Dockerfile?
+# The Downside to Using Docker Commit
 
-A Dockerfile defines the contents and configuration of the container image and therefore the behaviour of any containers instantiated from that image. Access to resources like networking interfaces and storage is virtualized inside this environment, which is isolated from the rest of the system, so container ports need to be mapped to the host ports, files need to be copied in, commands need to be run etc. 
- 
-By using the Dockerfile to define the image build it ensures consistent behaviour wherever that build is run.
+In the previous step we saw that we can commit a running container to an image. While this is useful for testing it can:
 
----------
-- If I can use docker commit from a container - why do I need to use a Dockerfile?
+- bring in unwanted artifacts such as cached data
+- it's more difficult to automate
+- it's less consistent
 
-We've seen previously that we can commit a running container to an image. While this is useful for testing it can:
- - bring in unwanted artifacts such as cached data
- - it's more difficult to automate
- - it's less consistent
+-------
 
----------
-- What Dockerfile instructions (commands) are available?
- - FROM [a base image or "scratch"]
-   https://docs.docker.com/samples/library/scratch/
+# The Dockerfile
 
- - COPY
+The Dockerfile is a text file that defines what goes on in the environment inside your container. 
 
- - ADD 
+Access to resources like networking interfaces and disk drives is virtualised inside this environment, which is isolated from the rest of your system, so you need to map ports to the outside world and be specific about what files you want to “copy in” to that environment. 
 
- - RUN 
-   Execute commands inside of your image which get executed at build time and get written into the image as a new layer.
+Docker builds images automatically by reading the instructions from a Dockerfile. 
 
- - CMD 
-   Defines a default command to run when your container starts.
+Refer to the docker reference link for a detailed explanation of each instruction.
 
- - ENTRYPOINT
-   http://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/
+https://docs.docker.com/engine/reference/builder/
 
- - WORKDIR
+# The Build Context
 
- - ONBUILD
-   Executes commands only when the image is used as a base image.
-   See scenario example, Optimising Dockerfile with ONBUILD:
-   https://www.katacoda.com/courses/docker/4  Optimising Dockerfile with OnBuild
-   Felt this scenario needed to list the images and then inspect the node:7-onbuild image to show what's going on.
+The **build context** is the the current working directory and the docker build command will assume the Dockerfile is located here unless you specify an alternative location with the -f option.
 
- - USER
+# Image Layers
 
- - EXPOSE
+As mentioned on the Container Session in the previous Dojo **a container image consists of read-only layers**.
 
-For a full list see: https://docs.docker.com/engine/reference/builder/
+Each of these layers represents a Dockerfile instruction from either a RUN, COPY or ADD. 
 
----------
-- Ok, so how do I use a Docker file to build an image?
-https://katacoda.com/courses/docker/2
+Other instructions create temporary intermediate images, and do not increase the size of the build.
 
-Tutorial Point:
-https://www.katacoda.com/courses/docker/create-nginx-static-web-server
+The layers are stacked and each one is a delta of the changes from the previous layer. 
 
----------
-- What are the best practices I should be following when creating an Image with a Dockerfile?
-https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
+Consider this Dockerfile:
 
----------
-- What is a .dockerignore file and how do I use it?
+```
+FROM ubuntu:18.04
+COPY . /app
+RUN make /app
+CMD python /app/app.py
+```
 
-https://docs.docker.com/engine/reference/builder/#dockerignore-file
+Each instruction creates one layer:
+#
+- FROM creates a layer from the ubuntu:18.04 Docker image.
+- COPY adds files from your Docker client’s current directory.
+- RUN builds your application with make.
+- CMD specifies what command to run within the container.
 
----------
-- What is a multistage build? Why would I want to do one?
+When you run an image and generate a container, you add a new writable layer (the “container layer”) on top of the underlying layers. 
 
-https://docs.docker.com/develop/develop-images/multistage-build
+All changes made to the running container, such as writing new files, modifying existing files and deleting files are written to this thin writable container layer.
 
-Multi-stage builds allow you to drastically reduce the size of your final image, without struggling to reduce the number of intermediate layers and files.
-
-Because an image is built during the final stage of the build process, you can minimize image layers by leveraging build cache.
-
-Follow this exercise:
-https://www.katacoda.com/courses/docker/multi-stage-builds
-
-Work this into a tutorial?
-https://github.com/docker/labs/blob/master/beginner/chapters/webapps.md
-
----------
-Reference: 	https://docs.docker.com/engine/reference/builder/
-Samples:	https://docs.docker.com/samples/
-Best practice: 	https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
-
----------
+NOTE: If you delete a file baked into a layer you will not see the file - but it is still there in a previous layer, adding to the size of the image.
