@@ -88,6 +88,8 @@ Bourne shell is most common (sh).
 Bourne Again shell is often provided (bash).
 Alpine uses ash.
 
+----
+
 ### Top - Display Container Processes
 
 `docker top resplendent_redis`{{execute}}
@@ -96,11 +98,15 @@ Despite the whoami command stating that we are running as root, here the PID is 
 
 This is a security feature that means that should the user somehow execute commands outside the container they will not have root privileges.
 
+----
+
 ### Logs
 
 Let's look at the _logs_
 
 `docker logs resplendent_redis`{{execute}}
+
+----
 
 ### Inspect Formatting
 
@@ -109,3 +115,5 @@ Docker supports formatting of output on the GO template format.
 Let's grab the container's IPAddress, we'll need that for the next section.
 
 `docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' resplendent_redis`{{execute}}
+
+----

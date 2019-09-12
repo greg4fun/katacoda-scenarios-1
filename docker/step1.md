@@ -69,3 +69,5 @@ View our local images again to see any changes:
 For much more detailed info about an image:
 
 `docker inspect redis`{{execute}}
+
+ ---
