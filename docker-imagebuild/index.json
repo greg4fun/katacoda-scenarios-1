@@ -22,7 +22,8 @@
     }],
     "assets": {
         "host01": [
-            {"file": "app.py", "target": "app.py"}
+            {"file": "app.py", "target": "/app.py", "chmod":755}
+            {"file": "requirements.txt", "target": "/requirements.txt", "chmod":644}
         ]
     },
     "intro": {
