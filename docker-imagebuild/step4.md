@@ -2,10 +2,15 @@
 
 A high level overview of some of the more frequently used Dockerfile instructions:
 
-- FROM 
-[a base image or "scratch"] https://docs.docker.com/samples/library/scratch/
+- FROM &lt;image&gt; [AS &lt;name&gt;]
+  Instructs docker to initialise a new build stage based on the image in the FROM instruction.
+  This instruction must always be present on a Dockerfile.
+  
+  "FROM scratch" in a Dockerfile indicates that the special "scratch" docker image should be used. This image is completely empty!
+  This is used when creating __base images__ from the ground up. Base images are used as parent images for further image builds.
 
 - COPY
+  
 
 
 - ADD
