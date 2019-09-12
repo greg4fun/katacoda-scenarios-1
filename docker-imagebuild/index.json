@@ -22,10 +22,10 @@
     }],
     "assets": {
         "host01": [
-            {"file": "app.py", "target": "/app.py", "chmod":755},
-            {"file": "requirements.txt", "target": "/requirements.txt", "chmod":644},
-            {"file": "templates/index.html", "target": "/templates/index.html"},
-            {"file": "Dockerfile", "target": "/Dockerfile", "chmod":644}
+            {"file": "app.py", "target": "/root/app.py", "chmod":755},
+            {"file": "requirements.txt", "target": "/root/requirements.txt", "chmod":644},
+            {"file": "templates/index.html", "target": "/root/templates/index.html"},
+            {"file": "Dockerfile", "target": "/root/Dockerfile", "chmod":644}
         ]
     },
     "intro": {
