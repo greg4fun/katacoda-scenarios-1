@@ -1,108 +1,50 @@
-### Networks 
-https://docs.docker.com/network/
+### Using Docker Volumes
 
-By running "ip a" (short for ip show addr) we can see the current network devices configured on the Docker host:
+Docker docs: https://docs.docker.com/storage/
 
-`ip a`{{execute}}
+Topics covered:
+- What is a Docker Volume?
+- How do I view the default volumes? [docker volume ls]
+- How do I use the default volumes? [docker volume create/inspect/rm]
+- What are the different types of Docker Volumes?
+- How do I view detailed info on a volume [docker inspect]
 
-We can view the available docker networks with the following command:
 
-`docker network list`{{execute}}
+"Docker has two options for containers to store files in the host machine, so that the files are persisted even after the container stops: volumes, and bind mounts. If you’re running Docker on Linux you can also use a tmpfs mount. If you’re running Docker on Windows you can also use a named pipe."
 
-Here we can see the current networks bridge, host and none.
 
-* **Bridge** - The default. Enable containers on the same Docker host to communicate with each other.
-* **Host** -  Removes network isolation between the container and the Docker host and uses the host’s networking directly.
-* **None** - No networking
+Unlike a bind mount, you can create and manage volumes outside the scope of any container.
 
-Others Network Types:
+Create a volume:
 
-* **Overlay** - Connects multiple Docker daemons together. You can also use overlay networks to enable communication between standalone containers on different Docker daemons. This is used by Docker Swarm clients.
-* **Macvlan** - Allows you to assign a MAC address to a container to make it appear as a physical device on the network. The Docker daemon routes traffic to containers by their MAC addresses. Using the macvlan driver is sometimes the best choice when dealing with legacy applications that expect to be directly connected to the physical network. 
+`docker volume create my-vol`{{execute}}
 
-Let's create our first docker network. We'll call it "my-network":
+List volumes:
 
-`docker network create my-network`{{execute}}
+`docker volume ls`{{execute}}
 
-If we now rerun the _network list_ we can see our new network:
+Inspect a volume:
 
-`docker network list`{{execute}}
+`docker volume inspect my-vol`{{execute}}
 
-Notice that by default docker has created it as a _bridge_ network.
+Remove a volume:
 
-By rerunning "ip a" we can see that a new network device have appeared:
+`docker volume rm my-vol`{{execute}}
 
-`ip a`{{execute}}
+`docker run -d --name devtest --mount source=myvol2,target=/app nginx:latest`{{execute}}
 
-This is a bridge device to link the virtual interface from the container to docker0 on the Docker host.
+Using docker inspect devtest to verify that the volume was created and mounted correctly. Look for the Mounts section:
 
-Inspecting the new network:
+`docker inspect devtest -f "{{json .Mounts}}"|jq`{{execute}}
 
-`docker inspect my-network`{{execute}}
 
-By default a container a loopback interface and an interface to the default bridge network.
+This shows that the mount is a volume, it shows the correct source and destination, and that the mount is read-write.
 
-`docker run --rm busybox sh -c "ip a"`{{execute T2}}
+Stop the container and remove the volume. Note volume removal is a separate step.
 
-You can access a specific network when starting a container with the run command and the --net option, here we connect to the my_network we created earlier:
+`docker container stop devtest`{{execute}}
 
-`docker run -d --rm --net=my-network --name=busybox busybox sh -c "sleep 900"`{{execute T2}}
+`docker container rm devtest`{{execute}}
 
-How does this network appear from inside the container? 
-
-`docker exec busybox ip a`{{execute T2}}
-
-Comparing ip output to the Docker Host's network interfaces:
-
-`ip a`{{execute T1}}
-
-* How can I tell if a container is attached to a particular network?
-
-Checking which networks a container is connected to:
-
-`docker inspect busybox -f "{{json .NetworkSettings.Networks}}"`{{execute}}
-
-Checking which containers are connected to a network:
-
-`docker inspect my-network -f "{{json .Containers}}"`{{execute}}
-
-# Network Aliases
-
-`docker network create my-network2`{{execute T1}}
-
-`docker run --rm --name reliable_redis -d -p 3000:3000 --net=my-network2 katacoda/redis-node-docker-example`{{execute}}
-
-`curl docker:3000`{{execute}}
-
-`docker network connect my-network redis`{{execute}}
-
-`docker network list`{{execute}}
-
-To examine the new network in detail:
-
-`docker network inspect my-network`{{execute}}
-
-`docker network create my-network3`{{execute}}
-
-Assign the db alias to the redis instance on network: my-network3
-
-`docker network connect --alias db my-network3 redis`{{execute}}
-
-`docker run --net=my-network3 alpine ping -c1 db`{{execute}}
-
-[Question: How do I identify the network aliases?]
-Answer: docker inspect redis
-
-docker inspect redis -f '{{json .NetworkSettings.Networks}}' | jq
-
-                "my-network3": {
-                    "IPAMConfig": {},
-                    "Links": null,
-                    "Aliases": [
-                        "db",
-                        "3362045b2d80"
-                    ],
-
-### Volumes 
-
-### Data Containers
+`docker volume rm myvol2`{{execute}}
+ 
