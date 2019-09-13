@@ -42,9 +42,15 @@ Assign the alias __jolly_giant__ to the bright_busybox instance on the green-net
 
 `docker network connect --alias jolly_giant green-network bright_busybox`{{execute}}
 
-Now let's run up a container on the green-network to just fire a single ping to the alias __jolly_giant__:
+Now let's ping the alias __jolly_giant__:
 
-`docker run --net green-network alpine ping -c1 jolly_giant`{{execute}}
+First connect able_alpine to the green_network, as it is still languishing on the default bridged network.
+
+`docker network connect green-network able_alpine`{{execute}}
+
+Now execute a ping:
+
+`docker exec able_alpine ping -c1 jolly_giant`{{execute}}
 
 * How do I identify the network aliases?
 
