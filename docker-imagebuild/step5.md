@@ -43,10 +43,25 @@ Read this article for much much more detal on why this is bad: https://brauner.g
 ---
 #A Single Application per container
 
----
-#Use meaningful Tags
+Each container should have only one purpose. Decoupling applications into multiple containers makes it easier to scale horizontally and reuse containers. 
+
+For instance, a web application stack might consist of three separate containers, each with its own unique image, to manage the web application, database, and an in-memory cache in a decoupled manner.
+
+As a rule of thumb consider limiting to one process per container - where practical.
 
 ---
+#Use Fixed Tags rather than latest
+
+A Docker image can have multiple tags, which are variants of the same images. 
+
+The most common tag is latest, which represents the latest version of the image. Image tags are not immutable, and the author of the images can publish the same tag multiple times.
+
+This means that the base image for your Docker file might change between builds. This could result in inconsistent behavior because of changes made to the base image.
+
+Prefer the most specific tag available. If the image has multiple tags, such as :8 and :8.0.1 or even :8.0.1-alpine, prefer the latter, as it is the most specific image reference. 
+
+Keep in mind that when pinning a specific tag, it might be deleted eventually.
+
 #Use the Least privileged user
 
 ---
@@ -61,8 +76,13 @@ Read this article for much much more detal on why this is bad: https://brauner.g
 ---
 #Prefer COPY over ADD
 
+
+
 ---
 #Leverage the build cache
 
+When building an image, Docker steps through the instructions in your Dockerfile, executing each in the order specified. As each instruction is examined, Docker looks for an existing image in its cache that it can reuse, rather than creating a new (duplicate) image.
+
+Once the cache is invalidated, all subsequent Dockerfile commands generate new images and the cache is not used.
 ---
 
