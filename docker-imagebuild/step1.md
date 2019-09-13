@@ -48,9 +48,9 @@ Now stop the container, but do not delete it.
 
 `docker stop noble_nginx`{{execute}}
 
-Commit the container to a new image. The new image is called **bfest_nginx** and has been tagged as version **1.0**
+Commit the container to a new image. The new image is called **kube_dojo_nginx** and has been tagged as version **1.0**
 
-`docker commit noble_nginx bfest_nginx:1.0`{{execute}}
+`docker commit noble_nginx kube_dojo_nginx:1.0`{{execute}}
 
 The new image can be seen in the local registry.
 
@@ -58,7 +58,7 @@ The new image can be seen in the local registry.
 
 Lets start a container using the new image.
 
-`docker run -d --name bfest_nginx -p 80:80 bfest_nginx:1.0`{{execute}}
+`docker run -d --name kube_dojo_nginx -p 80:80 kube_dojo_nginx:1.0`{{execute}}
 
 Test by connecting to host1:80 - remember to refresh the cache: <kbd>Ctrl</kbd>+<kbd>f5</kbd>
 
