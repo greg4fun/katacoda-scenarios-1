@@ -56,7 +56,7 @@ You can pull specific images by specifiying a tag after the image:
 
 `docker pull ubuntu:19.04`{{execute}}
 
-This will pull the ubuntu image associated with tag **18.04** usually this is a version number.
+This will pull the ubuntu image associated with tag **19.04** usually this is a version number.
 
 How did I know this tag existed? This is a bit more awkward. One option is to go to dockerhub:
 
