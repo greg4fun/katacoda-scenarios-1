@@ -16,14 +16,6 @@ The docker ps command shows that the container is running and the ports are mapp
 
 `docker ps -a`{{execute}}
 
-In fact if you just want port info you can run the docker port command:
-
-`docker port noble_nginx`{{execute}}
-
-On the left is the docker host port and on the right is the container port:
-
-**Host Port -> Container Port**
-
 Test nginx is working by connecting to host1:80.
 
 https://[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/
