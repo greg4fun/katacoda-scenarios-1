@@ -36,9 +36,9 @@ Images are stored in Registries. By default Katacoda uses DockerHub however inte
 
 We can search for an image in the registry using the _docker search_ command.
 
-In this example we are searching for images that mention **redis**:
+In this example we are searching for images that mention **ubuntu**:
 
-`docker search redis`{{execute}} 
+`docker search ubuntu`{{execute}} 
 
 We can also view our local images, if we have any:
 
@@ -48,23 +48,23 @@ These local images may be old so let's pull a newer image from the registry.
 
 Let's retrieve the image from the remote registy:
 
-`docker pull redis`{{execute}}
+`docker pull ubuntu`{{execute}}
 
 By default this pulls the _latest_ image version. The default tag is **latest**. 
 
 You can pull specific images by specifiying a tag after the image:
 
-`docker pull redis:4`{{execute}}
+`docker pull ubuntu:18.04`{{execute}}
 
-This will pull the redis image associated with tag **4** usually this is a version number.
+This will pull the ubuntu image associated with tag **18.04** usually this is a version number.
 
 How did I know this tag existed? This is a bit more awkward. One option is to go to dockerhub:
 
-[https://hub.docker.com/_/redis/?tab=tags](https://hub.docker.com/_/redis/?tab=tags)
+[https://hub.docker.com/_/redis/?tab=tags](https://hub.docker.com/_/ubuntu/?tab=tags)
 
 and the other is to use the registry API:
 
-`curl 'https://registry.hub.docker.com/v2/repositories/library/redis/tags/'|jq '."results"[]["name"]'`{{execute}}
+`curl 'https://registry.hub.docker.com/v2/repositories/library/ubuntu/tags/'|jq '."results"[]["name"]'`{{execute}}
 
 View our local images again to see any changes:
 
@@ -72,6 +72,6 @@ View our local images again to see any changes:
 
 For much more detailed info about an image:
 
-`docker inspect redis`{{execute}}
+`docker inspect ubuntu`{{execute}}
 
  ---
