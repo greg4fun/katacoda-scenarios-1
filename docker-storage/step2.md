@@ -33,12 +33,13 @@ Stop the container:
 `docker container rm devtest`{{execute}}
 
 
-# Docker tmpfs mounts
+#### Docker tmpfs mounts
 
 tmpfs mount is temporary, and only persisted in the host memory.
+
 This is useful to temporarily store sensitive files that you don't want to persist in either the host or the container writable layer
 
-#### Disadvantages of tmpfs mount
+Disadvantages of tmpfs mount
 - you can't share tmpfs mounts between containers like in volumes and bind mounts.
 - only available if you're running Docker on Linux
 
