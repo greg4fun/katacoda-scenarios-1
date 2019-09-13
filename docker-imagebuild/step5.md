@@ -87,10 +87,20 @@ For example, if your build contains several layers, you can order them from the 
 ---
 # Use Labels
 
+Image labels provide metadata for the image you’re building. This help users understand how to use the image easily. The most common label is “maintainer”, which specifies the email address and the name of the person maintaining this image. Add metadata with the following LABEL command:
+
+```LABEL maintainer="kube@dojo.com"```
+
+In addition to a maintainer contact, add any metadata that is important to you.
+
 ---
 # Prefer COPY over ADD
 
+Although ADD and COPY are functionally similar, generally speaking, COPY is preferred.
 
+That’s because it’s more transparent than ADD. COPY only supports the basic copying of local files into the container, while ADD has some features (like local-only tar extraction and remote URL support) that are not immediately obvious. 
+
+The best use for ADD is local tar file auto-extraction into the image, as in ADD rootfs.tar.xz /.
 
 ---
 # Leverage the build cache
