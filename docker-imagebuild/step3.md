@@ -114,7 +114,23 @@ A high level overview of some of the more frequently used Dockerfile instruction
 ----
 
 # ONBUILD 
-  Executes commands only when the image is used as a base image.
+  ```ONBUILD [INSTRUCTION]```
+
+  The ONBUILD instruction adds to the image a trigger instruction to be executed at a later time, when the image is used as the base for another build. 
+
+  The trigger will be executed in the context of the downstream build, as if it had been inserted immediately after the FROM instruction in the downstream Dockerfile.
+
+  Almost any build instruction can be registered as a trigger (you can't use ONBUILD ONBUILD, FROM or MAINTAINER).
+
+  This is useful if you are building an image which will be used as a base to build other images, for example an application build environment.
+
+  Think of the ONBUILD command as an instruction the parent Dockerfile gives to the child Dockerfile.
+
+  A Docker build executes ONBUILD commands before any command in a child Dockerfile.
+
+  Images built with ONBUILD should get a separate tag, for example: ruby:1.9-onbuild or ruby:2.0-onbuild.
+
+  Be careful when putting ADD or COPY in ONBUILD as the “onbuild” image fails catastrophically if the new build’s context is missing the resource being added. 
 
 ----
 
