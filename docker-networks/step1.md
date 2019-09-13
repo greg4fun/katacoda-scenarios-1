@@ -49,7 +49,7 @@ Currently there are no containers running so we only see the default network dev
 
 Starting a new container:
 
-`docker run -d --rm --name uber_ubuntu ubuntu sh -c "sleep 1500"`{{execute}}
+`docker run -d --rm --name able_alpine alpine sh -c "sleep 1500"`{{execute}}
 
 And rerunning ip -a:
 
