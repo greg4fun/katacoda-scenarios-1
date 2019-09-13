@@ -22,6 +22,8 @@ If you’re running Docker on Linux you can also use a tmpfs mount. If you’re 
 
 Unlike a bind mount, you can create and manage volumes outside the scope of any container.
 
+# Docker Volumes
+
 Create a volume:
 
 `docker volume create my-vol`{{execute}}

@@ -1,3 +1,5 @@
+# Docker Bind Mounts
+
 Bind mounts have been around since the early days of Docker. 
 
 Bind mounts have limited functionality compared to volumes.
