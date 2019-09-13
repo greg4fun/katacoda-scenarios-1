@@ -114,7 +114,7 @@ NOTE: This is NOT a default "out of the box" feature for Docker. I suspect that 
 
 https://www.katacoda.com/courses/docker/rootless
 
-Assume that your systm is not rootless and avoid using root in the container.
+Assume that your system is not rootless and avoid using root in the container.
 
 ----
 
