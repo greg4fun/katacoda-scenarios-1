@@ -16,7 +16,7 @@ If you are developing new Docker applications, consider using named volumes inst
 
 With the mount option we are required to create the mount point upfront
 
-`mkdir target`
+`mkdir target`{{execute}}
 
 Start a container with a bind mount
 
