@@ -18,11 +18,21 @@ This can increase the time to build the image, time to pull and push it, and the
 ---
 #Exclude with .dockerignore
 
+To exclude files not relevant to the build (without restructuring your source repository) use a .dockerignore file. 
+
+This file supports exclusion patterns similar to .gitignore files. 
+
 ---
 #Do not install unnecessary packages
 
+To reduce complexity, dependencies, file sizes, and build times, avoid installing extra or unnecessary packages just because they might be “nice to have.” 
+
+For example, you don’t need to include a text editor in a database image.
+
 ---
 #Do not use --privileged containers
+
+Read this article for much much more detal on why this is bad: https://brauner.github.io/2019/02/12/privileged-containers.html
 
 ---
 #A Single Application per container
@@ -46,3 +56,7 @@ This can increase the time to build the image, time to pull and push it, and the
 #Prefer COPY over ADD
 
 ---
+#Leverage the build cache
+
+---
+
