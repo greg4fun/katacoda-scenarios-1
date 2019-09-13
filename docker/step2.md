@@ -52,6 +52,18 @@ Id, State, Image info, Volume info, Resource allocation, Mounts and Network sett
 
 ----
 
+# Port info
+
+If you just want port info you can run the docker port command:
+
+docker port resplendent_redis
+
+On the left is the docker host port and on the right is the container port:
+
+Host Port -> Container Port
+
+----
+
 ### Stats
 
 The current performance stats per container can be viewed:
@@ -97,6 +109,12 @@ Alpine uses ash.
 Despite the whoami command stating that we are running as root, here the PID is owned by user 999.
 
 This is a security feature that means that should the user somehow execute commands outside the container they will not have root privileges.
+
+NOTE: This is NOT a default "out of the box" feature for Docker. I suspect that the Katacoda team are running their docker hosts in a "rootless" config.
+
+https://www.katacoda.com/courses/docker/rootless
+
+Assume that your systm is not rootless and avoid using root in the container.
 
 ----
 
