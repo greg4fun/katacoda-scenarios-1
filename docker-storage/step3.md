@@ -22,3 +22,8 @@ In general, you should use volumes where possible. Bind mounts are appropriate f
 * If you use Docker for development this way, your production Dockerfile would copy the production-ready artifacts directly into the image, rather than relying on a bind mount.
 
 * When the file or directory structure of the Docker host is guaranteed to be consistent with the bind mounts the containers require.
+----
+
+# Exercise: Persisting Data Using Volumes 
+
+https://www.katacoda.com/courses/docker/persisting-data-using-volumes

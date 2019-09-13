@@ -55,7 +55,3 @@ Stop the container and remove the volume. Note volume removal is a separate step
 `docker volume rm myvol2`{{execute}}
  
 ----
-
-# Exercise: Persisting Data Using Volumes 
-
-https://www.katacoda.com/courses/docker/persisting-data-using-volumes
