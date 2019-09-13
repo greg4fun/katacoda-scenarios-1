@@ -1,6 +1,6 @@
 # Best Practices
 
-#Build ephemeral containers
+# Build ephemeral containers
 
 It should be possible for the container to be stopped and destroyed, then rebuilt and replaced with the minimum set-up and configuration.
 
@@ -16,21 +16,21 @@ This can increase the time to build the image, time to pull and push it, and the
 ```Sending build context to Docker daemon  187.8MB```
 
 ---
-#Exclude with .dockerignore
+# Exclude with .dockerignore
 
 To exclude files not relevant to the build (without restructuring your source repository) use a .dockerignore file. 
 
 This file supports exclusion patterns similar to .gitignore files. 
 
 ---
-#Do not install unnecessary packages
+# Do not install unnecessary packages
 
 To reduce complexity, dependencies, file sizes, and build times, avoid installing extra or unnecessary packages just because they might be “nice to have.” 
 
 For example, you don’t need to include a text editor in a database image.
 
 ---
-#Do not use --privileged containers
+# Do not use --privileged containers
 
 Privileged containers are defined as any container where the container uid 0 is mapped to the host’s uid 0.
 
@@ -41,7 +41,7 @@ It is almost like granting root privileges on the underlying docker host to the 
 Read this article for much much more detal on why this is bad: https://brauner.github.io/2019/02/12/privileged-containers.html
 
 ---
-#A Single Application per container
+# A Single Application per container
 
 Each container should have only one purpose. Decoupling applications into multiple containers makes it easier to scale horizontally and reuse containers. 
 
@@ -50,7 +50,7 @@ For instance, a web application stack might consist of three separate containers
 As a rule of thumb consider limiting to one process per container - where practical.
 
 ---
-#Use Fixed Tags rather than latest
+# Use Fixed Tags rather than latest
 
 A Docker image can have multiple tags, which are variants of the same images. 
 
@@ -62,24 +62,38 @@ Prefer the most specific tag available. If the image has multiple tags, such as 
 
 Keep in mind that when pinning a specific tag, it might be deleted eventually.
 
-#Use the Least privileged user
+# Use the Least privileged user
 
 ---
-#Don’t leak sensitive information to Docker images
+# Don’t leak sensitive information to Docker images
+
+Ensure that you do not accidentally copy files with secrets into the image, even if they are deleted later they will remain in that image and all child images built from this image. They can be retrieved and accessed!
 
 ---
-#Use Multi-stage builds
+# Use Multi-stage builds
+
+Multi-stage builds allow you to drastically reduce the size of your final image, without struggling to reduce the number of intermediate layers and files.
+
+Because an image is built during the final stage of the build process, you can minimize image layers by leveraging build cache.
+
+For example, if your build contains several layers, you can order them from the less frequently changed (to ensure the build cache is reusable) to the more frequently changed:
+
+- Install tools you need to build your application
+
+- Install or update library dependencies
+
+- Generate your application
 
 ---
-#Use Labels
+# Use Labels
 
 ---
-#Prefer COPY over ADD
+# Prefer COPY over ADD
 
 
 
 ---
-#Leverage the build cache
+# Leverage the build cache
 
 When building an image, Docker steps through the instructions in your Dockerfile, executing each in the order specified. As each instruction is examined, Docker looks for an existing image in its cache that it can reuse, rather than creating a new (duplicate) image.
 
