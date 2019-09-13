@@ -9,7 +9,7 @@ Topics covered:
 - What are the different types of Docker Volumes?
 - How do I view detailed info on a volume [docker inspect]
 ----
-
+![Volumes](./types-of-mounts-bind.png?raw=true "Title")
 #### TODO: add in the pictures 
 
 
