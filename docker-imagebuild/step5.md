@@ -32,6 +32,12 @@ For example, you don’t need to include a text editor in a database image.
 ---
 #Do not use --privileged containers
 
+Privileged containers are defined as any container where the container uid 0 is mapped to the host’s uid 0.
+
+In such containers, protection of the host and prevention of escape is entirely done through Mandatory Access Control (apparmor, selinux), seccomp filters, dropping of capabilities and namespaces.
+
+It is almost like granting root privileges on the underlying docker host to the container.
+
 Read this article for much much more detal on why this is bad: https://brauner.github.io/2019/02/12/privileged-containers.html
 
 ---
