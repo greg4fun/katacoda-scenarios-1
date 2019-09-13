@@ -10,13 +10,12 @@ Topics covered:
 - How do I view detailed info on a volume [docker inspect]
 ----
 ![Volumes](./types-of-mounts-bind.png?raw=true "Title")
-#### TODO: add in the pictures 
 
+Docker has three options for containers to store files in the host machine so that the files are persisted even after the container stops: 
 
-Docker has two options for containers to store files in the host machine so that the files are persisted even after the container stops: 
-
-- volumes 
-- bind mounts. 
+- volumes
+- bind mounts
+- tmpfs
 
 If you’re running Docker on Linux you can also use a tmpfs mount. If you’re running Docker on Windows you can also use a named pipe.
 
@@ -27,6 +26,9 @@ Unlike a bind mount, you can create and manage volumes outside the scope of any 
 Create a volume:
 
 `docker volume create my-vol`{{execute}}
+
+In above example we are using "volume" option where a new directory is created within Docker’s storage directory on the host machine, and Docker manages that directory’s contents (you can see where by inspecting Mountpoint in further step).
+
 
 List volumes:
 
