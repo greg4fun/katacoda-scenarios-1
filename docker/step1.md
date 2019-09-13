@@ -54,7 +54,7 @@ By default this pulls the _latest_ image version. The default tag is **latest**.
 
 You can pull specific images by specifiying a tag after the image:
 
-`docker pull ubuntu:18.04`{{execute}}
+`docker pull ubuntu:19.04`{{execute}}
 
 This will pull the ubuntu image associated with tag **18.04** usually this is a version number.
 
