@@ -58,7 +58,9 @@ A high level overview of some of the more frequently used Dockerfile instruction
 
   Although ADD and COPY are functionally similar, generally speaking, COPY is preferred.
 
-- CMD Defines a default command to run when your container starts.
+----
+
+# CMD Defines a default command to run when your container starts.
 
   The CMD instruction should be used to run the software contained by your image, along with any arguments. 
   CMD should almost always be used in the form of CMD ["executable", "param1", "param2"…]
