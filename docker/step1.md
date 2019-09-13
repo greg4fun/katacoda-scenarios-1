@@ -60,7 +60,7 @@ This will pull the ubuntu image associated with tag **19.04** usually this is a 
 
 How did I know this tag existed? This is a bit more awkward. One option is to go to dockerhub:
 
-[https://hub.docker.com/_/redis/?tab=tags](https://hub.docker.com/_/ubuntu/?tab=tags)
+[https://hub.docker.com/_/ubuntu/?tab=tags](https://hub.docker.com/_/ubuntu/?tab=tags)
 
 and the other is to use the registry API:
 
