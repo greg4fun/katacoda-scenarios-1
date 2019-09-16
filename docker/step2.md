@@ -56,7 +56,7 @@ Id, State, Image info, Volume info, Resource allocation, Mounts and Network sett
 
 If you just want port info you can run the docker port command:
 
-docker port resplendent_redis
+`docker port resplendent_redis`{{execute}}
 
 On the left is the docker host port and on the right is the container port:
 
