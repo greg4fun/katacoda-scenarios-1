@@ -5,7 +5,7 @@
 Use all utilities which you learnt during dojo  
 Tip: build container with mounted volume and exposed port 8000
 
-`docker run greg4fun/django:2.2.5`{{execute}}
+`docker run -p 80:8000 greg4fun/django:2.2.5`{{execute}}
 
 
 
