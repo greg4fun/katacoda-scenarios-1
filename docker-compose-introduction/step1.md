@@ -5,7 +5,9 @@
 Use all utilities which you learnt during dojo  
 Tip: build container with mounted volume and exposed port 8000
 
-`docker run --rm --name app -p 80:8000 greg4fun/django:katacoda`{{execute}}
+`docker run --name app -p 80:8000 greg4fun/django:katacoda`{{execute}}
+remove container
+`docker rm app`{{execute}}
 
 Access web and check stdout in our console
 
