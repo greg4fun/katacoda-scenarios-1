@@ -5,7 +5,7 @@
 Use all utilities which you learnt during dojo  
 Tip: build container with mounted volume and exposed port 8000
 
-`docker run --name app -p 80:8000 greg4fun/django:katacoda`{{execute}}
+`docker run --rm --name app -p 80:8000 greg4fun/django:katacoda`{{execute}}
 
 Access web and check stdout in our console
 
@@ -18,12 +18,13 @@ You can now check /admin/ on our app. By default django createproject uses sqlit
 database. 
 
 (optional create database models)
+
 `docker exec app python3 manage.py migrate`{{execute}}
 
 Change databse to mysql
 
 
-`docker exec app echo "DATABASES = {'default': {'ENGINE': 'django.db.backends.mysql','NAME': "homepi", 'USER': 'homepi', 'PASSWORD': 'homepi', 'HOST': 'database', 'PORT': '3306', "OPTIONS": {"charset": "utf8mb4"}, } "`{{execute}}
+`docker exec app echo "DATABASES = {'default': {'ENGINE': 'django.db.backends.mysql','NAME': "db", 'USER': 'django', 'PASSWORD': 'django', 'HOST': 'database', 'PORT': '3306', "OPTIONS": {"charset": "utf8mb4"}, } >> test/settings.py  "`{{execute}}
 
 
 Lets create database container (remembering about volumes as we want to keep data created in our database)
