@@ -6,14 +6,18 @@ Use all utilities which you learnt during dojo
 Tip: build container with mounted volume and exposed port 8000
 
 `docker run --name app -p 80:8000 greg4fun/django:katacoda`{{execute}}
-remove container
-`docker rm app`{{execute}}
+
+
 
 Access web and check stdout in our console
 
+remove container
+
+`docker rm app`{{execute}}
+
 Run it in detached mode:
 
-`docker run -d --rm --name app -p 80:8000 greg4fun/django:katacoda`{{execute}}
+`docker run -d --rm --name app -v ./settings.py:/opt/django/test/test/settings.py -p 80:8000 greg4fun/django:katacoda`{{execute}}
  
 
 You can now check /admin/ on our app. By default django createproject uses sqlite database but we want dedicated
