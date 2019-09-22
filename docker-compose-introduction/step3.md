@@ -13,6 +13,13 @@ We have multiple ways of connecting 2 containers together and they are:
 # 1. Docker networks
 `docker network create backend`{{execute}}
 
+
+`docker network connect backend app`{{execute}}
+
+`docker network connect backend database`{{execute}}
+
+If we havent created containers before:
+
 `docker run -d --network backend --rm --name app -p 80:8000 greg4fun/django:katacoda`{{execute}}
 
 `docker run --network backend -v $(PWD):/var/lib/mysql --name database -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_USER=django -e MYSQL_PASSWORD=django -d mysql:5.7`{{execute}}
