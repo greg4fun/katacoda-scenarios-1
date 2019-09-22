@@ -1,5 +1,8 @@
-#Before we begin:
-##quick docker recap
+### Kubernetes Community Dojo for Docker Presentation
+---  
+# Before we begin:
+
+## quick docker recap
 
 Use all utilities which you learnt during dojo  
 Tip: build container with mounted volume and exposed port 8000
