@@ -9,7 +9,7 @@ How would we do all previous containers creation  in docker compose ?
 
 Example docker compose 
 
-
+`
 version: '3'
 services:
 
@@ -48,7 +48,7 @@ volumes:
   mysql-data-dir:
 networks:
   backend
-
+`
 # couple points from example above
 
 #volumes
