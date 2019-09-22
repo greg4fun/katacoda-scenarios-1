@@ -28,17 +28,16 @@ database. But for purpose of this training my image uses mysql.
 
 `docker exec app python3 manage.py migrate`{{execute}}
 
-Change databse to mysql
-
-
-`docker exec app echo "DATABASES = {'default': {'ENGINE': 'django.db.backends.mysql','NAME': "db", 'USER': 'django', 'PASSWORD': 'django', 'HOST': 'database', 'PORT': '3306', "OPTIONS": {"charset": "utf8mb4"}, } >> test/settings.py  "`{{execute}}
-
-
 Lets create database container (remembering about volumes as we want to keep data created in our database)
 
-`docker run --name db -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_USER=django -e MYSQL_PASSWORD=django -d mysql:5.7`{{execute}}
+`docker run -v $(PWD):/var/lib/mysql --name db -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_USER=django -e MYSQL_PASSWORD=django -d mysql:5.7`{{execute}}
 
+
+We now have 2 containers running:
+1. The main web app django container
+2. The database mysql contaner 
+
+
+We need our application to be able to connect to the databse.
 
 ---
-
-### Lets try in docker-compose now
