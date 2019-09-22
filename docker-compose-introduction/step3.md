@@ -19,16 +19,36 @@ We have multiple ways of connecting 2 containers together and they are:
 `docker network connect backend database`{{execute}}
 
 
-If we havent created containers before:
+
+`docker restart app`{{execute}}
+
+`docker exec app python3 manage.py migrate`{{execute}}
+
+
+We actually end up If we havent created containers before:
 
 `docker run -d --network backend --rm --name app -p 80:8000 greg4fun/django:katacoda`
 
 `docker run --network backend -v $(PWD):/var/lib/mysql --name database -e MYSQL_DATABASE=db -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_USER=django -e MYSQL_PASSWORD=django -d mysql:5.7`
 
 
+3. Links would be something like --links db:database but as its depracated wont discuss it here.
+
+
+# Summarizing : 
+
+we and up with 3 long lines of docker instructions
+
+`docker network create backend`{{execute}}
+
+`docker run -d --network backend --rm --name app -p 80:8000 greg4fun/django:katacoda`
+
+`docker run --network backend -v $(PWD):/var/lib/mysql --name database -e MYSQL_DATABASE=db -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_USER=django -e MYSQL_PASSWORD=django -d mysql:5.7`
+
 `docker restart app`{{execute}}
 
-`docker exec app python3 manage.py migrate`{{execute}}
+
+
 ##
 
 
