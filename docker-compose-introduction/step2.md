@@ -2,14 +2,13 @@
 ---  
 # Before we begin:
 
-## quick docker recap
+## Quick docker recap
 
-Use all utilities which you learnt during dojo  
-Tip: build container with mounted volume and exposed port 8000
+Using all utilities which you have learnt during previous docker dojo run 2 containers django + database (mysql) and
+connect one to another.
 
+For this training purpose I have created django Image in dockerhub:
 `docker run --name app -p 80:8000 greg4fun/django:katacoda`{{execute}}
-
-
 
 Access web and check stdout in our console
 
@@ -19,11 +18,11 @@ remove container
 
 Run it in detached mode:
 
-`docker run -d --rm --name app -v ./settings.py:/opt/django/test/test/settings.py -p 80:8000 greg4fun/django:katacoda`{{execute}}
+`docker run -d --rm --name app -p 80:8000 greg4fun/django:katacoda`{{execute}}
  
 
 You can now check /admin/ on our app. By default django createproject uses sqlite database but we want dedicated
-database. 
+database. But for purpose of this training my image uses mysql.
 
 (optional create database models)
 
