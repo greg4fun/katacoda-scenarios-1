@@ -1,6 +1,6 @@
-### Kubernetes Community Dojo for Docker Presentation
+### kubernetes community dojo for docker presentation
 ---  
-# Before we begin:
+# before we begin:
 
 ## Quick docker recap
 
