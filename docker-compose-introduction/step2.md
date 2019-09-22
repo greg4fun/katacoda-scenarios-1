@@ -30,7 +30,7 @@ database. But for purpose of this training my image uses mysql.
 
 Lets create database container (remembering about volumes as we want to keep data created in our database)
 
-`docker run -v $(PWD):/var/lib/mysql --name db -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_USER=django -e MYSQL_PASSWORD=django -d mysql:5.7`{{execute}}
+`docker run -v $(PWD):/var/lib/mysql --name database -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_USER=django -e MYSQL_PASSWORD=django -d mysql:5.7`{{execute}}
 
 
 We now have 2 containers running:
