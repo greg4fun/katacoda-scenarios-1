@@ -44,7 +44,7 @@ volumes:
     driver: local
 
 networks:
-  backend
+  - backend
 
 EOF
 ```{{execute}}
