@@ -41,6 +41,7 @@ services:
 
 volumes:
   mysql-data-dir:
+    driver: local
 
 networks:
   backend
@@ -49,7 +50,8 @@ EOF
 ```{{execute}}
 
 Execute compose:
-`docker-compose up`{exec}
+
+`docker-compose up`{{execute}}
 
 
 ##
