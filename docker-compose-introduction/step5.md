@@ -1,8 +1,10 @@
 ### kubernetes community dojo for docker presentation
 ---  
-# Starting docker-compose 
 
-# Lets generate docker-compsoe file from previous step:
+# Running docker-compose:
+
+Lets put docker-compose example from previous step into a file:
+
 ```
 cat >> docker-compose.yml << EOF
 version: '3'
@@ -36,15 +38,18 @@ services:
         - "127.0.0.1:80:8000"
     stdin_open: true
     tty: true
+
 volumes:
   mysql-data-dir:
+
 networks:
   backend
 
 EOF
 ```{{execute}}
 
-
+Execute compose:
+`docker-compose up`{exec}
 
 
 ##
