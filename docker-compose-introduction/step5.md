@@ -4,6 +4,7 @@
 
 # Lets generate docker-compsoe file from previous step:
 ```
+cat >> docker-compose.yml << EOF
 version: '3'
 services:
   db:
@@ -39,6 +40,8 @@ volumes:
   mysql-data-dir:
 networks:
   backend
+
+EOF
 ```{{execute}}
 
 
