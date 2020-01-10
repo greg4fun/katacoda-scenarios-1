@@ -3,7 +3,7 @@
 # Starting docker-compose 
 
 # Lets generate docker-compsoe file from previous step:
-`
+```
 version: '3'
 services:
   db:
@@ -39,7 +39,7 @@ volumes:
   mysql-data-dir:
 networks:
   backend
-`{{execute}}
+```{{execute}}
 
 
 
