@@ -34,13 +34,14 @@ services:
     environment:
       WORKDIR: '/opt/django/test'
     volumes:
-      - "./:/opt/django/test" 
+      - "./:/opt/app_source_code" 
     networks:
       - backend
     links:
       - "db:database"
     ports:
-        - "127.0.0.1:80:8000"
+        - "127.0.0.1:8000:8000"
+        - "80:8000"
     stdin_open: true
     tty: true
 
