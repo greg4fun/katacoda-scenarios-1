@@ -54,6 +54,20 @@ Execute compose:
 
 `docker-compose up`{{execute}}
 
+Check logs if website is running
+
+Website shouldnt be available on port 8000 from different address than 127.0.0.1
+
+check it with
+
+https://[[HOST_SUBDOMAIN]]-8000-[[KATACODA_HOST]].environments.katacoda.com/
+
+`curl 127.0.0.1`{{execute}}
+
+It should be available on default port 0.0.0.0 from directive 80:8000 which is same as 0.0.0.0:80:8000
+
+https://[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/
+
 
 ##
 
