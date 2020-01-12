@@ -1,45 +1,74 @@
 ### kubernetes community dojo for docker presentation
 ---  
-# Connecting 2 docker containers 
+# docker compose
 
-We have multiple ways of connecting 2 containers together and they are:
-1. Docker networks - we can create network and assign those 2 containers to it - then mysql
-   container will just have 3306 (default) port exposed.
-2. Expose ports to the Host which containers are run on with for instance -p3306:3306 (assuming no mysqlinstance is
-   running on host
-3. Links - linking 2 containers fastest way but being depracated. Links would be something like --links db:database but as its depracated wont discuss it here.
+Docker compose looks for docker-compose.yml file inside current directory and then it can build or run the full stack
+defined in the file.
 
+How would we do all previous containers creation  in docker compose ?
 
-# Connecting containers with docker networks
-`docker network create backend`{{execute}}
+Example docker compose 
 
+```bash
+version: '3'
+services:
 
-`docker network connect backend app`{{execute}}
+  db:
+    image: mysql:5.7
+    restart: always
+    volumes:
+      - 'mysql-data-dir/:/var/lib/mysql'
+    expose:
+      - '3306'
+    networks:
+      - backend
+    environment:
+      MYSQL_DATABASE: 'db'
+      MYSQL_ROOT_PASSWORD: 'secret'
+      MYSQL_USER: 'django'
+      MYSQL_PASSWORD: 'django'
+    command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
 
-`docker network connect backend database`{{execute}}
+  app:
+    image: greg4fun/django:katacoda
+    environment:
+      WORKDIR: '/opt/django/test'
+    volumes:
+      - "./:/opt/django/test" 
+    networks:
+      - backend
+    links:
+      - "db:database"
+    ports:
+        - "127.0.0.1:80:8000"
+    stdin_open: true
+    tty: true
 
+volumes:
+  mysql-data-dir:
+networks:
+  backend
 
+```
+# couple points from example above
 
-`docker restart app`{{execute}}
+#volumes
+mount in docker compose:
+if we wont start with / or ./ it will look or create volume by name 
+the advantage of mounting source code with ./ is when developer wants to edit code on his
+host computer and see changes in container - -share code dir with host) 
 
-`docker exec app python3 manage.py migrate`{{execute}}
+same with networks - if network name specified doesn't exist it will create one
 
+#ports
+-ports vs expose 
 
-# Summarizing : 
+ports exposes port to running host (left side is host ) expose port 8000 as 80 on host on interface with ip 127.0.0.0 we
+can use 0.0.0.0 so web appluication will be accesible from the internet on by host ip
 
-we and up with 3 long lines of docker instructions
+"127.0.0.1:80:8000"
 
-`docker network create backend`
-
-`docker run -d --network backend --rm --name app -p 80:8000 greg4fun/django:katacoda`
-
-`docker run --network backend -v $(PWD):/var/lib/mysql --name database -e MYSQL_DATABASE=db -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_USER=django -e MYSQL_PASSWORD=django -d mysql:5.7`
-
-`docker restart app`
-
-
-
-##
-
+expose is used to open port just on container but wont be published on host machine just visible to linked services or
+hosts withing the same docker network.
 
 
