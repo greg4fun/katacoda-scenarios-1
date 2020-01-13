@@ -31,6 +31,7 @@ Check database connectivity (application will try to create initial tables insid
 `docker exec app python3 manage.py migrate`{{execute}}
 
 
+
 # Summarizing : 
 
 we end up with 3 long lines of docker instructions

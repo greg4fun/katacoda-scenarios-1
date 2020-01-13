@@ -39,6 +39,7 @@ services:
         - "80:8000"
     stdin_open: true
     tty: true
+    command: ['python3', 'manage.py', 'runserver']
 
 volumes:
   mysql-data-dir:
@@ -52,12 +53,23 @@ EOF
 
 Execute compose:
 
-`docker-compose up -d`{{execute}}
+`docker-compose up`{{execute}}
 
-Check logs if website is running it should failed as website wasn't ready we can fix it with wait-for-it script
+Check logs if website is running 
+Just on the first run it should fail as it takes a while to set up directory structure for database
+try ctrl+c and run compose up again - it will work this time 
 
+This can be easily fixed with wait-for-it script
 
-Website shouldnt be available on port 8000 from different address than 127.0.0.1
+`wget https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh`{{execute}}
+
+`chmod a+x wait-for-it.sh`{[execute]}
+
+ sed -i "s/command:\ .*/command:\ ['/wait-for-it.sh','db:3306','--','python3','manage.py','runserver']/g" docker-compose.yml
+ sed -i "s/.\/:\/opt\/app_source_code/.\/wait-for-it.sh:\/wait-for-it.sh/g" docker-compose.yml
+ 
+ Website shouldnt be available on port 8000 from different address than 127.0.0.1
+
 
 check it with
 
