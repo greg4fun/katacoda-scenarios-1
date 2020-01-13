@@ -12,7 +12,6 @@ Example docker compose
 ```bash
 version: '3'
 services:
-
   db:
     image: mysql:5.7
     restart: always
@@ -28,13 +27,12 @@ services:
       MYSQL_USER: 'django'
       MYSQL_PASSWORD: 'django'
     command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
-
   app:
     image: greg4fun/django:katacoda
     environment:
       WORKDIR: '/opt/django/test'
     volumes:
-      - "./:/opt/app_source_code" 
+      - "./:/opt/app_source_code"
     networks:
       - backend
     links:
@@ -44,11 +42,14 @@ services:
         - "80:8000"
     stdin_open: true
     tty: true
+    command: ['python3', 'manage.py', 'runserver','0.0.0.0:8000']
 
 volumes:
   mysql-data-dir:
+    driver: local
+
 networks:
-  backend
+  backend:
 
 ```
 # couple points from example above
