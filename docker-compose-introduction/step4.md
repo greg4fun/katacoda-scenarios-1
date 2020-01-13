@@ -52,7 +52,7 @@ EOF
 
 Execute compose:
 
-`docker-compose up`{{execute}}
+`docker-compose up -d`{{execute}}
 
 Check logs if website is running it should failed as website wasn't ready we can fix it with wait-for-it script
 

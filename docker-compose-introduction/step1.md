@@ -1,8 +1,6 @@
-### kubernetes community dojo for docker presentation
----  
-# before we begin:
-
 ## Quick docker recap
+---
+## Instantiating containers
 
 Using all utilities which you have learnt during previous docker dojo run 2 containers django + database (mysql) and
 connect one to another.
@@ -14,13 +12,6 @@ Lets create database container (remembering about volumes as we want to keep dat
 
 # Web
 For this training purpose I have created django Image in dockerhub:
-`docker run --name app1 -p 80:8000 greg4fun/django:2.2.5`{{execute}}
-
-Access web and check stdout in our console (It will by default say you need to add host to allowed hosts but will actually display django server error message)
-
-stop ctrl+c and remove the container
-
-`docker rm app`{{execute}}
 
 Run it in detached mode (note this django image will use mysql by default):
 
@@ -32,6 +23,10 @@ To check database connection run migrate - command responsible for creating/upda
 `docker exec app python3 manage.py migrate`{{execute}}
 
 the command will fail as there is no connection to the database the containers are not even withing same network.
+
+Check running containers:
+
+`docker ps`{{execute}}
 
 We now have 2 containers running:
 1. The database mysql contaner 
