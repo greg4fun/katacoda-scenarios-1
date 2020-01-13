@@ -59,19 +59,24 @@ Check logs if website is running
 Just on the first run it should fail as it takes a while to set up directory structure for database
 try ctrl+c and run compose up again - it will work this time 
 
+First clear whole environment
+`docker system prune -a`{{execute}}
+
 This can be easily fixed with wait-for-it script
 
 `wget https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh`{{execute}}
 
-`chmod a+x wait-for-it.sh`{[execute]}
+`chmod a+x wait-for-it.sh`{{execute}}
+
+Replace command to have wait-for-it
 
 `sed -i "s/command:\ \['python3'.*\]/command:\ ['\/wait-for-it.sh','db:3306','--','python3','manage.py','runserver']/g" docker-compose.yml`{{execute}}
+Mount wait-for-it ti the container  
 `sed -i "s/.\/:\/opt\/app_source_code/.\/wait-for-it.sh:\/wait-for-it.sh/g" docker-compose.yml`{{execute}}
  
 `docker-compose up`{{execute}}
 
  Website shouldnt be available on port 8000 from different address than 127.0.0.1
-
 
 check it with
 
