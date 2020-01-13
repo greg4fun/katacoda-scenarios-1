@@ -1,43 +1,73 @@
 ### kubernetes community dojo for docker presentation
 ---  
-# Connecting 2 docker containers 
 
-We have multiple ways of connecting 2 containers together and they are:
-1. Docker networks - we can create network and assign those 2 containers to it - then mysql
-   container will just have 3306 (default) port exposed.
-2. Expose ports to the Host which containers are run on with for instance -p3306:3306 (assuming no mysqlinstance is
-   running on host
-3. Links - linking 2 containers fastest way but being depracated. Links would be something like --links db:database but as its depracated wont discuss it here.
+# Running docker-compose:
+
+Lets put docker-compose example from previous step into a file:
+
+```
+cat >> docker-compose.yml << EOF
+version: '3'
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    volumes:
+      - 'mysql-data-dir/:/var/lib/mysql'
+    expose:
+      - '3306'
+    networks:
+      - backend
+    environment:
+      MYSQL_DATABASE: 'db'
+      MYSQL_ROOT_PASSWORD: 'secret'
+      MYSQL_USER: 'django'
+      MYSQL_PASSWORD: 'django'
+    command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+  app:
+    image: greg4fun/django:katacoda
+    environment:
+      WORKDIR: '/opt/django/test'
+    volumes:
+      - "./:/opt/app_source_code"
+    networks:
+      - backend
+    links:
+      - "db:database"
+    ports:
+        - "127.0.0.1:8000:8000"
+        - "80:8000"
+    stdin_open: true
+    tty: true
+
+volumes:
+  mysql-data-dir:
+    driver: local
+
+networks:
+  backend:
+
+EOF
+```{{execute}}
+
+Execute compose:
+
+`docker-compose up -d`{{execute}}
+
+Check logs if website is running it should failed as website wasn't ready we can fix it with wait-for-it script
 
 
-# Connecting containers with docker networks
-`docker network create backend`{{execute}}
+Website shouldnt be available on port 8000 from different address than 127.0.0.1
 
+check it with
 
-`docker network connect backend app`{{execute}}
+https://[[HOST_SUBDOMAIN]]-8000-[[KATACODA_HOST]].environments.katacoda.com/
 
-`docker network connect backend database`{{execute}}
+`curl 127.0.0.1`{{execute}}
 
+It should be available on default port 0.0.0.0 from directive 80:8000 which is same as 0.0.0.0:80:8000
 
-
-`docker restart app`{{execute}}
-
-`docker exec app python3 manage.py migrate`{{execute}}
-
-
-# Summarizing : 
-
-we and up with 3 long lines of docker instructions
-
-`docker network create backend`
-
-`docker run -d --network backend --rm --name app -p 80:8000 greg4fun/django:katacoda`
-
-`docker run --network backend -v $(PWD):/var/lib/mysql --name database -e MYSQL_DATABASE=db -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_USER=django -e MYSQL_PASSWORD=django -d mysql:5.7`
-
-`docker restart app`
-
-
+https://[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/
 
 ##
 

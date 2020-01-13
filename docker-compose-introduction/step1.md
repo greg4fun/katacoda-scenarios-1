@@ -1,38 +1,75 @@
-## Quick docker recap
----
-## Instantiating containers
+### kubernetes community dojo for docker presentation
+---  
+# docker compose
 
-Using all utilities which you have learnt during previous docker dojo run 2 containers django + database (mysql) and
-connect one to another.
+Docker compose looks for docker-compose.yml file inside current directory and then it can build or run the full stack
+defined in the file.
 
-# Database
-Lets create database container (remembering about volumes as we want to keep data created in our database)
+How would we do all previous containers creation  in single docker compose ?
 
-`docker run -v $(pwd)/mysql_data_dir:/var/lib/mysql --name database -e MYSQL_DATABASE=db -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_USER=django -e MYSQL_PASSWORD=django -d mysql:5.7`{{execute}}
+Example docker compose 
 
-# Web
-For this training purpose I have created django Image in dockerhub:
+```bash
+version: '3'
+services:
 
-Run it in detached mode (note this django image will use mysql by default):
+  db:
+    image: mysql:5.7
+    restart: always
+    volumes:
+      - 'mysql-data-dir/:/var/lib/mysql'
+    expose:
+      - '3306'
+    networks:
+      - backend
+    environment:
+      MYSQL_DATABASE: 'db'
+      MYSQL_ROOT_PASSWORD: 'secret'
+      MYSQL_USER: 'django'
+      MYSQL_PASSWORD: 'django'
+    command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
 
-`docker run -d --rm --name app -p 80:8000 greg4fun/django:katacoda`{{execute}}
- 
+  app:
+    image: greg4fun/django:katacoda
+    environment:
+      WORKDIR: '/opt/django/test'
+    volumes:
+      - "./:/opt/app_source_code" 
+    networks:
+      - backend
+    links:
+      - "db:database"
+    ports:
+        - "127.0.0.1:8000:8000"
+        - "80:8000"
+    stdin_open: true
+    tty: true
 
-To check database connection run migrate - command responsible for creating/updating database tables.
+volumes:
+  mysql-data-dir:
+networks:
+  backend
 
-`docker exec app python3 manage.py migrate`{{execute}}
+```
+# couple points from example above
 
-the command will fail as there is no connection to the database the containers are not even withing same network.
+#volumes
+mount in docker compose:
+if we wont start with / or ./ it will look or create volume by name 
+the advantage of mounting source code with ./ is when developer wants to edit code on his
+host computer and see changes in container - -share code dir with host) 
 
-Check running containers:
+same with networks - if network name specified doesn't exist it will create one
 
-`docker ps`{{execute}}
+#ports
+-ports vs expose 
 
-We now have 2 containers running:
-1. The database mysql contaner 
-2. The main web app django container
+ports exposes port to running host (left side is host ) expose port 8000 as 80 on host on interface with ip 127.0.0.0 we
+can use 0.0.0.0 so web appluication will be accesible from the internet on by host ip
+
+"127.0.0.1:80:8000"
+
+expose is used to open port just on container but wont be published on host machine just visible to linked services or
+hosts withing the same docker network.
 
 
-We need our application to be able to connect to the databse.
-
----
