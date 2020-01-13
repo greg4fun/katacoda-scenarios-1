@@ -1,8 +1,8 @@
 {
-  "title": "Docker-compose introduction",
-  "description": "Introduction to docker compose which will help understand kubernetes",
+  "title": "Connecting docker containers",
+  "description": "Introduction to docker compose part1 ",
   "difficulty": "Intermediate",
-  "time": "20",
+  "time": "7",
   "details": {
     "steps": [
       {
