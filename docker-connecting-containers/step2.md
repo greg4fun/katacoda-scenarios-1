@@ -13,17 +13,21 @@ We have multiple ways of connecting 2 containers together and they are:
 # Connecting containers with docker networks
 
 Create docker network
+
 `docker network create backend`{{execute}}
 
 Connect services to the network
+
 `docker network connect backend app`{{execute}}
 
 `docker network connect backend database`{{execute}}
 
 Restart application
+
 `docker restart app`{{execute}}
 
 Check database connectivity (application will try to create initial tables inside mysql)
+
 `docker exec app python3 manage.py migrate`{{execute}}
 
 
