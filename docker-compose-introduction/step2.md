@@ -65,9 +65,11 @@ This can be easily fixed with wait-for-it script
 
 `chmod a+x wait-for-it.sh`{[execute]}
 
- sed -i "s/command:\ ['python3'.*]/command:\ ['\/wait-for-it.sh','db:3306','--','python3','manage.py','runserver']/g" docker-compose.yml
- sed -i "s/.\/:\/opt\/app_source_code/.\/wait-for-it.sh:\/wait-for-it.sh/g" docker-compose.yml
+`sed -i "s/command:\ \['python3'.*\]/command:\ ['\/wait-for-it.sh','db:3306','--','python3','manage.py','runserver']/g" docker-compose.yml`{{execute}}
+`sed -i "s/.\/:\/opt\/app_source_code/.\/wait-for-it.sh:\/wait-for-it.sh/g" docker-compose.yml`{{execute}}
  
+`docker-compose up`{{execute}}
+
  Website shouldnt be available on port 8000 from different address than 127.0.0.1
 
 
