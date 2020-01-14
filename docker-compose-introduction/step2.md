@@ -56,18 +56,28 @@ Run full stack application:
 
 `docker-compose up`{{execute}}
 
+Out django application  should be available on default port 0.0.0.0 from directive 80:8000 which is same as 0.0.0.0:80:8000
+We can check it by goint to:
 
-Website shouldnt be available on port 8000 from different address than 127.0.0.1
+https://[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/
 
-check it with
+or just 
+
+`curl $(/sbin/ifconfig ens3 | grep 'inet addr' | cut -d: -f2 | awk '{print $1}'):80`{{execute}}
+
+Website shouldn't be available on port 8000 from different address than 127.0.0.1
+
+We can validate it with with
 
 https://[[HOST_SUBDOMAIN]]-8000-[[KATACODA_HOST]].environments.katacoda.com/
 
+or
+
+`curl $(/sbin/ifconfig ens3 | grep 'inet addr' | cut -d: -f2 | awk '{print $1}'):8000`{{execute}}
+
+but will be available on port 80 from 127.0.0.1
+
 `curl 127.0.0.1`{{execute}}
-
-It should be available on default port 0.0.0.0 from directive 80:8000 which is same as 0.0.0.0:80:8000
-
-https://[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/
 
 
 ```
