@@ -25,7 +25,7 @@ services:
       MYSQL_PASSWORD: 'django'
     command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
   app:
-    image: greg4fun/django:katacoda
+    image: greg4fun/django:katacoda_wait
     environment:
       WORKDIR: '/opt/django/test'
     volumes:
