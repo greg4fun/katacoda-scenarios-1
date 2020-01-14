@@ -56,7 +56,9 @@ Run full stack application:
 
 `docker-compose up`{{execute}}
 
-Out django application  should be available on default port 0.0.0.0 from directive 80:8000 which is same as 0.0.0.0:80:8000
+Wait until images are downloaded and application is deployed 
+
+Our django application  should be available on default port 0.0.0.0 from directive 80:8000 which is same as 0.0.0.0:80:8000
 We can check it by goint to:
 
 https://[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/
@@ -79,74 +81,25 @@ but will be available on port 80 from 127.0.0.1
 
 `curl 127.0.0.1`{{execute}}
 
+# What happened here?
 
-```
-cat >> docker-compose.yml << EOF
-version: '3'
-services:
-  db:
-    image: mysql:5.7
-    container_name: database
-    restart: always
-    volumes:
-      - 'mysql-data-dir/:/var/lib/mysql'
-    expose:
-      - '3306'
-    networks:
-      - backend
-    environment:
-      MYSQL_DATABASE: 'db'
-      MYSQL_ROOT_PASSWORD: 'secret'
-      MYSQL_USER: 'django'
-      MYSQL_PASSWORD: 'django'
-    command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
-  app:
-    image: greg4fun/django:katacoda
-    environment:
-      WORKDIR: '/opt/django/test'
-    volumes:
-      - "./:/opt/app_source_code"
-    networks:
-      - backend
-    links:
-      - "db:database"
-    ports:
-        - "127.0.0.1:8000:8000"
-        - "80:8000"
-    stdin_open: true
-    tty: true
-    command: ['python3', 'manage.py', 'runserver','0.0.0.0:8000']
+As far as we can guarantee sequence of containers startup we need to wait until initial database is complete (initial
+mysql tables created on new volume - just on first run)
 
-volumes:
-  mysql-data-dir:
-    driver: local
+Thanks to wait-for-it script we can back of for defined number of seconds if service is not ready and not listening on
+specific port
 
-networks:
-  backend:
+scroll up through the logs and you will see 
 
-EOF
-```{{execute}}
+app_1  | wait-for-it.sh: waiting 15 seconds for db:3306
 
 
-Check logs if website is running 
-Just on the first run it should fail as it takes a while to set up directory structure for database
-try ctrl+c and run compose up again - it will work this time 
+## The volumes were automatically created:
 
-This can be easily fixed with wait-for-it script
+`docker volume ls`{{execute}}
 
-`wget https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh`{{execute}}
+## The networks were automatically created and containers were assigned to them
 
-`chmod a+x wait-for-it.sh`{{execute}}
-
-Replace command to have wait-for-it
-
-`sed -i "s/command:\ \['python3'.*\]/command:\ ['\/wait-for-it.sh','db:3306','--','python3','manage.py','runserver']/g" docker-compose.yml`{{execute}}
-Mount wait-for-it ti the container  
-`sed -i "s/.\/:\/opt\/app_source_code/.\/wait-for-it.sh:\/wait-for-it.sh/g" docker-compose.yml`{{execute}}
- 
-`docker-compose up`{{execute}}
-
-##
-
+`docker network ls`{{execute}}
 
 
