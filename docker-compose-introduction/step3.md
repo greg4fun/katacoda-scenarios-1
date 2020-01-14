@@ -4,15 +4,11 @@
 
 First clear whole environment
 
-`docker system prune -a`{{execute}}
+`yes | docker system prune -a`{{execute}}
 
 `rm docker-compose.yml`{{execute}}
 
 Lets put docker-compose example from previous step into a file:
-
-Run full stack application:
-
-`docker-compose up`{{execute}}
 
 
 ```
@@ -62,13 +58,14 @@ networks:
 EOF
 ```{{execute}}
 
+Run full stack application:
+
+`docker-compose up`{{execute}}
 
 Check logs if website is running 
 Just on the first run it should fail as it takes a while to set up directory structure for database
 try ctrl+c and run compose up again - it will work this time 
 
-First clear whole environment
-`docker system prune -a`{{execute}}
 
 This can be easily fixed with wait-for-it script
 
