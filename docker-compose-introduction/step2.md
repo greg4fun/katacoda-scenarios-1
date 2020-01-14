@@ -11,6 +11,7 @@ version: '3'
 services:
   db:
     image: mysql:5.7
+    container_name: database
     restart: always
     volumes:
       - 'mysql-data-dir/:/var/lib/mysql'
