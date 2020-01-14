@@ -122,4 +122,3 @@ Check connectivity from web to db
 `docker exec -it django_app ping database`{{execute}}`
 
 
-``
