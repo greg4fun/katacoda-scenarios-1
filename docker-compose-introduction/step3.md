@@ -5,6 +5,7 @@
 First clear whole environment
 
 `yes | docker system prune -a`{{execute}}
+`docker volume rm -f root_mysql-data-dir`{{execute}}
 
 `rm docker-compose.yml`{{execute}}
 

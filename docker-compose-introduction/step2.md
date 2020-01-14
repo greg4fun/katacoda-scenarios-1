@@ -64,7 +64,7 @@ We can check it by goint to:
 
 https://[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/
 
-or just 
+or (in 2nd trerminal use + and open new terminal)
 
 `curl $(/sbin/ifconfig ens3 | grep 'inet addr' | cut -d: -f2 | awk '{print $1}'):80`{{execute}}
 
@@ -117,7 +117,7 @@ check if its running
 
 Check connectivity from web to db
 
-`docker exec -it djang_app python3 manage.py migrate`{{execute}}
+`docker exec -it django_app python3 manage.py migrate`{{execute}}
 
 `docker exec -it django_app ping database`{{execute}}`
 
