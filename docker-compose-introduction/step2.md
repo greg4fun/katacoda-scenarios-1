@@ -39,7 +39,7 @@ services:
         - "80:8000"
     stdin_open: true
     tty: true
-    command: ['wait-for-it.sh','db:3306','python3', 'manage.py', 'runserver','0.0.0.0:8000']
+    command: ['wait-for-it.sh','db:3306', '--', 'python3', 'manage.py', 'runserver','0.0.0.0:8000']
 
 volumes:
   mysql-data-dir:
@@ -51,6 +51,23 @@ networks:
 EOF
 ```{{execute}}
 
+
+Run full stack application:
+
+`docker-compose up`{{execute}}
+
+
+Website shouldnt be available on port 8000 from different address than 127.0.0.1
+
+check it with
+
+https://[[HOST_SUBDOMAIN]]-8000-[[KATACODA_HOST]].environments.katacoda.com/
+
+`curl 127.0.0.1`{{execute}}
+
+It should be available on default port 0.0.0.0 from directive 80:8000 which is same as 0.0.0.0:80:8000
+
+https://[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/
 
 
 ```
@@ -100,16 +117,10 @@ networks:
 EOF
 ```{{execute}}
 
-Execute compose:
-
-`docker-compose up`{{execute}}
 
 Check logs if website is running 
 Just on the first run it should fail as it takes a while to set up directory structure for database
 try ctrl+c and run compose up again - it will work this time 
-
-First clear whole environment
-`docker system prune -a`{{execute}}
 
 This can be easily fixed with wait-for-it script
 
@@ -124,18 +135,6 @@ Mount wait-for-it ti the container
 `sed -i "s/.\/:\/opt\/app_source_code/.\/wait-for-it.sh:\/wait-for-it.sh/g" docker-compose.yml`{{execute}}
  
 `docker-compose up`{{execute}}
-
- Website shouldnt be available on port 8000 from different address than 127.0.0.1
-
-check it with
-
-https://[[HOST_SUBDOMAIN]]-8000-[[KATACODA_HOST]].environments.katacoda.com/
-
-`curl 127.0.0.1`{{execute}}
-
-It should be available on default port 0.0.0.0 from directive 80:8000 which is same as 0.0.0.0:80:8000
-
-https://[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/
 
 ##
 
