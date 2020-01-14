@@ -73,7 +73,7 @@ We can validate it with with
 
 https://[[HOST_SUBDOMAIN]]-8000-[[KATACODA_HOST]].environments.katacoda.com/
 
-or
+or (in 2nd trerminal use + and open new terminal)
 
 `curl $(/sbin/ifconfig ens3 | grep 'inet addr' | cut -d: -f2 | awk '{print $1}'):8000`{{execute}}
 
@@ -83,7 +83,7 @@ but will be available on port 80 from 127.0.0.1
 
 # What happened here?
 
-As far as we can guarantee sequence of containers startup we need to wait until initial database is complete (initial
+As far as we can guarantee sequence of containers startup (depends_on) we need to wait until initial database is complete (initial
 mysql tables created on new volume - just on first run)
 
 Thanks to wait-for-it script we can back of for defined number of seconds if service is not ready and not listening on
@@ -101,5 +101,7 @@ app_1  | wait-for-it.sh: waiting 15 seconds for db:3306
 ## The networks were automatically created and containers were assigned to them
 
 `docker network ls`{{execute}}
+
+`docker inspect root_backend --format "{{.Containers}}"`{{execute}}
 
 
