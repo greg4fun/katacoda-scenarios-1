@@ -39,7 +39,7 @@ services:
         - "80:8000"
     stdin_open: true
     tty: true
-    command: ['wait-for-it.sh','db:3306', '--', 'python3', 'manage.py', 'runserver','0.0.0.0:8000']
+    command: ['/wait-for-it.sh','db:3306', '--', 'python3', 'manage.py', 'runserver','0.0.0.0:8000']
 
 volumes:
   mysql-data-dir:
