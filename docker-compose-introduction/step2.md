@@ -26,6 +26,7 @@ services:
     command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
   app:
     image: greg4fun/django:katacoda_wait
+    container_name: 'django_app'
     environment:
       WORKDIR: '/opt/django/test'
     volumes:
@@ -104,4 +105,21 @@ app_1  | wait-for-it.sh: waiting 15 seconds for db:3306
 
 `docker inspect root_backend --format "{{.Containers}}"`{{execute}}
 
+# Running in detached mode:
+Shut down docker-compose with ctrl+c
 
+bring it up:
+
+`docker-compose up -d`{{execute}}
+check if its running
+
+`curl 127.0.0.1`{{execute}}
+
+Check connectivity from web to db
+
+`docker exec -it djang_app python3 manage.py migrate`{{execute}}
+
+`docker exec -it django_app ping database`{{execute}}`
+
+
+``

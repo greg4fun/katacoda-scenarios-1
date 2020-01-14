@@ -33,6 +33,7 @@ services:
     command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
   app:
     image: greg4fun/django:katacoda
+    container_name: 'django_app'
     environment:
       WORKDIR: '/opt/django/test'
     volumes:
@@ -64,6 +65,13 @@ Run full stack application:
 
 Check logs if website is running 
 Just on the first run it should fail as it takes a while to set up directory structure for database
+
+Wait until db container will create directories in new volume:
+you can say when its done after seeing those 2 lines:
+
+database | 2020-01-14T22:21:58.964300Z 0 [Note] mysqld: ready for connections.
+database | Version: '5.7.28'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server (GPL)
+
 try ctrl+c and run compose up again - it will work this time 
 
 
