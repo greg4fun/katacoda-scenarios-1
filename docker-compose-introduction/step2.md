@@ -50,12 +50,12 @@ networks:
   backend:
 
 EOF
-```{{execute HOST1}}
+```{{execute}}
 
 
 Run full stack application:
 
-`docker-compose up`{{execute HOST1}}
+`docker-compose up`{{execute}}
 
 Wait until images are downloaded and application is deployed 
 
@@ -66,7 +66,7 @@ https://[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/
 
 or (in 2nd trerminal use + and open new terminal)
 
-`curl $(/sbin/ifconfig ens3 | grep 'inet addr' | cut -d: -f2 | awk '{print $1}'):80`{{execute HOST2}}
+`curl $(/sbin/ifconfig ens3 | grep 'inet addr' | cut -d: -f2 | awk '{print $1}'):80`{{execute}}
 
 Website shouldn't be available on port 8000 from different address than 127.0.0.1
 
@@ -76,11 +76,11 @@ https://[[HOST_SUBDOMAIN]]-8000-[[KATACODA_HOST]].environments.katacoda.com/
 
 or (in 2nd trerminal use + and open new terminal)
 
-`curl $(/sbin/ifconfig ens3 | grep 'inet addr' | cut -d: -f2 | awk '{print $1}'):8000`{{execute HOST2}}
+`curl $(/sbin/ifconfig ens3 | grep 'inet addr' | cut -d: -f2 | awk '{print $1}'):8000`{{execute}}
 
 but will be available on port 80 from 127.0.0.1
 
-`curl 127.0.0.1`{{execute HOST2}}
+`curl 127.0.0.1`{{execute}}
 
 # What happened here?
 
@@ -97,28 +97,28 @@ app_1  | wait-for-it.sh: waiting 15 seconds for db:3306
 
 ## The volumes were automatically created:
 
-`docker volume ls`{{execute HOST2}}
+`docker volume ls`{{execute}}
 
 ## The networks were automatically created and containers were assigned to them
 
-`docker network ls`{{execute HOST2}}
+`docker network ls`{{execute}}
 
-`docker inspect root_backend --format "{{.Containers}}"`{{execute HOST2}}
+`docker inspect root_backend --format "{{.Containers}}"`{{execute}}
 
 # Running in detached mode:
 Shut down docker-compose with ctrl+c
 
 bring it up:
 
-`docker-compose up -d`{{execute HOST1}}
+`docker-compose up -d`{{execute}}
 check if its running
 
-`curl 127.0.0.1`{{execute HOST1}}
+`curl 127.0.0.1`{{execute}}
 
 Check connectivity from web to db
 
-`docker exec -it django_app python3 manage.py migrate`{{execute HOST1}}
+`docker exec -it django_app python3 manage.py migrate`{{execute}}
 
-`docker exec -it django_app ping database`{{execute HOST1}}`
+`docker exec -it django_app ping database`{{execute}}`
 
 
