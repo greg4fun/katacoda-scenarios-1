@@ -76,11 +76,11 @@ https://[[HOST_SUBDOMAIN]]-8000-[[KATACODA_HOST]].environments.katacoda.com/
 
 or (in 2nd trerminal use + and open new terminal)
 
-`curl $(/sbin/ifconfig ens3 | grep 'inet addr' | cut -d: -f2 | awk '{print $1}'):8000`{{execute HOST2}}
+`curl $(/sbin/ifconfig ens3 | grep 'inet addr' | cut -d: -f2 | awk '{print $1}'):8000`{{execute Host2}}
 
 but will be available on port 80 from 127.0.0.1
 
-`curl 127.0.0.1`{{execute HOST2}}
+`curl 127.0.0.1`{{execute Host2}}
 
 # What happened here?
 
@@ -97,13 +97,13 @@ app_1  | wait-for-it.sh: waiting 15 seconds for db:3306
 
 ## The volumes were automatically created:
 
-`docker volume ls`{{execute HOST2}}
+`docker volume ls`{{execute Host2}}
 
 ## The networks were automatically created and containers were assigned to them
 
-`docker network ls`{{execute HOST2}}
+`docker network ls`{{execute Host2}}
 
-`docker inspect root_backend --format "{{.Containers}}"`{{execute HOST2}}
+`docker inspect root_backend --format "{{.Containers}}"`{{execute Host2}}
 
 # Running in detached mode:
 Shut down docker-compose with ctrl+c
