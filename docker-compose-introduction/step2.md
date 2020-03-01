@@ -108,8 +108,6 @@ app_1  | wait-for-it.sh: waiting 15 seconds for db:3306
 # Running in detached mode:
 Shut down docker-compose with ctrl+c
 
-`^C`{{execute}}
-
 bring it up:
 
 `docker-compose up -d`{{execute}}
