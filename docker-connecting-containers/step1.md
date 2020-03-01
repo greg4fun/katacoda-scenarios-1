@@ -15,7 +15,7 @@ For this training purpose I have created django Image in dockerhub:
 
 Run it in detached mode (note this django image will use mysql by default):
 
-`docker run -d --rm --name app -p 80:8000 greg4fun/django:katacodasquashed`{{execute}}
+`docker run -d --rm --name app -p 80:8000 greg4fun/django:ubuntukatacoda`{{execute}}
  
 
 To check database connection run migrate - command responsible for creating/updating database tables.
