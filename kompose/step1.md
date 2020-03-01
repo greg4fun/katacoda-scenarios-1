@@ -61,3 +61,9 @@ Install kompose:
 `kompose convert -f docker-compose.yml`{{execute}}`
 
 `ls`{{execute}}
+
+`cat app-service.yaml`{{execute}}
+
+`cat app-deployment.yaml`{{execute}}
+
+etc
