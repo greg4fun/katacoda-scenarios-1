@@ -8,7 +8,17 @@ connect one to another.
 # Database
 Lets create database container (remembering about volumes as we want to keep data created in our database)
 
-`docker run -v $(pwd)/mysql_data_dir:/var/lib/mysql --name database -e MYSQL_DATABASE=db -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_USER=django -e MYSQL_PASSWORD=django -d mysql:5.7`{{execute}}
+`docker run -v mysql_volume_on_host:/var/lib/mysql --name database -e MYSQL_DATABASE=db -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_USER=django -e MYSQL_PASSWORD=django -d mysql:5.7`{{execute}}
+
+Docker should create volume specified in -v if it doesnt exist already it's in volumes 
+
+`docker volume ls`{{execute}}
+
+
+and (depending on distro and mount type) 
+
+
+`ls /var/lib/docker/volumes`{{execute}}
 
 # Web
 For this training purpose I have created django Image in dockerhub:
