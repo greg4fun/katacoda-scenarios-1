@@ -32,6 +32,6 @@
     "uilayout": "terminal-terminal"
   },
   "backend": {
-    "imageid": "ubuntu"
+    "imageid": "docker-swarm"
   }
 }
