@@ -2,12 +2,22 @@
 ---  
 # How would it look like without wait-for-it script
 
+In this scenario I want to show that using wait-for-it script is crucial.
+Depends on option guarantees sequence of containers start but sometimes one container must be ready before other will
+start like in thsi instance db must have tables populated before app starts and will try to access it.
+
+Here there will be failure to db connection presented.
+
 First clear whole environment
 
 `yes | docker system prune -a`{{execute}}
+
 `docker volume rm -f root_mysql-data-dir`{{execute}}
 
 `rm docker-compose.yml`{{execute}}
+
+
+`docker pull greg4fun/django:katacoda`{{execute}}
 
 Lets put docker-compose example from previous step into a file:
 
