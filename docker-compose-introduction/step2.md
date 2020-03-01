@@ -119,6 +119,5 @@ Check connectivity from web to db
 
 `docker exec -it django_app python3 manage.py migrate`{{execute}}
 
-`docker exec -it django_app ping database`{{execute}}`
 
 
