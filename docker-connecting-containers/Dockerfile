@@ -1,6 +1,7 @@
 FROM python:3.7-slim
-RUN apt-get update && apt-get install -y default-libmysqlclient-dev python3-pip && \
-    pip3 install django==2.2.5 mysqlclient
+RUN apt-get update && apt-get install -y default-libmysqlclient-dev python3-pip wget && \
+    pip3 install django==2.2.5 mysqlclient && \
+    wget https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh -O /wait-for-it.sh 
 RUN mkdir /opt/django && cd /opt/django && \
     django-admin startproject test
 wORKDIR /opt/django/test

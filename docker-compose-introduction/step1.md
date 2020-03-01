@@ -52,25 +52,3 @@ networks:
   backend:
 
 ```
-# Couple points from example above
-
-## Volumes
-
-mount in docker compose:
-if we wont start with / or ./ it will look or create volume by name 
-the advantage of mounting source code with ./ is when developer wants to edit code on his
-host computer and see changes in container - -share code dir with host) 
-
-same with networks - if network name specified doesn't exist it will create one
-
-## Ports
-
--ports vs expose 
-
-'ports' exposes port to running host (left side is host ) expose port 8000 as 80 on host on interface with ip 127.0.0.0 we
-can use 0.0.0.0 so web application will be accesible from the Internet/local network by host ip
-
-"127.0.0.1:80:8000"
-
-'expose' is used to open port just on container but won't be published on host machine just visible to linked services or
-hosts withing the same docker network.
